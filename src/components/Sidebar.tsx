@@ -4,7 +4,7 @@ import { Range } from "react-range";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 
-export default function Sidebar() {
+export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) {
   const [experience, setExperience] = useState(true);
   const [price, setPrice] = useState(true);
   const [job, setJob] = useState(true);
@@ -51,7 +51,7 @@ export default function Sidebar() {
           max={50000}
           values={values}
           onChange={(values) => setValues(values)}
-          renderTrack={({ props, children, isDragged }) => (
+          renderTrack={({ props, children }) => (
             <div
               {...props}
               style={{
@@ -65,7 +65,7 @@ export default function Sidebar() {
                 style={{
                   position: "absolute",
                   height: "100%",
-                  background: "blue", // La couleur bleue pour la section sélectionnée
+                  background: "#0f7afd", // La couleur bleue pour la section sélectionnée
                   left: `${(values[0] / 50000) * 100}%`,
                   width: `${((values[1] - values[0]) / 50000) * 100}%`,
                 }}
@@ -82,7 +82,7 @@ export default function Sidebar() {
                 width: "24px",
                 borderRadius: "50%",
                 backgroundColor: "#fff",
-                border: "2px solid #00f",
+                border: "2px solid #0f7afd",
               }}
             />
           )}
@@ -97,11 +97,10 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="sidebar  ">
+    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="flex justify-between items-center border-b border-[#b9b9b9] pb-[20px]">
         <span className="text-[#000] font-[600]"> Filter</span>
-        <span className="text-[#2f8abe] font-[600] cursor-pointer ">
-          {" "}
+        <span className="text-[#0f7afd] font-[600] cursor-pointer">
           Clear All
         </span>
       </div>

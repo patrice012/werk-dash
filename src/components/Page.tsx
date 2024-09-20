@@ -190,10 +190,6 @@ export default function Page() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <div className="bg-[#e8edf0] rounded-[4px] p-[6px]">
-            <Category size="24" color="#000" className="cursor-pointer" />
-          </div>
-          <IoList size={28} color="#888888" className="cursor-pointer" />
         </div>
       </div>
       <Card />
