@@ -7,11 +7,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { IoList } from "react-icons/io5";
-import { SearchNormal1, Location, Category, Save2 } from "iconsax-react";
+import { SearchNormal1, Location, Save2 } from "iconsax-react";
 import { IoMdClose } from "react-icons/io";
 import netflix from "/assets/google.png";
 import { useRef, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "./ui/button";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -23,12 +24,12 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col w-full gap-[30px] p-[30px] scrollbar scrollbar-thumb-[#5a5959]/50 scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
+    <div className="flex flex-col w-full gap-[30px] p-[15px] md:p-[30px] scrollbar scrollbar-thumb-[#5a5959]/50 scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
       <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
         <div className="grow relative">
-          <input
-            type="text"
-            placeholder="Find jobs"
+          <Input
+            type="search"
+            placeholder="Search..."
             className="w-full rounded-[4px] h-[48px] bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
           />
           <SearchNormal1
@@ -37,9 +38,8 @@ export default function Page() {
             className="absolute top-[12px] left-[10px]"
           />
         </div>
-
         <Select>
-          <SelectTrigger className="border flex items-center px-2 bg-[#fff] h-[48px] justify-between w-[150px] rounded-[4px] active:outline-0 focus:outline-0">
+          <SelectTrigger className="border flex items-center px-2 bg-[#fff] h-[48px] justify-between w-full sm:w-[150px] rounded-[4px] active:outline-0 focus:outline-0">
             <SelectValue placeholder="Select a fruit" />
           </SelectTrigger>
           <SelectContent>
@@ -54,9 +54,10 @@ export default function Page() {
           </SelectContent>
         </Select>
         <div className="h-[48px] grow relative">
-          <input
-            type="text"
-            className="grow rounded-[4px] h-full w-full bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
+          <Input
+            type="search"
+            placeholder="Search..."
+            className="w-full rounded-[4px] h-[48px] bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
           />
           <Location
             size="24"
@@ -64,9 +65,9 @@ export default function Page() {
             className="absolute top-[12px] left-[10px]"
           />
         </div>
-        <button className="bg-[#388bf0] font-[500] transition ease-in-out duration-300 hover:bg-[#388bf0c5] px-[12px] h-[48px] items-center rounded-[4px] w-[100px] text-[#fff]">
+        <Button className="bg-[#388bf0] font-[500] transition ease-in-out duration-300 hover:bg-[#388bf0c5] px-[12px] h-[48px] items-center rounded-[4px] w-full sm:w-[100px] text-[#fff]">
           Search
-        </button>
+        </Button>
       </div>
       <div className="flex lg:flex-row flex-col gap-4 items-center w-full justify-between">
         <div className="flex justify-start gap-[12px]">
@@ -101,9 +102,10 @@ export default function Page() {
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
         <div
           className={`grid ${
-            selectedItem != undefined ? "grid-rows-1" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
-          } gap-[20px]`}
-        >
+            selectedItem != undefined
+              ? "grid-rows-1"
+              : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
+          } gap-[20px]`}>
           {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
             const selected = selectedItem == idx;
             return (
@@ -120,13 +122,11 @@ export default function Page() {
         <div
           className={`${
             selectedItem != undefined ? "sticky" : "hidden"
-          }  top-[20px] col-span-2 p-[15px] bg-[#fff] rounded-[4px] max-h-max`}
-        >
+          }  top-[20px] col-span-2 p-[15px] bg-[#fff] rounded-[4px] max-h-max`}>
           <div className="flex flex-col gap-3">
             <button
               onClick={() => setSeletedItem(undefined)}
-              className="cursor-pointer absolute right-0 top-0 p-[6px]"
-            >
+              className="cursor-pointer absolute right-0 top-0 p-[6px]">
               <IoMdClose size={30} />
             </button>
             <h1 className="font-[500] text-[#303533] text-[18px]">
@@ -173,8 +173,7 @@ const Card = ({
       onClick={() => onPress(id)}
       className={`${
         isSelected ? "border-[2.5px] border-[#408AD3]" : ""
-      } cursor-pointer bg-[#fff] rounded-[6px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}
-    >
+      } cursor-pointer bg-[#fff] rounded-[6px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}>
       <div className="flex w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <img src={netflix} alt="" className="w-[48px] h-[48px]" />
