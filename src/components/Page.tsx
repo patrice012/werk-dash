@@ -28,6 +28,7 @@ export default function Page() {
         <div className="grow relative">
           <input
             type="text"
+            placeholder="Find jobs"
             className="w-full rounded-[4px] h-[48px] bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
           />
           <SearchNormal1
