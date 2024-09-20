@@ -176,7 +176,7 @@ const Card = ({
       onClick={() => onPress(id)}
       className={`${
         isSelected ? "border-[2.5px] border-[#408AD3]" : ""
-      } cursor-pointer bg-[#fff] rounded-[4px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}
+      } cursor-pointer bg-[#fff] rounded-[6px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}
     >
       <div className="flex w-full justify-between">
         <div className="flex justify-start gap-[12px]">
@@ -219,105 +219,3 @@ const Card = ({
     </div>
   );
 };
-
-{
-  /* <div className="bg-[#fff] rounded-[8px] p-[20px] gap-[15px] flex flex-col w-full hover:shadow-xl border">
-          <div className="flex w-full justify-between">
-            <div className="flex justify-start gap-[12px]">
-              <img src={favicon} alt="" className="w-[56px]" />
-              <div className="flex flex-col gap-[6px]">
-                <span className="font-[600] text-20-title">UI/UX Designer</span>
-                <span className="text-[#888888]">
-                  Pixel Studio . Yogyarkata
-                </span>
-              </div>
-            </div>
-            <Save2 size="32" color="#888888" />
-          </div>
-          <span className="text-[#888888]">Match with your profile</span>
-          <div className="flex justify-start gap-[6px]">
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">FullTime</div>
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">Hybrid</div>
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">2-4 Years</div>
-          </div>
-          <span className="text-[#888888]">2 day ago . 140 applicants</span>
-          <div className="flex justify-between w-full items-center">
-            <span className="">
-              {" "}
-              <span className="text-[#388bf0] text-18-title font-[600]">
-                $1000
-              </span>
-              /m
-            </span>
-            <button className="bg-[#388bf06c] hover:bg-[#388bf0c8] hover:text-[#fff] transition duration-500 ease-in-out  px-[12px] h-[48px] items-center rounded-[4px] w-[150px] text-[#388bf0] text-20-title font-[600]">
-              Apply Now
-            </button>
-          </div>
-        </div>
-        <div className="bg-[#fff] rounded-[8px] p-[20px] gap-[15px] flex flex-col w-full hover:shadow-xl ">
-          <div className="flex w-full justify-between">
-            <div className="flex justify-start gap-[12px]">
-              <img src={oracle} alt="" className="w-[56px]" />
-              <div className="flex flex-col gap-[6px]">
-                <span className="font-[600] text-20-title">UI/UX Designer</span>
-                <span className="text-[#888888]">
-                  Pixel Studio . Yogyarkata
-                </span>
-              </div>
-            </div>
-            <Save2 size="32" color="#888888" />
-          </div>
-          <span className="text-[#888888]">Match with your profile</span>
-          <div className="flex justify-start gap-[6px]">
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">FullTime</div>
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">Hybrid</div>
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">2-4 Years</div>
-          </div>
-          <span className="text-[#888888]">2 day ago . 140 applicants</span>
-          <div className="flex justify-between w-full items-center">
-            <span className="">
-              {" "}
-              <span className="text-[#388bf0] text-18-title font-[600]">
-                $1000
-              </span>
-              /m
-            </span>
-            <button className="bg-[#388bf06c] hover:bg-[#388bf0c8] hover:text-[#fff] transition duration-500 ease-in-out  px-[12px] h-[48px] items-center rounded-[4px] w-[150px] text-[#388bf0] text-20-title font-[600]">
-              Apply Now
-            </button>
-          </div>
-        </div>
-        <div className="bg-[#fff] rounded-[8px] p-[20px] gap-[15px] flex flex-col w-full hover:shadow-xl">
-          <div className="flex w-full justify-between">
-            <div className="flex justify-start gap-[12px]">
-              <img src={netflix} alt="" className="w-[56px]" />
-              <div className="flex flex-col gap-[6px]">
-                <span className="font-[600] text-20-title">UI/UX Designer</span>
-                <span className="text-[#888888]">
-                  Pixel Studio . Yogyarkata
-                </span>
-              </div>
-            </div>
-            <Save2 size="32" color="#888888" />
-          </div>
-          <span className="text-[#888888]">Match with your profile</span>
-          <div className="flex justify-start gap-[6px]">
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">FullTime</div>
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">Hybrid</div>
-            <div className="bg-[#e8edf0] p-[4px] rounded-[4px]">2-4 Years</div>
-          </div>
-          <span className="text-[#888888]">2 day ago . 140 applicants</span>
-          <div className="flex justify-between w-full items-center">
-            <span className="">
-              {" "}
-              <span className="text-[#388bf0] text-18-title font-[600]">
-                $1000
-              </span>
-              /m
-            </span>
-            <button className="bg-[#388bf06c] hover:bg-[#388bf0c8] hover:text-[#fff] transition duration-500 ease-in-out  px-[12px] h-[48px] items-center rounded-[4px] w-[150px] text-[#388bf0] text-20-title font-[600]">
-              Apply Now
-            </button>
-          </div>
-        </div> */
-}
