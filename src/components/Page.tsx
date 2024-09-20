@@ -120,7 +120,7 @@ export default function Page() {
     );
   }
   return (
-    <div className="flex flex-col w-full gap-[30px] p-[30px]    scrollbar scrollbar-thumb-[#5a5959] scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
+    <div className="flex flex-col w-full gap-[30px] p-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full  ">
       <div className="flex lg:flex-row w-full justify-between gap-3 flex-col  ">
         <div className="relative">
           <input

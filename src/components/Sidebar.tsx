@@ -97,7 +97,7 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
   };
 
   return (
-    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
+    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"} scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}>
       <div className="flex justify-between items-center border-b border-[#b9b9b9] pb-[20px]">
         <span className="text-[#000] font-[600]"> Filter</span>
         <span className="text-[#0f7afd] font-[600] cursor-pointer">
