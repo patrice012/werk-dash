@@ -94,10 +94,6 @@ export default function Page() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <div className="bg-[#e8edf0] rounded-[4px] p-[6px]">
-            <Category size="24" color="#000" className="cursor-pointer" />
-          </div>
-          <IoList size={28} color="#888888" className="cursor-pointer" />
         </div>
       </div>
 
@@ -105,7 +101,7 @@ export default function Page() {
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
         <div
           className={`grid ${
-            selectedItem != undefined ? "grid-rows-1" : "grid-cols-3 col-span-3"
+            selectedItem != undefined ? "grid-rows-1" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
           } gap-[20px]`}
         >
           {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
