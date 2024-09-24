@@ -7,13 +7,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SearchNormal1, Location, Save2 } from "iconsax-react";
+import { SearchNormal1, Location, Save2, Heart, Clock } from "iconsax-react";
 import { IoMdClose } from "react-icons/io";
 import netflix from "/assets/google.png";
 import { useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
 import { SkeletonCard } from "./Skeleton";
+import { Separator } from "./ui/separator";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -187,11 +188,13 @@ const Card = ({
     <div
       onClick={() => onPress(id)}
       className={`${
-        isSelected ? "border-[2.5px] border-[#408AD3]" : ""
-      } cursor-pointer bg-[#fff] rounded-[6px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}>
+        isSelected ? "border-[2.5px] border-[rgb(64,138,211)]" : ""
+      } cursor-pointer bg-[#fff] rounded-[16px] p-[35px] gap-[15px] flex flex-col w-full hover:shadow-xl`}>
       <div className="flex w-full justify-between">
         <div className="flex justify-start gap-[12px]">
-          <img src={netflix} alt="" className="w-[48px] h-[48px]" />
+          <div className="bg-[#f8f8f8] p-[3px] rounded-[8px] ">
+            <img src={netflix} alt="" className="w-[48px] h-[48px]" />
+          </div>
           <div className="flex flex-col gap-[2px]">
             <span className="font-[500] text-[#303533] text-[18px]">
               UI/UX Designer {id}
@@ -201,33 +204,40 @@ const Card = ({
             </span>
           </div>
         </div>
-        <Save2 size={28} color="#888888" />
+        <Heart size="30" color="#888888" />
       </div>
-      <span className="text-[#888888]">Match with your profile</span>
       <div className="flex gap-[8px]">
-        <div className="bg-[#F5F5F5] px-[5px] py-[3px] text-[#696D6C] font-semibold rounded-[4px]">
+        <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[#7744aa] font-semibold rounded-[4px]">
           FullTime
         </div>
-        <div className="bg-[#F5F5F5] px-[5px] py-[3px] text-[#696D6C] font-semibold rounded-[4px]">
+        <div className="bg-[#e4fff1] px-[5px] py-[3px] text-[#4db06a] font-semibold rounded-[4px]">
           Hybrid
         </div>
-        <div className="bg-[#F5F5F5] px-[5px] py-[3px] text-[#696D6C] font-semibold rounded-[4px]">
+        <div className="bg-[#ffede3] px-[5px] py-[3px] text-[#a97442] font-semibold rounded-[4px]">
           2-4 Years
         </div>
       </div>
-      <span className="text-[#888888]">2 day ago . 140 applicants</span>
+      <span className="text-[#888888]">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore aliquid
+        dignissimos.
+      </span>
+
+      <Separator className="my-[6px]" />
+
       <div className="flex justify-between w-full items-center">
-        <span className="">
-          <span className="text-[#388bf0] text-[18px] font-semibold">
-            $1000
-          </span>
-          /m
+        <span className="text-[#bebebe]">
+          <span className="text-[#000] text-[18px] font-semibold">$250</span>
+          /hr
         </span>
-        <button className="bg-[#D9EBFF] hover:bg-[#408AD3] hover:text-[#fff] transition duration-500 ease-in-out px-[12px] h-[44px] items-center rounded-[4px] max-w-max text-[#388bf0] text-[18px] font-[500]">
+        {/* <button className="bg-[#D9EBFF] hover:bg-[#408AD3] hover:text-[#fff] transition duration-500 ease-in-out px-[12px] h-[44px] items-center rounded-[4px] max-w-max text-[#388bf0] text-[18px] font-[500]">
           Apply Now
-        </button>
+        </button> */}
+        <div className="flex gap-[6px] items-center">
+          {" "}
+          <Clock size="20" color="#888888" />{" "}
+          <span className="text-[#888888]"> Posted 2 day ago </span>
+        </div>
       </div>
     </div>
   );
 };
-
