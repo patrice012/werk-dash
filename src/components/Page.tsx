@@ -122,7 +122,14 @@ export default function Page() {
           } gap-[20px] ${selectedItem != undefined && "hidden lg:grid"}`}>
           {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
             const selected = selectedItem == idx;
-            return <SkeletonCard />;
+            return (
+              <Card
+                isSelected={selected}
+                key={idx}
+                onPress={() => handleSelectItem(idx)}
+                id={idx}
+              />
+            );
           })}
         </div>
 
@@ -223,3 +230,4 @@ const Card = ({
     </div>
   );
 };
+
