@@ -13,10 +13,22 @@ import netflix from "/assets/google.png";
 import { useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
+import { useQuery } from "@tanstack/react-query";
+import Job from "@/models/job.model";
+import { apiGET } from "@/api/api";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedItem, setSeletedItem] = useState<number>();
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["repoDjata"],
+    queryFn: async () => await apiGET({ uri: "/jobs" }),
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   const handleSelectItem = (item: number) => {
     scrollRef.current?.scrollTo({ top: 0 });
@@ -76,9 +88,16 @@ export default function Page() {
       <div className="flex lg:flex-row flex-col gap-4 items-center w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <span className="text-[#888888] text-15-title">
-            Showing <span className="font-[500] text-[#000] text-15-title">150</span> Jobs{" "}
-            <span className="font-[500] text-[#000] text-18-title">UI/UX Designer</span> in{" "}
-            <span className="font-[500] text-[#000] text-15-title">Indonesia</span>
+            Showing{" "}
+            <span className="font-[500] text-[#000] text-15-title">150</span>{" "}
+            Jobs{" "}
+            <span className="font-[500] text-[#000] text-18-title">
+              UI/UX Designer
+            </span>{" "}
+            in{" "}
+            <span className="font-[500] text-[#000] text-15-title">
+              Indonesia
+            </span>
           </span>
         </div>
         <div className="flex items-center justify-start gap-[12px]">
@@ -108,15 +127,16 @@ export default function Page() {
             selectedItem != undefined
               ? "grid-rows-1"
               : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
-          } gap-[20px]`}>
-          {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
+          } gap-[20px]`}
+        >
+          {data.data?.map((item: Job, idx: number) => {
             const selected = selectedItem == idx;
             return (
               <Card
+                job={item}
                 isSelected={selected}
                 key={idx}
                 onPress={() => handleSelectItem(idx)}
-                id={idx}
               />
             );
           })}
@@ -125,11 +145,13 @@ export default function Page() {
         <div
           className={`${
             selectedItem != undefined ? "sticky" : "hidden"
-          }  top-[20px] col-span-2 p-[15px] bg-[#fff] rounded-[4px] max-h-max`}>
+          }  top-[20px] col-span-2 p-[15px] bg-[#fff] rounded-[4px] max-h-max`}
+        >
           <div className="flex flex-col gap-3">
             <button
               onClick={() => setSeletedItem(undefined)}
-              className="cursor-pointer absolute right-0 top-0 p-[6px]">
+              className="cursor-pointer absolute right-0 top-0 p-[6px]"
+            >
               <IoMdClose size={30} />
             </button>
             <h1 className="font-[500] text-[#303533] text-[18px]">
@@ -163,26 +185,27 @@ export default function Page() {
 }
 
 const Card = ({
-  id,
+  job,
   onPress,
   isSelected,
 }: {
-  id: number;
+  job: Job;
   onPress: (item: unknown) => void;
   isSelected: boolean;
 }) => {
   return (
     <div
-      onClick={() => onPress(id)}
+      onClick={() => onPress(1)}
       className={`${
         isSelected ? "border-[2.5px] border-[#408AD3]" : ""
-      } cursor-pointer bg-[#fff] rounded-[6px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}>
+      } cursor-pointer bg-[#fff] rounded-[6px] p-[15px] gap-[15px] flex flex-col w-full hover:shadow-xl`}
+    >
       <div className="flex w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <img src={netflix} alt="" className="w-[48px] h-[48px]" />
           <div className="flex flex-col gap-[2px]">
             <span className="font-[500] text-[#303533] text-[18px]">
-              UI/UX Designer {id}
+              {job.jobTitle}
             </span>
             <span className="text-[#888888] text-[16px]">
               Pixel Studio . Yogyarkata
