@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function Navbar({ toggleSidebar } : { toggleSidebar : (e: any) => void}) {
+export default function Navbar({ toggleSidebar } : { toggleSidebar : () => void}) {
   return (
     <div className="bg-[#fff] flex items-center justify-between h-[72px] max-h-[72px] top-0 absolute w-full resize-none border-b border-[#b9b9b9] px-[15px] md:px-[30px] ">
       <div className="flex justify-start gap-[12px] items-center">

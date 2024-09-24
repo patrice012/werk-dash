@@ -2,44 +2,12 @@ import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 import { Switch } from "@/components/ui/switch";
 import { Range } from "react-range";
 import { useState } from "react";
-import { Bar } from "react-chartjs-2";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const [experience, setExperience] = useState(true);
   const [price, setPrice] = useState(true);
   const [job, setJob] = useState(true);
-
-  const Histogram = () => {
-    const data = {
-      labels: ["0", "5000", "10000", "15000", "20000", "25000"],
-      datasets: [
-        {
-          label: "Price distribution",
-          data: [5, 15, 25, 10, 20, 30],
-          backgroundColor: "rgba(0, 123, 255, 0.5)",
-        },
-      ],
-    };
-
-    const options = {
-      scales: {
-        x: {
-          display: false,
-        },
-        y: {
-          display: false,
-        },
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    };
-
-    return <Bar data={data} options={options} />;
-  };
 
   const PriceRangeSlider = () => {
     const [values, setValues] = useState([1000, 25000]);
@@ -61,7 +29,8 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
                 width: "100%",
                 backgroundColor: "#ccc",
                 position: "relative",
-              }}>
+              }}
+            >
               <div
                 style={{
                   position: "absolute",
@@ -101,7 +70,8 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
     <div
       className={`sidebar ${
         isSidebarOpen ? "open" : "closed"
-      } scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}>
+      } scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}
+    >
       <div className="flex justify-between items-center border-b border-[#b9b9b9] pb-[20px]">
         <span className="text-[#000] font-[600]"> Filter</span>
         <span className="text-[#0f7afd] font-[600] cursor-pointer">

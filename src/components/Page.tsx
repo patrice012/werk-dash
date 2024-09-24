@@ -109,7 +109,7 @@ export default function Page() {
               ? "grid-rows-1"
               : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
           } gap-[20px]`}>
-          {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
+          {Array.from({ length: 9 }).map((_, idx: number) => {
             const selected = selectedItem == idx;
             return (
               <Card
