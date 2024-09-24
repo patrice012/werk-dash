@@ -4,7 +4,6 @@
   margin-inline: auto;
 }
 
-
 .sidebar {
   width: 300px;
   background-color: #fff;
@@ -15,7 +14,7 @@
   height: calc(100vh - 72px);
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
-  
+
   &.closed {
     transform: translateX(-100%);
   }
@@ -26,7 +25,7 @@
 
   @media screen and (max-width: 1280px) {
     position: fixed;
-    top: 72px; // Aligner sous le navbar
+    // top: 72px; // Aligner sous le navbar
     left: 0;
     height: calc(100vh - 72px);
     z-index: 1000;
@@ -54,9 +53,9 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background-color: #212121;
+  // background-color: #212121;
   color: #fff;
-  padding-top: 72px; // Pour compenser la hauteur du navbar fixe
+  // padding-top: 72px; // Pour compenser la hauteur du navbar fixe
 
   @media screen and (max-width: 1280px) {
     .chat-container {

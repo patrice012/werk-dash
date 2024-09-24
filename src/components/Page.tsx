@@ -64,7 +64,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col w-full gap-[30px] p-[15px] md:p-[30px] scrollbar scrollbar-thumb-[#5a5959]/50 scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
-      <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
+      {/* <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
         <div className="flex sm:flex-row w-full gap-[12.5px] flex-col">
           <div className="grow relative">
             <Input
@@ -113,7 +113,7 @@ export default function Page() {
             Search
           </Button>
         </div>
-      </div>
+      </div> */}
       <div className="flex lg:flex-row flex-col gap-4 items-center w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <span className="text-[#888888] text-15-title">

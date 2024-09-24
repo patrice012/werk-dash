@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <div className="overflow-hidden ">
+    <div className="">
       <Navbar toggleSidebar={toggleSidebar} />
       <div className="app-container">
         <Sidebar isSidebarOpen={isSidebarOpen} />
