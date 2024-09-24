@@ -3,8 +3,9 @@ import { Switch } from "@/components/ui/switch";
 import { Range } from "react-range";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { Checkbox } from "@/components/ui/checkbox";
 
-export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) {
+export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const [experience, setExperience] = useState(true);
   const [price, setPrice] = useState(true);
   const [job, setJob] = useState(true);
@@ -97,7 +98,10 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
   };
 
   return (
-    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"} scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}>
+    <div
+      className={`sidebar ${
+        isSidebarOpen ? "open" : "closed"
+      } scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}>
       <div className="flex justify-between items-center border-b border-[#b9b9b9] pb-[20px]">
         <span className="text-[#000] font-[600]"> Filter</span>
         <span className="text-[#0f7afd] font-[600] cursor-pointer">
@@ -128,21 +132,14 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
             <>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox className="" />
                   <span className="text-[#6e6e6e] text-18-title">Contract</span>
                 </div>
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     Full-Time
                   </span>
@@ -150,11 +147,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     Part-Time
                   </span>
@@ -162,11 +156,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     Internship
                   </span>
@@ -207,11 +198,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
             <>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     Less than $1000
                   </span>
@@ -219,11 +207,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     $1000 - $15,000
                   </span>
@@ -231,11 +216,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     More than $15,000
                   </span>
@@ -243,11 +225,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center pb-4">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">Custom</span>
                 </div>
                 <PriceRangeSlider />
@@ -280,11 +259,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
             <>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     1 - 3 Years
                   </span>
@@ -292,11 +268,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     3 - 5 Years
                   </span>
@@ -304,11 +277,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     5 - 10 Years
                   </span>
@@ -316,11 +286,8 @@ export default function Sidebar({ isSidebarOpen } : { isSidebarOpen : boolean}) 
               </div>
               <div className="flex flex-col gap-[12px] pt-[12px]">
                 <div className="flex w-full justify-start gap-[12px] items-center">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="h-[16px] w-[16px]"
-                  />
+                  <Checkbox />
+
                   <span className="text-[#6e6e6e] text-18-title">
                     More than 10 Years
                   </span>
