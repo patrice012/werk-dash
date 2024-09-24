@@ -4,17 +4,13 @@ import { Range } from "react-range";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+
 
 export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const [experience, setExperience] = useState(true);
   const [price, setPrice] = useState(true);
   const [job, setJob] = useState(true);
+  
 
   const Histogram = () => {
     const data = {

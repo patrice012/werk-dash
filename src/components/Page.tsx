@@ -13,6 +13,7 @@ import netflix from "/assets/google.png";
 import { useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
+import { SkeletonCard } from "./Skeleton";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -118,18 +119,10 @@ export default function Page() {
             selectedItem != undefined
               ? "grid-rows-1"
               : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
-          } gap-[20px] ${selectedItem != undefined && "hidden lg:grid"}`} 
-        >
+          } gap-[20px] ${selectedItem != undefined && "hidden lg:grid"}`}>
           {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
             const selected = selectedItem == idx;
-            return (
-              <Card
-                isSelected={selected}
-                key={idx}
-                onPress={() => handleSelectItem(idx)}
-                id={idx}
-              />
-            );
+            return <SkeletonCard />;
           })}
         </div>
 
@@ -137,8 +130,7 @@ export default function Page() {
         <div
           className={`${
             selectedItem != undefined ? "sticky" : "hidden"
-          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max lg:p-[15px] bg-[#fff] rounded-[4px] p-4 w-full max-w-full`} 
-        >
+          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max lg:p-[15px] bg-[#fff] rounded-[4px] p-4 w-full max-w-full`}>
           <div className="flex flex-col gap-3">
             <button
               onClick={() => setSeletedItem(undefined)}
