@@ -12,9 +12,9 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1280) {
-        setIsSidebarOpen(true); 
+        setIsSidebarOpen(true);
       } else {
-        setIsSidebarOpen(false); 
+        setIsSidebarOpen(false);
       }
     };
 

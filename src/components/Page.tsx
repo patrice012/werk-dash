@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Select,
   SelectContent,
@@ -10,26 +11,51 @@ import {
 import { SearchNormal1, Location, Save2 } from "iconsax-react";
 import { IoMdClose } from "react-icons/io";
 import netflix from "/assets/google.png";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
 import { useQuery } from "@tanstack/react-query";
 import Job from "@/models/job.model";
 import { apiGET } from "@/api/api";
+import { SkeletonCard } from "./Skeleton";
+import { debounce } from "lodash";
+import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedItem, setSeletedItem] = useState<number>();
-
-  const { isPending, error, data } = useQuery({
+  const [searchTerm, setSearchTerm] = useState("");
+  const [displayTerm, setDisplayTerm] = useState("");
+  const [currentPage] = useState(1);
+  //
+  const { isPending, data, refetch } = useQuery({
     queryKey: ["repoDjata"],
-    queryFn: async () => await apiGET({ uri: "/jobs" }),
+    queryFn: async () =>
+      await apiGET({
+        uri: `/jobs/search/?searchValue=${displayTerm}&page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
+      }),
+    // queryFn: async () => await apiGET({ uri: "/jobs" }),
   });
 
-  if (isPending) return "Loading...";
+  const handleSearch = useCallback(
+    debounce((term) => {
+      setDisplayTerm(term);
+    }, 500), // Debounced to execute 500ms after the user stops typing
+    []
+  );
 
-  if (error) return "An error has occurred: " + error.message;
+  useEffect(() => {
+    refetch();
+  }, [displayTerm, refetch]);
 
+  //
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    handleSearch(term);
+  };
+
+  //
   const handleSelectItem = (item: number) => {
     scrollRef.current?.scrollTo({ top: 0 });
     setSeletedItem(item);
@@ -41,6 +67,8 @@ export default function Page() {
         <div className="flex sm:flex-row w-full gap-[12.5px] flex-col">
           <div className="grow relative">
             <Input
+              value={searchTerm}
+              onChange={handleChange}
               type="search"
               placeholder="Search..."
               className="w-full rounded-[4px] h-[48px] bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
@@ -122,30 +150,37 @@ export default function Page() {
 
       {/*  */}
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
+        {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
           className={`grid ${
             selectedItem != undefined
               ? "grid-rows-1"
               : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
-          } gap-[20px]`}
+          } gap-[20px] ${selectedItem != undefined && "hidden lg:grid"}`}
         >
-          {data.data?.map((item: Job, idx: number) => {
-            const selected = selectedItem == idx;
-            return (
-              <Card
-                job={item}
-                isSelected={selected}
-                key={idx}
-                onPress={() => handleSelectItem(idx)}
-              />
-            );
-          })}
+          {isPending &&
+            Array.from({ length: 9 }).map((e: unknown, idx: number) => {
+              return <SkeletonCard key={idx} />;
+            })}
+          {data &&
+            data.data?.map((item: Job, idx: number) => {
+              const selected = selectedItem == idx;
+              return (
+                <Card
+                  job={item}
+                  isSelected={selected}
+                  key={idx}
+                  onPress={() => handleSelectItem(idx)}
+                />
+              );
+            })}
         </div>
 
+        {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
           className={`${
             selectedItem != undefined ? "sticky" : "hidden"
-          }  top-[20px] col-span-2 p-[15px] bg-[#fff] rounded-[4px] max-h-max`}
+          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max lg:p-[15px] bg-[#fff] rounded-[4px] p-4 w-full max-w-full`}
         >
           <div className="flex flex-col gap-3">
             <button
@@ -203,7 +238,7 @@ const Card = ({
       <div className="flex w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <img src={netflix} alt="" className="w-[48px] h-[48px]" />
-          <div className="flex flex-col gap-[2px]">
+          <div className="flex flex-col gap-[2px] grow">
             <span className="font-[500] text-[#303533] text-[18px]">
               {job.jobTitle}
             </span>
