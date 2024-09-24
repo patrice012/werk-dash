@@ -23,6 +23,8 @@ export default function Page() {
     setSeletedItem(item);
   };
 
+  console.log(selectedItem);
+
   return (
     <div className="flex flex-col w-full gap-[30px] p-[15px] md:p-[30px] scrollbar scrollbar-thumb-[#5a5959]/50 scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
       <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
@@ -76,9 +78,16 @@ export default function Page() {
       <div className="flex lg:flex-row flex-col gap-4 items-center w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <span className="text-[#888888] text-15-title">
-            Showing <span className="font-[500] text-[#000] text-15-title">150</span> Jobs{" "}
-            <span className="font-[500] text-[#000] text-18-title">UI/UX Designer</span> in{" "}
-            <span className="font-[500] text-[#000] text-15-title">Indonesia</span>
+            Showing{" "}
+            <span className="font-[500] text-[#000] text-15-title">150</span>{" "}
+            Jobs{" "}
+            <span className="font-[500] text-[#000] text-18-title">
+              UI/UX Designer
+            </span>{" "}
+            in{" "}
+            <span className="font-[500] text-[#000] text-15-title">
+              Indonesia
+            </span>
           </span>
         </div>
         <div className="flex items-center justify-start gap-[12px]">
@@ -103,12 +112,14 @@ export default function Page() {
 
       {/*  */}
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
+        {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
           className={`grid ${
             selectedItem != undefined
               ? "grid-rows-1"
               : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
-          } gap-[20px]`}>
+          } gap-[20px] ${selectedItem != undefined && "hidden lg:grid"}`} 
+        >
           {Array.from({ length: 9 }).map((e: unknown, idx: number) => {
             const selected = selectedItem == idx;
             return (
@@ -122,10 +133,12 @@ export default function Page() {
           })}
         </div>
 
+        {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
           className={`${
             selectedItem != undefined ? "sticky" : "hidden"
-          }  top-[20px] col-span-2 p-[15px] bg-[#fff] rounded-[4px] max-h-max`}>
+          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max lg:p-[15px] bg-[#fff] rounded-[4px] p-4 w-full max-w-full`} 
+        >
           <div className="flex flex-col gap-3">
             <button
               onClick={() => setSeletedItem(undefined)}

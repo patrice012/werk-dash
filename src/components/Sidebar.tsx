@@ -4,6 +4,12 @@ import { Range } from "react-range";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const [experience, setExperience] = useState(true);
@@ -110,7 +116,9 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
       </div>
       <div className=" border-b border-[#b9b9b9] py-[20px]">
         <div className="flex flex-col justify-center">
-          <div className="flex w-full justify-between items-center">
+          <div
+            className="flex w-full justify-between items-center"
+            onClick={() => setJob(!job)}>
             <span className="text-[#000] font-[600]"> Job Type</span>
             {job ? (
               <ArrowUp2
@@ -175,7 +183,9 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
       </div>
       <div className=" border-b border-[#b9b9b9] py-[20px]">
         <div className="flex flex-col justify-center">
-          <div className="flex w-full justify-between items-center">
+          <div
+            className="flex w-full justify-between items-center"
+            onClick={() => setPrice(!price)}>
             <span className="text-[#000] font-[600]"> Range Salary</span>
             {price ? (
               <ArrowUp2
@@ -237,7 +247,9 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
       </div>
       <div className=" border-b border-[#b9b9b9] py-[20px]">
         <div className="flex flex-col justify-center">
-          <div className="flex w-full justify-between items-center">
+          <div
+            className="flex w-full justify-between items-center"
+            onClick={() => setExperience(!experience)}>
             <span className="text-[#000] font-[600]"> Experience</span>
             {experience ? (
               <ArrowUp2
