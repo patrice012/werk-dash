@@ -44,7 +44,7 @@ function App() {
     <div className="">
       <Navbar toggleSidebar={toggleSidebar} />
       {!isDetailPage && <Recommended />}
-      <div className="app-container">
+      <div className="app-container relative">
         {!isDetailPage && <Sidebar isSidebarOpen={isSidebarOpen} />}
         <div className="chat-container">
           <Routes>

@@ -6,7 +6,6 @@ import {
   SearchNormal1,
 } from "iconsax-react";
 import profile from "/assets/profileImg.png";
-
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useLocation } from "react-router-dom";
@@ -31,12 +30,13 @@ export default function Navbar({
 
   return (
     <>
-      <div className="bg-[#000] px-3 sm:px-5 pb-[30px] pt-2">
+      <div className="bg-[#000] px-3 sm:px-5 pb-[30px] pt-3">
         <div className="flex items-center justify-between w-full resize-none">
           <div className="flex justify-start gap-[12px] items-center">
             <span
               className="text-24-title font-[900] text-[#0f7afd] cursor-pointer"
-              onClick={() => navigate("/")}>
+              onClick={() => navigate("/")}
+            >
               WerkLinker
             </span>
           </div>
@@ -58,9 +58,10 @@ export default function Navbar({
           </nav>
           <div className="flex md:hidden">
             <div
-              className=" border border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
+              className="border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
               id="openSidebar"
-              onClick={toggleOpen}>
+              onClick={toggleOpen}
+            >
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
@@ -79,12 +80,12 @@ export default function Navbar({
           </div>
         </div>
 
-        <div className="flex flex-col gap-1 sm:gap-3 mt-4">
+        <div className="flex flex-col gap-1 sm:gap-3 sm:mt-4">
           <div className="flex items-center">
             <h1 className="text-white font-medium text-lg sm:text-3xl">
               Find your dream job here
             </h1>
-            <div className="h-10 sm:h-20">
+            <div className="h-14 sm:h-20">
               <img className="h-full " src="/unnamed.webp" alt="" />
             </div>
           </div>

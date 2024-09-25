@@ -8,11 +8,12 @@ import { SkeletonCard } from "./Skeleton";
 import { debounce } from "lodash";
 import { Card } from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { SidebarContent } from "./Sidebar";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedItem, setSeletedItem] = useState<number>();
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   const [displayTerm, setDisplayTerm] = useState("");
   const [currentPage] = useState(1);
   const navigate = useNavigate();
@@ -50,13 +51,6 @@ export default function Page() {
   useEffect(() => {
     refetch();
   }, [displayTerm, refetch, NumberPage]);
-
-  //
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-    handleSearch(term);
-  };
 
   //
   const handleSelectItem = (item: Job, idx: number) => {
