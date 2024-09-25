@@ -1,7 +1,6 @@
-import netflix from "/assets/google.png";
 import { Separator } from "./ui/separator";
 import Job from "@/models/job.model";
-import { Clock, Heart } from "iconsax-react";
+import { Heart } from "iconsax-react";
 
 export const Card = ({
   job,

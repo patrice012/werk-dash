@@ -6,25 +6,13 @@ import {
   SearchNormal1,
 } from "iconsax-react";
 import profile from "/assets/profileImg.png";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 // import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function Navbar({
-  toggleSidebar,
-}: {
-  toggleSidebar: () => void;
-}) {
+export default function Navbar() {
   const navigate = useNavigate();
   // const { pathname } = useLocation();
 
@@ -42,7 +30,8 @@ export default function Navbar({
           <div className="flex justify-start gap-[12px] items-center">
             <span
               className="text-24-title font-[900] text-[#0f7afd] cursor-pointer"
-              onClick={() => navigate("/")}>
+              onClick={() => navigate("/")}
+            >
               WerkLinker
             </span>
           </div>
@@ -66,7 +55,8 @@ export default function Navbar({
             <div
               className=" border border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
               id="openSidebar"
-              onClick={toggleOpen}>
+              onClick={toggleOpen}
+            >
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>

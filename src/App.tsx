@@ -31,9 +31,6 @@ function App() {
     };
   }, []);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   const location = useLocation();
 
@@ -42,7 +39,7 @@ function App() {
 
   return (
     <div className="">
-      <Navbar toggleSidebar={toggleSidebar} />
+      <Navbar />
       {!isDetailPage && <Recommended />}
       <div className="app-container">
         {!isDetailPage && <Sidebar isSidebarOpen={isSidebarOpen} />}
