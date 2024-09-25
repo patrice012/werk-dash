@@ -31,9 +31,6 @@ function App() {
     };
   }, []);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   const location = useLocation();
 

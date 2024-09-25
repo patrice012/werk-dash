@@ -1,4 +1,3 @@
-// ... autres imports
 import { apiGET } from "@/api/api";
 import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
 import Job from "@/models/job.model";
@@ -13,7 +12,6 @@ import { useParams } from "react-router-dom";
 
 export default function DetailJob() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [displayTerm, setDisplayTerm] = useState("");
   const [currentPage] = useState(1);
   const navigate = useNavigate();
 
@@ -25,7 +23,7 @@ export default function DetailJob() {
     queryKey: ["repoDjata"],
     queryFn: async () =>
       await apiGET({
-        uri: `/jobs/search/?searchValue=${displayTerm}&page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
+        uri: `/jobs/?page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
       }),
   }); */
 
@@ -35,7 +33,7 @@ export default function DetailJob() {
         queryKey: ["repoDjata"],
         queryFn: async () =>
           await apiGET({
-            uri: `/jobs/search/?searchValue=${displayTerm}&page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
+            uri: `/jobs/?page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
           }),
       },
 
@@ -51,7 +49,7 @@ export default function DetailJob() {
 
   useEffect(() => {
     AllQuery.refetch();
-  }, [displayTerm, AllQuery.refetch]);
+  }, [AllQuery.refetch]);
 
   const handleSelectItem = (item: Job) => {
     window.scrollTo({ top: 0, behavior: "smooth" });

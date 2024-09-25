@@ -13,7 +13,7 @@ export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedItem, setSeletedItem] = useState<number>();
   // const [searchTerm, setSearchTerm] = useState("");
-  const [displayTerm, setDisplayTerm] = useState("");
+  
   const [currentPage] = useState(1);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,7 @@ export default function Page() {
     queryKey: ["repoDjata"],
     queryFn: async () =>
       await apiGET({
-        uri: `/jobs/search/?searchValue=${displayTerm}&page=${currentPage}&limit=${NumberPage}`,
+        uri: `/jobs/?page=${currentPage}&limit=${NumberPage}`,
       }),
   });
 
@@ -43,7 +43,7 @@ export default function Page() {
 
   useEffect(() => {
     refetch();
-  }, [displayTerm, refetch, NumberPage]);
+  }, [ refetch, NumberPage]);
 
   //
   const handleSelectItem = (item: Job, idx: number) => {
@@ -58,7 +58,7 @@ export default function Page() {
         <SidebarContent />
       </div>
 
-      <div className="flex flex-col w-full gap-[30px] px-[15px] md:px-[20px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
+      <div className="flex flex-col w-full gap-[30px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
         {/*  */}
         <InfiniteScroll
           dataLength={NumberPage}
