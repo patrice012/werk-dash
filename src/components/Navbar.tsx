@@ -16,25 +16,28 @@ import {
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 // import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({
   toggleSidebar,
 }: {
   toggleSidebar: () => void;
 }) {
+  const navigate = useNavigate();
   // const { pathname } = useLocation();
   return (
-    <div className="bg-[#141414] px-5 pb-5 pt-2">
+    <div className="bg-[#141414] px-5 pb-5 pt-2 h-[225px]">
       <div className="flex items-center justify-between w-full resize-none">
         <div className="flex justify-start gap-[12px] items-center">
           <div
             className="bg-[#e8edf0] rounded-[4px] cursor-pointer flex xl:hidden"
             id="openSidebar"
-            onClick={toggleSidebar}
-          >
+            onClick={toggleSidebar}>
             <HambergerMenu size="32" color="#0f7afd" />
           </div>
-          <span className="text-24-title font-[900] text-[#0f7afd]">
+          <span
+            className="text-24-title font-[900] text-[#0f7afd] cursor-pointer"
+            onClick={() => navigate("/")}>
             WerkLinker
           </span>
         </div>
