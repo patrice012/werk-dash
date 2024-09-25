@@ -2,15 +2,14 @@
 import { apiGET } from "@/api/api";
 import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
 import Job from "@/models/job.model";
-import { useQuery, useQueries } from "@tanstack/react-query";
+import {  useQueries } from "@tanstack/react-query";
 import { Card } from "./Card";
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { SkeletonCard } from "./Skeleton";
 import { useLocation } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import * as query from "react-query";
 
 export default function DetailJob() {
   const scrollRef = useRef<HTMLDivElement>(null);

@@ -12,11 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function Navbar({
-  toggleSidebar,
-}: {
-  toggleSidebar: () => void;
-}) {
+export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isDetailPage = location.pathname.startsWith("/job/");
