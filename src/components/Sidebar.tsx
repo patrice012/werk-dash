@@ -80,7 +80,7 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
           <div
             className="flex w-full justify-between items-center"
             onClick={() => setJob(!job)}>
-            <span className="text-[#000] font-[600]"> Job Type</span>
+            <span className="text-[#000] font-[600] text-[14px]"> Job Type</span>
             {/* {job ? (
               <ArrowUp2
                 size={24}
@@ -96,7 +96,7 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
                 onClick={() => setJob(!job)}
               />
             )} */}
-            <span className="text-[#f98586] text-[16px] font-[600] cursor-pointer">
+            <span className="text-[#f98586] text-[14px] font-[600] cursor-pointer">
               Clear all
             </span>
           </div>
@@ -129,36 +129,29 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
                 <span className="text-[#6a6b6d] text-18-title">Internship</span>
               </div>
             </div>
+            <div className="flex flex-col gap-[12px] pt-[12px]">
+              <div className="flex w-full justify-start gap-[12px] items-center">
+                <Checkbox />
+
+                <span className="text-[#6a6b6d] text-18-title">Temporary</span>
+              </div>
+            </div>
           </>
         </div>
       </div>
-      <div className="  py-[20px]">
+      {/* <div className="  py-[20px]">
         <div className="flex w-full justify-between items-center">
-          <span className="text-[#000] font-[600]"> Open to remote</span>
+          <span className="text-[#000] font-[600] text-[14px]"> Open to remote</span>
           <Switch />
         </div>
-      </div>
-      <div className="  py-[20px]">
+      </div> */}
+    {/*   <div className="  py-[20px]">
         <div className="flex flex-col justify-center">
           <div
             className="flex w-full justify-between items-center"
             onClick={() => setPrice(!price)}>
             <span className="text-[#000] font-[600]">  Salary Range</span>
-            {/* {price ? (
-              <ArrowUp2
-                size={24}
-                color="#6a6b6d"
-                className="cursor-pointer"
-                onClick={() => setPrice(!price)}
-              />
-            ) : (
-              <ArrowDown2
-                size={24}
-                color="#6a6b6d"
-                className="cursor-pointer"
-                onClick={() => setPrice(!price)}
-              />
-            )} */}
+    
           </div>
 
         
@@ -201,13 +194,13 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
             </>
         
         </div>
-      </div>
+      </div> */}
       <div className="  py-[20px]">
         <div className="flex flex-col justify-center">
           <div
             className="flex w-full justify-between items-center"
             onClick={() => setExperience(!experience)}>
-            <span className="text-[#000] font-[600]"> Experience level</span>
+            <span className="text-[#000] font-[600] text-[14px]"> Experience level</span>
             {/* {experience ? (
               <ArrowUp2
                 size={24}

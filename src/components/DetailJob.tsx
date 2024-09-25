@@ -8,6 +8,7 @@ import { debounce } from "lodash";
 import { useRef, useState, useCallback, useEffect } from "react";
 import { SkeletonCard } from "./Skeleton";
 import { useLocation } from "react-router-dom";
+import { Separator } from "./ui/separator";
 
 export default function DetailJob() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -49,11 +50,11 @@ export default function DetailJob() {
   }, [location.state]);
 
   return (
-    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px]">
-      <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
+    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px] ">
+      <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start  ">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid ${"grid-rows-1"} gap-[20px] ${
+          className={`grid grid-rows-1 gap-[20px]  scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full ${
             selectedJob != undefined && "hidden lg:grid"
           }`}
         >
@@ -92,49 +93,58 @@ export default function DetailJob() {
         <div
           className={`${
             selectedJob?.jobTitle ? "sticky top-[20px]" : "hidden"
-          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[64px] lg:py-[48px] w-full max-w-full`}
+          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
         >
-          <div className="flex flex-col gap-3">
-            <div className="grid w-full grid-cols-[auto_1fr_auto]  gap-[24px] items-center">
-              <div className="overflow-hidden">
-                <h1 className="font-[800] text-[#303533] text-[32px] truncate">
-                  {selectedJob?.jobTitle}
-                </h1>
-              </div>
+          <div className="grid grid-cols-7 col-span-7">
+            <div className="grid col-span-5 border-r pr-[15px] border-[#d4d4d4]">
+              <div className="grid w-full col-span-6 grid-cols-6 justify-between gap-[12px]  items-center mb-[24px]">
+                <div className="overflow-hidden col-span-5">
+                  <h1 className="font-[800] text-[#303533] text-[24px] truncate">
+                    {selectedJob?.jobTitle}
+                  </h1>
+                </div>
 
-              <div className="flex gap-[8px] w-[300px]  ">
-                <div className="bg-[#f1e3ff] px-[5px] py-[3px] h-[30px] text-[#7744aa] font-semibold rounded-[4px]">
-                  FullTime
+                <div className="flex gap-[8px] w-[200px] col-span-1  ">
+                  <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px]  text-[#7744aa] font-semibold rounded-[4px]">
+                    {selectedJob?.employmentType}
+                  </div>
                 </div>
-                <div className="bg-[#e4fff1] px-[5px] py-[3px] h-[30px]  text-[#4db06a] font-semibold rounded-[4px]">
-                  Hybrid
+              </div>
+              <Separator className="my-[15px] bg-[#d4d4d4]" />
+              <div
+                className="content-intro"
+                dangerouslySetInnerHTML={{
+                  __html: selectedJob?.jobDescriptionRawHtml || "",
+                }}
+              />
+            </div>
+            <div className="grid col-span-2 pl-[15px]">
+              <div className="flex flex-col gap-[24px]">
+                <span className="font-[600]">{selectedJob?.companyName}</span>
+                <div className="flex flex-col gap-[6px]">
+                  <span className="text-[12px] font-[600]">Location:</span>
+                  <span className="truncate text-ellipsis overflow-hidden font-[500] text-[12px] ">
+                    {selectedJob?.location}
+                  </span>
                 </div>
-                <div className="bg-[#ffede3] px-[5px] py-[3px] h-[30px]  text-[#a97442] font-semibold rounded-[4px]">
-                  2-4 Years
-                </div>
+                {selectedJob?.companyWebsite && (
+                  <div className="flex flex-col gap-[6px]">
+                    <span className="text-[12px] font-[600]">Site web:</span>
+                    <span className="truncate text-ellipsis font-[500] text-[12px]">
+                      {selectedJob?.companyWebsite}
+                    </span>
+                  </div>
+                )}
+
+                <a
+                  href={selectedJob?.jobUrl}
+                  target="_blank"
+                  className="bg-[#207fff] px-[15px] rounded-full  py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
+                >
+                  Apply now
+                </a>
               </div>
             </div>
-
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
-              aliquid dignissimos quia officia illum saepe. Sunt rerum
-              perferendis, est nulla molestiae repudiandae commodi ex obcaecati
-              aspernatur, inventore dolores, eum tempore.
-            </p>
-
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
-              aliquid dignissimos quia officia illum saepe. Sunt rerum
-              perferendis, est nulla molestiae repudiandae commodi ex obcaecati
-              aspernatur, inventore dolores, eum tempore.
-            </p>
-
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
-              aliquid dignissimos quia officia illum saepe. Sunt rerum
-              perferendis, est nulla molestiae repudiandae commodi ex obcaecati
-              aspernatur, inventore dolores, eum tempore.
-            </p>
           </div>
         </div>
       </div>

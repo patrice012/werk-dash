@@ -8,10 +8,10 @@
   width: 300px;
   background-color: #f0f5fa;
   padding-bottom: 20px;
-  padding-left: 40px;
-  padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 10px;
   box-sizing: border-box;
-  height: calc(100vh);
+
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
 
@@ -61,4 +61,14 @@
       margin-left: 0; // Pour s'adapter à l'absence du sidebar
     }
   }
+}
+
+.content-intro {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.content-conclusion {
+  margin-top: 20px;
+  font-size: 14px;
 }
