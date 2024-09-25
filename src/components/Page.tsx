@@ -8,9 +8,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SearchNormal1, Location, Heart, Clock } from "iconsax-react";
-import { IoMdClose } from "react-icons/io";
-import netflix from "/assets/google.png";
+import { SearchNormal1, Location } from "iconsax-react";
+import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
@@ -20,7 +19,7 @@ import { apiGET } from "@/api/api";
 import { SkeletonCard } from "./Skeleton";
 import { debounce } from "lodash";
 import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
-import { Separator } from "./ui/separator";
+import { Card } from "./Card";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -28,6 +27,34 @@ export default function Page() {
   const [searchTerm, setSearchTerm] = useState("");
   const [displayTerm, setDisplayTerm] = useState("");
   const [currentPage] = useState(1);
+  const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  // Effect to check screen size on mount
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    handleResize();
+
+    // Listen for window resize events
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+
   //
   const { isPending, data, refetch } = useQuery({
     queryKey: ["repoDjata"],
@@ -58,13 +85,13 @@ export default function Page() {
 
   //
   const handleSelectItem = (item: number) => {
-    scrollRef.current?.scrollTo({ top: 0 });
     setSeletedItem(item);
+    navigate(`/job/${item}`);
   };
 
   return (
-    <div className="flex flex-col w-full gap-[30px] p-[15px] md:p-[30px] scrollbar scrollbar-thumb-[#5a5959]/50 scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
-      <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
+    <div className="flex flex-col w-full gap-[30px] px-[15px] md:px-[30px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
+      {/* <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
         <div className="flex sm:flex-row w-full gap-[12.5px] flex-col">
           <div className="grow relative">
             <Input
@@ -147,18 +174,13 @@ export default function Page() {
             </SelectContent>
           </Select>
         </div>
-      </div>
+      </div> */}
 
       {/*  */}
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid ${
-            selectedItem != undefined
-              ? "grid-rows-1"
-              : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"
-          } gap-[20px] ${selectedItem != undefined && "hidden lg:grid"}`}
-        >
+          className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
           {isPending &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -178,7 +200,7 @@ export default function Page() {
         </div>
 
         {/* Div détails - occupe toute la largeur sous 1024px */}
-        <div
+        {/*   <div
           className={`${
             selectedItem != undefined ? "sticky" : "hidden"
           }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max lg:p-[15px] bg-[#fff] rounded-[4px] p-4 w-full max-w-full`}
@@ -214,76 +236,8 @@ export default function Page() {
               aspernatur, inventore dolores, eum tempore.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
-
-const Card = ({
-  job,
-  onPress,
-  isSelected,
-}: {
-  job: Job;
-  onPress: (item: unknown) => void;
-  isSelected: boolean;
-}) => {
-  return (
-    <div
-      onClick={() => onPress(1)}
-      className={`${
-        isSelected ? "border-[2.5px] border-[rgb(64,138,211)]" : ""
-      } cursor-pointer bg-[#fff] rounded-[16px] p-[35px] gap-[15px] flex flex-col w-full hover:shadow-xl`}
-    >
-      <div className="flex w-full justify-between">
-        <div className="flex justify-start gap-[12px]">
-          <div className="bg-[#f8f8f8] p-[3px] rounded-[8px] ">
-            <img src={netflix} alt="" className="w-[48px] h-[48px]" />
-          </div>
-          <div className="flex flex-col gap-[2px]">
-            <span className="font-[500] text-[#303533] text-[18px]">
-              {job.jobTitle}
-            </span>
-            <span className="text-[#888888] text-[16px]">
-              Pixel Studio . Yogyarkata
-            </span>
-          </div>
-        </div>
-        <Heart size="30" color="#888888" />
-      </div>
-      <div className="flex gap-[8px]">
-        <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[#7744aa] font-semibold rounded-[4px]">
-          FullTime
-        </div>
-        <div className="bg-[#e4fff1] px-[5px] py-[3px] text-[#4db06a] font-semibold rounded-[4px]">
-          Hybrid
-        </div>
-        <div className="bg-[#ffede3] px-[5px] py-[3px] text-[#a97442] font-semibold rounded-[4px]">
-          2-4 Years
-        </div>
-      </div>
-      <span className="text-[#888888]">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore aliquid
-        dignissimos.
-      </span>
-
-      <Separator className="my-[6px]" />
-
-      <div className="flex justify-between w-full items-center">
-        <span className="text-[#bebebe]">
-          <span className="text-[#000] text-[18px] font-semibold">$250</span>
-          /hr
-        </span>
-        {/* <button className="bg-[#D9EBFF] hover:bg-[#408AD3] hover:text-[#fff] transition duration-500 ease-in-out px-[12px] h-[44px] items-center rounded-[4px] max-w-max text-[#388bf0] text-[18px] font-[500]">
-          Apply Now
-        </button> */}
-        <div className="flex gap-[6px] items-center">
-          {" "}
-          <Clock size="20" color="#888888" />{" "}
-          <span className="text-[#888888]"> Posted 2 day ago </span>
-        </div>
-      </div>
-    </div>
-  );
-};

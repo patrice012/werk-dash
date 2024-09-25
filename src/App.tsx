@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import "./styles/index.min.css";
 import Page from "./components/Page";
+import DetailJob from "./components/DetailJob";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Recommended from "./components/Recommended";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -32,13 +35,22 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const location = useLocation();
+
+  // Condition pour afficher ou cacher le sidebar
+  const isDetailPage = location.pathname.startsWith("/job/");
+
   return (
     <div className="overflow-hidden ">
       <Navbar toggleSidebar={toggleSidebar} />
+      <Recommended />
       <div className="app-container">
-        <Sidebar isSidebarOpen={isSidebarOpen} />
+        {!isDetailPage && <Sidebar isSidebarOpen={isSidebarOpen} />}
         <div className="chat-container">
-          <Page />
+          <Routes>
+            <Route path="/" element={<Page />} />
+            <Route path="/job/:id" element={<DetailJob />} />
+          </Routes>
         </div>
       </div>
     </div>
