@@ -27,7 +27,7 @@
     position: fixed;
     top: 297px; // Aligner sous le navbar
     left: 0;
-    height: calc(100vh );
+    height: calc(100vh);
     z-index: 1000;
   }
 }
@@ -49,6 +49,7 @@
 }
 
 .app-container {
+  position: relative;
   display: flex;
   overflow: hidden;
   background-color: #f0f5fa;
@@ -61,4 +62,3 @@
     }
   }
 }
-

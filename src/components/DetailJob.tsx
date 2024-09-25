@@ -49,13 +49,14 @@ export default function DetailJob() {
   }, [location.state]);
 
   return (
-    <div  className="bg-[#f0f5fa] p-[15px] md:p-[30px]">
+    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px]">
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
           className={`grid ${"grid-rows-1"} gap-[20px] ${
             selectedJob != undefined && "hidden lg:grid"
-          }`}>
+          }`}
+        >
           {isPending &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -90,8 +91,9 @@ export default function DetailJob() {
         {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
           className={`${
-             selectedJob?.jobTitle ? "sticky top-[20px]" : "hidden"
-          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[64px] lg:py-[48px] w-full max-w-full`}>
+            selectedJob?.jobTitle ? "sticky top-[20px]" : "hidden"
+          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[64px] lg:py-[48px] w-full max-w-full`}
+        >
           <div className="flex flex-col gap-3">
             <div className="grid w-full grid-cols-[auto_1fr_auto]  gap-[24px] items-center">
               <div className="overflow-hidden">
