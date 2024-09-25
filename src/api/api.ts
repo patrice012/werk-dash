@@ -4,10 +4,10 @@ import axios, { AxiosError, isAxiosError } from "axios";
 // API GET Method
 const apiGET = async ({ uri }: { uri: string }) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/${uri}`);
-    if (res.status == 200) {
-      return res.data;
-    }
+    const res = await axios.get(`${API_ENDPOINT}${uri}`, {
+      headers: { "ngrok-skip-browser-warning": true },
+    });
+    if (res.status == 200) return res.data;
     return [];
   } catch (error) {
     console.error(error);
