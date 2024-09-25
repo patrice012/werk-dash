@@ -3,8 +3,8 @@ import { Setting4 } from "iconsax-react";
 
 export default function Recommended() {
   return (
-    <div className="bg-[#f0f5fa] w-full px-[20px] items-center flex justify-between h-[100px]">
-      <span className="text-[#212222] font-[500] text-[28px]">
+    <div className="bg-[#f0f5fa] w-full px-[20px] items-start sm:items-center flex sm:flex-row flex-col gap-[12px] sm:justify-between py-[20px]">
+      <span className="text-[#212222] font-[500] text-20-title">
         Recommended Jobs
       </span>
       <div className="relative">
