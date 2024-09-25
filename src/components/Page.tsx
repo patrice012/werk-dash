@@ -16,7 +16,6 @@ export default function Page() {
   const [displayTerm, setDisplayTerm] = useState("");
   const [currentPage] = useState(1);
   const navigate = useNavigate();
-  
 
   //
   const { isPending, data, refetch } = useQuery({
@@ -50,19 +49,16 @@ export default function Page() {
   const handleSelectItem = (item: Job, idx: number) => {
     setSeletedItem(idx);
     // Passer les données de l'élément sélectionné à la page de détails
-    navigate(`/job/${idx}`, { state: { selectedItem: item } });
+    navigate(`/job/${item._id}`, { state: { selectedItem: item } });
   };
 
   return (
     <div className="flex flex-col w-full gap-[30px] px-[15px] md:px-[20px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
-      
-
       {/*  */}
       <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}
-        >
+          className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
           {isPending &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -80,8 +76,6 @@ export default function Page() {
               );
             })}
         </div>
-
-      
       </div>
     </div>
   );

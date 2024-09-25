@@ -9,11 +9,13 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { SkeletonCard } from "./Skeleton";
 import { useLocation } from "react-router-dom";
 import { Separator } from "./ui/separator";
+import { useNavigate } from "react-router-dom";
 
 export default function DetailJob() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [displayTerm, setDisplayTerm] = useState("");
   const [currentPage] = useState(1);
+  const navigate = useNavigate();
 
   const { isPending, data, refetch } = useQuery({
     queryKey: ["repoDjata"],
@@ -36,7 +38,7 @@ export default function DetailJob() {
 
   const handleSelectItem = (item: Job) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setSelectedJob(item);
+    navigate(`/job/${item._id}`, { state: { selectedItem: item } });
   };
 
   const location = useLocation();
@@ -56,8 +58,7 @@ export default function DetailJob() {
         <div
           className={`grid grid-rows-1 gap-[20px]  scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full ${
             selectedJob != undefined && "hidden lg:grid"
-          }`}
-        >
+          }`}>
           {isPending &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -93,8 +94,7 @@ export default function DetailJob() {
         <div
           className={`${
             selectedJob?.jobTitle ? "sticky top-[20px]" : "hidden"
-          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
-        >
+          }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}>
           <div className="grid grid-cols-7 col-span-7">
             <div className="grid col-span-5 border-r pr-[15px] border-[#d4d4d4]">
               <div className="grid w-full col-span-6 grid-cols-6 justify-between gap-[12px]  items-center mb-[24px]">
@@ -139,8 +139,7 @@ export default function DetailJob() {
                 <a
                   href={selectedJob?.jobUrl}
                   target="_blank"
-                  className="bg-[#207fff] px-[15px] rounded-full  py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
-                >
+                  className="bg-[#207fff] px-[15px] rounded-full  py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
                   Apply now
                 </a>
               </div>
