@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="">
       <Navbar toggleSidebar={toggleSidebar} />
-      {!isDetailPage &&  <Recommended />}
+      {!isDetailPage && <Recommended />}
       <div className="app-container">
         {!isDetailPage && <Sidebar isSidebarOpen={isSidebarOpen} />}
         <div className="chat-container">
