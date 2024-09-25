@@ -1,14 +1,11 @@
-import { ArrowDown2, ArrowUp2 } from "iconsax-react";
-import { Switch } from "@/components/ui/switch";
 import { Range } from "react-range";
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 
+
 export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const [experience, setExperience] = useState(true);
-  const [price, setPrice] = useState(true);
   const [job, setJob] = useState(true);
-
   const PriceRangeSlider = () => {
     const [values, setValues] = useState([1000, 25000]);
 
@@ -80,7 +77,10 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
           <div
             className="flex w-full justify-between items-center"
             onClick={() => setJob(!job)}>
-            <span className="text-[#000] font-[600] text-[14px]"> Job Type</span>
+            <span className="text-[#000] font-[600] text-[14px]">
+              {" "}
+              Job Type
+            </span>
             {/* {job ? (
               <ArrowUp2
                 size={24}
@@ -145,7 +145,7 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
           <Switch />
         </div>
       </div> */}
-    {/*   <div className="  py-[20px]">
+      {/*   <div className="  py-[20px]">
         <div className="flex flex-col justify-center">
           <div
             className="flex w-full justify-between items-center"
@@ -200,7 +200,10 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
           <div
             className="flex w-full justify-between items-center"
             onClick={() => setExperience(!experience)}>
-            <span className="text-[#000] font-[600] text-[14px]"> Experience level</span>
+            <span className="text-[#000] font-[600] text-[14px]">
+              {" "}
+              Experience level
+            </span>
             {/* {experience ? (
               <ArrowUp2
                 size={24}
@@ -217,46 +220,45 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
               />
             )} */}
           </div>
-          
-            <>
-              <div className="flex flex-col gap-[12px] pt-[12px]">
-                <div className="flex w-full justify-start gap-[12px] items-center">
-                  <Checkbox />
 
-                  <span className="text-[#6a6b6d] text-18-title">
-                    1 - 3 Years
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-[12px] pt-[12px]">
-                <div className="flex w-full justify-start gap-[12px] items-center">
-                  <Checkbox />
+          <>
+            <div className="flex flex-col gap-[12px] pt-[12px]">
+              <div className="flex w-full justify-start gap-[12px] items-center">
+                <Checkbox />
 
-                  <span className="text-[#6a6b6d] text-18-title">
-                    3 - 5 Years
-                  </span>
-                </div>
+                <span className="text-[#6a6b6d] text-18-title">
+                  1 - 3 Years
+                </span>
               </div>
-              <div className="flex flex-col gap-[12px] pt-[12px]">
-                <div className="flex w-full justify-start gap-[12px] items-center">
-                  <Checkbox />
+            </div>
+            <div className="flex flex-col gap-[12px] pt-[12px]">
+              <div className="flex w-full justify-start gap-[12px] items-center">
+                <Checkbox />
 
-                  <span className="text-[#6a6b6d] text-18-title">
-                    5 - 10 Years
-                  </span>
-                </div>
+                <span className="text-[#6a6b6d] text-18-title">
+                  3 - 5 Years
+                </span>
               </div>
-              <div className="flex flex-col gap-[12px] pt-[12px]">
-                <div className="flex w-full justify-start gap-[12px] items-center">
-                  <Checkbox />
+            </div>
+            <div className="flex flex-col gap-[12px] pt-[12px]">
+              <div className="flex w-full justify-start gap-[12px] items-center">
+                <Checkbox />
 
-                  <span className="text-[#6a6b6d] text-18-title">
-                    More than 10 Years
-                  </span>
-                </div>
+                <span className="text-[#6a6b6d] text-18-title">
+                  5 - 10 Years
+                </span>
               </div>
-            </>
-         
+            </div>
+            <div className="flex flex-col gap-[12px] pt-[12px]">
+              <div className="flex w-full justify-start gap-[12px] items-center">
+                <Checkbox />
+
+                <span className="text-[#6a6b6d] text-18-title">
+                  More than 10 Years
+                </span>
+              </div>
+            </div>
+          </>
         </div>
       </div>
     </div>

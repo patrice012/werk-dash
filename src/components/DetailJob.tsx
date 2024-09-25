@@ -25,12 +25,13 @@ export default function DetailJob() {
       }),
   });
 
-  const handleSearch = useCallback(
-    debounce((term) => {
-      setDisplayTerm(term);
-    }, 500),
-    []
-  );
+  const {} = useQuery({
+    queryKey: ["JobDetail"],
+    queryFn: async () =>
+      await apiGET({
+        uri: `/jobs/`,
+      }),
+  });
 
   useEffect(() => {
     refetch();
@@ -42,12 +43,14 @@ export default function DetailJob() {
   };
 
   const location = useLocation();
+
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   useEffect(() => {
     if (location.state?.selectedItem) {
       setSelectedJob(location.state.selectedItem);
       window.scrollTo({ top: 0 });
+      console.log("first maison");
     }
   }, [location.state]);
 
@@ -75,7 +78,6 @@ export default function DetailJob() {
                   onPress={() => handleSelectItem(selectedJob)}
                 />
               )}
-
               {data.data
                 .filter((item: Job) => item.jobTitle !== selectedJob?.jobTitle) // Filtrer l'élément sélectionné
                 .map((item: Job, idx: number) => (
@@ -95,11 +97,11 @@ export default function DetailJob() {
           className={`${
             selectedJob?.jobTitle ? "sticky top-[20px]" : "hidden"
           }  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}>
-          <div className="grid grid-cols-7 col-span-7">
-            <div className="grid col-span-5 border-r pr-[15px] border-[#d4d4d4]">
-              <div className="grid w-full col-span-6 grid-cols-6 justify-between gap-[12px]  items-center mb-[24px]">
+          <div className="md:grid md:grid-cols-7 md:col-span-7">
+            <div className="md:grid col-span-5 md:border-r md:pr-[15px] border-[#d4d4d4]">
+              <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start  sm:items-center mb-[24px]">
                 <div className="overflow-hidden col-span-5">
-                  <h1 className="font-[800] text-[#303533] text-[24px] truncate">
+                  <h1 className="font-[800] text-[#303533] text-20-title truncate">
                     {selectedJob?.jobTitle}
                   </h1>
                 </div>
@@ -110,6 +112,32 @@ export default function DetailJob() {
                   </div>
                 </div>
               </div>
+              <div className="flex w-full md:hidden ">
+                <div className="flex flex-col w-full gap-[6px]">
+                  <span className="font-[600]">{selectedJob?.companyName}</span>
+                  <div className="flex md:flex-col flex-row gap-[6px]">
+                    <span className="text-[12px] font-[600]">Location:</span>
+                    <span className="truncate text-wrap overflow-hidden font-[500] text-[12px] ">
+                      {selectedJob?.location}
+                    </span>
+                  </div>
+                  {selectedJob?.companyWebsite && (
+                    <div className="flex flex-col gap-[6px]">
+                      <span className="text-[12px] font-[600]">Site web:</span>
+                      <span className="truncate text-ellipsis font-[500] text-[12px]">
+                        {selectedJob?.companyWebsite}
+                      </span>
+                    </div>
+                  )}
+
+                  <a
+                    href={selectedJob?.jobUrl}
+                    target="_blank"
+                    className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
+                    Apply now
+                  </a>
+                </div>
+              </div>
               <Separator className="my-[15px] bg-[#d4d4d4]" />
               <div
                 className="content-intro"
@@ -118,12 +146,12 @@ export default function DetailJob() {
                 }}
               />
             </div>
-            <div className="grid col-span-2 pl-[15px]">
+            <div className="hidden md:grid col-span-2 md:pl-[15px]">
               <div className="flex flex-col gap-[24px]">
                 <span className="font-[600]">{selectedJob?.companyName}</span>
                 <div className="flex flex-col gap-[6px]">
                   <span className="text-[12px] font-[600]">Location:</span>
-                  <span className="truncate text-ellipsis overflow-hidden font-[500] text-[12px] ">
+                  <span className="truncate text-wrap overflow-hidden font-[500] text-[12px] ">
                     {selectedJob?.location}
                   </span>
                 </div>
