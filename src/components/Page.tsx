@@ -8,12 +8,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SearchNormal1, Location, Heart, Clock } from "iconsax-react";
+import { Heart, Clock } from "iconsax-react";
 import { IoMdClose } from "react-icons/io";
 import netflix from "/assets/google.png";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "./ui/button";
 import { useQuery } from "@tanstack/react-query";
 import Job from "@/models/job.model";
 import { apiGET } from "@/api/api";
@@ -64,56 +62,6 @@ export default function Page() {
 
   return (
     <div className="flex flex-col w-full gap-[30px] p-[15px] md:p-[30px] scrollbar scrollbar-thumb-[#5a5959]/50 scrollbar-w-[5px] scrollbar-h-44 scrollbar-thumb-rounded-full">
-      {/* <div className="flex lg:flex-row w-full gap-[12.5px] flex-col">
-        <div className="flex sm:flex-row w-full gap-[12.5px] flex-col">
-          <div className="grow relative">
-            <Input
-              value={searchTerm}
-              onChange={handleChange}
-              type="search"
-              placeholder="Search..."
-              className="w-full rounded-[4px] h-[48px] bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
-            />
-            <SearchNormal1
-              size="24"
-              color="#b9b9b9"
-              className="absolute top-[12px] left-[10px]"
-            />
-          </div>
-          <Select>
-            <SelectTrigger className="border flex items-center px-2 bg-[#fff] h-[48px] justify-between w-full sm:w-[150px] rounded-[4px] active:outline-0 focus:outline-0">
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Fruits</SelectLabel>
-                <SelectItem value="apple">Apple</SelectItem>
-                <SelectItem value="banana">Banana</SelectItem>
-                <SelectItem value="blueberry">Blueberry</SelectItem>
-                <SelectItem value="grapes">Grapes</SelectItem>
-                <SelectItem value="pineapple">Pineapple</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex sm:flex-row w-full gap-[12.5px] flex-col">
-          <div className="h-[48px] grow relative">
-            <Input
-              type="search"
-              placeholder="Search..."
-              className="w-full rounded-[4px] h-[48px] bg-[#fff] border-[#b9b9b9] focus:outline-0 pl-[40px] pr-[10px]"
-            />
-            <Location
-              size="24"
-              color="#b9b9b9"
-              className="absolute top-[12px] left-[10px]"
-            />
-          </div>
-          <Button className="bg-[#388bf0] font-[500] transition ease-in-out duration-300 hover:bg-[#388bf0c5] px-[12px] h-[48px] items-center rounded-[4px] w-full sm:w-[150px] lg:w-[100px] text-[#fff]">
-            Search
-          </Button>
-        </div>
-      </div> */}
       <div className="flex lg:flex-row flex-col gap-4 items-center w-full justify-between">
         <div className="flex justify-start gap-[12px]">
           <span className="text-[#888888] text-15-title">

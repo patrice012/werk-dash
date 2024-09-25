@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 // import { useLocation } from "react-router-dom";
 
 export default function Navbar({
@@ -80,38 +81,36 @@ export default function Navbar({
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 mt-8">
+      <div className="flex flex-col gap-3 mt-10">
         <h1 className="text-white font-medium text-3xl">
           Find your dream job here
         </h1>
-        <div className="w-full h-[50px] bg-white grid grid-cols-2">
-          <div className="grow relative">
-            <Input
-              // value={searchTerm}
-              // onChange={handleChange}
-              type="search"
-              placeholder="Job title or keyword"
-              className="w-full rounded-[4px] h-[48px] bg-[#fff] outline-0 border-0 focus:border-0 focus:outline-0"
-            />
-            <SearchNormal1
-              size="24"
-              color="#b9b9b9"
-              className="absolute top-[12px] left-[10px]"
-            />
+        <div className="w-full bg-white flex gap-4 rounded-[37.5px] h-[65px] p-2">
+          <div className="grow flex gap-4 items-center divide-x">
+            <div className="px-3 grow flex items-center">
+              <SearchNormal1 size="24" color="#b9b9b9" />
+              <Input
+                // value={searchTerm}
+                // onChange={handleChange}
+                type="search"
+                placeholder="Job title or keyword"
+              />
+            </div>
+            <div className="px-3 grow flex items-center">
+              <Map1 size="24" color="#b9b9b9" />
+              <Input
+                // value={searchTerm}
+                // onChange={handleChange}
+                prefix="Prefix"
+                type="search"
+                placeholder="Add country or city"
+              />
+            </div>
           </div>
-          <div className="relative">
-            <Input
-              // value={searchTerm}
-              // onChange={handleChange}
-              type="search"
-              placeholder="Add country or city"
-              className="w-full rounded-[4px] h-[48px] bg-[#fff] outline-0 border-0 focus:border-0 focus:outline-0"
-            />
-            <Map1
-              size="24"
-              color="#b9b9b9"
-              className="absolute top-[12px] left-[10px]"
-            />
+          <div className="h-full">
+            <Button className="h-full w-[120px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[37.5px]">
+              <span>Search</span>
+            </Button>
           </div>
         </div>
       </div>
