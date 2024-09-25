@@ -54,7 +54,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col w-full gap-[30px] px-[15px] md:px-[30px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
+    <div className="flex flex-col w-full gap-[30px] px-[15px] md:px-[20px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
       
 
       {/*  */}
