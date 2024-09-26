@@ -18,7 +18,7 @@ export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
 
-  const { setJobTitle, jobTilte, jobLocation, setJobLocation } = useFilter();
+  const { setJobTitle, setJobLocation } = useFilter();
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 

@@ -137,7 +137,7 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
 }; */
 
 export const SidebarContent = () => {
-  const { sidebarFilter, toggleJobType, toggleExperienceLevel } = useFilter();
+  const { jobTypes, experienceLevels, toggleJobType, toggleExperienceLevel } = useFilter();
   const [experience, setExperience] = useState(true);
   const [job, setJob] = useState(true);
   const [isVisible, setIsVisble] = useState(true);
@@ -174,13 +174,13 @@ export const SidebarContent = () => {
               </span>
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
-              {["Contract", "Full-Time", "Part-Time", "Internship"].map(
+              {["Contract", "Full-Time", "Part-Time", "Internship", "Temporary"].map(
                 (type) => (
                   <div
                     className="flex w-full justify-start gap-[10px] items-center"
                     key={type}>
                     <Checkbox
-                      checked={sidebarFilter.jobTypes.includes(type)}
+                      checked={jobTypes.includes(type)}
                       onCheckedChange={() => toggleJobType(type)}
                     />
                     <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
@@ -211,7 +211,7 @@ export const SidebarContent = () => {
                     className="flex w-full justify-start gap-[12px] items-center"
                     key={level}>
                     <Checkbox
-                      checked={sidebarFilter.experienceLevels.includes(level)}
+                      checked={experienceLevels.includes(level)}
                       onCheckedChange={() => toggleExperienceLevel(level)}
                     />
                     <span className="text-[#4a4a4a] text-[.82rem] font-[500]">

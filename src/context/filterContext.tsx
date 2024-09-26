@@ -1,37 +1,60 @@
 import { createContext, useState, useContext } from "react";
 
-// Provide a default value for the context (it can be an empty object or null)
-const FilterContext = createContext({});
+// Define the shape of the filter context
+interface FilterContextType {
+  jobTilte: string;
+  setJobTitle: (title: string) => void;
+  jobLocation: string;
+  setJobLocation: (location: string) => void;
+  jobTypes: string[];
+  setJobTypes: React.Dispatch<React.SetStateAction<string[]>>;
+  experienceLevels: string[];
+  setExperienceLevels: React.Dispatch<React.SetStateAction<string[]>>;
+  toggleJobType: (jobType: string) => void;
+  toggleExperienceLevel: (experienceLevel: string) => void;
+}
+
+// Provide a default value for the context (initial values)
+const defaultFilterContext: FilterContextType = {
+  jobTilte: "",
+  setJobTitle: () => {},
+  jobLocation: "",
+  setJobLocation: () => {},
+  jobTypes: [],
+  setJobTypes: () => {},
+  experienceLevels: [],
+  setExperienceLevels: () => {},
+  toggleJobType: () => {},
+  toggleExperienceLevel: () => {},
+};
+
+const FilterContext = createContext<FilterContextType>(defaultFilterContext);
 
 export const FilterProvider = ({ children }: { children: any }) => {
   const [jobTilte, setJobTitle] = useState("");
   const [jobLocation, setJobLocation] = useState("");
-  const [sidebarFilter, setSidebarFilter] = useState({
-    jobTypes: [],
-    experienceLevels: [],
-  });
+  const [jobTypes, setJobTypes] = useState<string[]>([]);
+  const [experienceLevels, setExperienceLevels] = useState<string[]>([]);
 
   // Update the job types filter
   const toggleJobType = (jobType: string) => {
-    setSidebarFilter((prevFilter) => {
-      const isSelected = prevFilter.jobTypes.includes(jobType);
+    setJobTypes((prevJobTypes) => {
+      const isSelected = prevJobTypes.includes(jobType);
       const updatedJobTypes = isSelected
-        ? prevFilter.jobTypes.filter((type) => type !== jobType)
-        : [...prevFilter.jobTypes, jobType];
-      return { ...prevFilter, jobTypes: updatedJobTypes };
+        ? prevJobTypes.filter((type) => type !== jobType)
+        : [...prevJobTypes, jobType];
+      return updatedJobTypes;
     });
   };
 
   // Update the experience level filter
   const toggleExperienceLevel = (experienceLevel: string) => {
-    setSidebarFilter((prevFilter) => {
-      const isSelected = prevFilter.experienceLevels.includes(experienceLevel);
+    setExperienceLevels((prevExperienceLevels) => {
+      const isSelected = prevExperienceLevels.includes(experienceLevel);
       const updatedExperienceLevels = isSelected
-        ? prevFilter.experienceLevels.filter(
-            (level) => level !== experienceLevel
-          )
-        : [...prevFilter.experienceLevels, experienceLevel];
-      return { ...prevFilter, experienceLevels: updatedExperienceLevels };
+        ? prevExperienceLevels.filter((level) => level !== experienceLevel)
+        : [...prevExperienceLevels, experienceLevel];
+      return updatedExperienceLevels;
     });
   };
 
@@ -42,10 +65,12 @@ export const FilterProvider = ({ children }: { children: any }) => {
         setJobTitle,
         jobLocation,
         setJobLocation,
-        sidebarFilter,
-        setSidebarFilter,
+        jobTypes,
+        setJobTypes,
+        experienceLevels,
+        setExperienceLevels,
+        toggleJobType,
         toggleExperienceLevel,
-        toggleJobType
       }}>
       {children}
     </FilterContext.Provider>

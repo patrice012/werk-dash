@@ -1,62 +1,56 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Job from "@/models/job.model";
 import { apiPOST } from "@/api/api";
 import { SkeletonCard } from "./Skeleton";
 import { Card } from "./Card";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { useInView } from "react-intersection-observer";
+
 import { SidebarContent } from "./Sidebar";
 import { useFilter } from "@/context/filterContext";
+import { ErrorRequest } from "./request/ErrorRequest";
+import { NotFoundData } from "./request/NotFoundData";
 
 export default function Page() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [ref, inView] = useInView();
+
   const [selectedItem, setSeletedItem] = useState<number>();
-  // const [searchTerm, setSearchTerm] = useState("");
 
   const [currentPage] = useState(1);
   const navigate = useNavigate();
-  const [IsLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [NumberPage, setPage] = useState(12);
+  const NumberPage = 12;
 
-  const { jobTilte, jobLocation, sidebarFilter } = useFilter();
+  const { jobTilte, jobLocation } = useFilter();
 
-  console.log(jobTilte, jobLocation);
-
-  //
-  const { data, refetch, isLoading } = useQuery({
-    queryKey: ["repoDjata", jobTilte, jobLocation, sidebarFilter],
-    refetchOnWindowFocus: false,
-    queryFn: async () =>
-      await apiPOST({
-        uri: `jobs/filter/?page=${currentPage}&limit=${NumberPage}`,
+  // load cars
+  const jobsInfiniteQuery = useInfiniteQuery({
+    queryKey: ["jobs-infinite-query", jobLocation, jobTilte],
+    queryFn: async ({ pageParam = currentPage }) => {
+      return await apiPOST({
+        uri: `jobs/filter/?page=${pageParam}&limit=${NumberPage}`,
         data: { searchValue: jobTilte, country: jobLocation },
-      }),
+      });
+    },
+    refetchOnWindowFocus: false,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page < lastPage.totalPages) return +lastPage.page + 1;
+      return undefined;
+    },
+    getPreviousPageParam: (firstPage) => {
+      if (firstPage.page > 1) return +firstPage.page - 1;
+      return undefined;
+    },
   });
 
-  console.log(data)
-
-  const fetchData = async () => {
-    try {
-      setPage((prevPage: number) => prevPage + 12);
-      console.log(error);
-    } catch (error) {
-      setError("");
-      console.log(error, "error fetchData");
-    } finally {
-      setIsLoading(false);
-      console.log(IsLoading);
-    }
-  };
-
   useEffect(() => {
-    refetch();
-    console.log("test");
-  }, [refetch, NumberPage]);
+    if (inView && jobsInfiniteQuery.hasNextPage) {
+      jobsInfiniteQuery.fetchNextPage();
+    }
+  }, [inView]);
 
-  //
   const handleSelectItem = (item: Job, idx: number) => {
     setSeletedItem(idx);
     navigate(`/job/${item._id}`, { state: { selectedItem: item } });
@@ -69,48 +63,53 @@ export default function Page() {
       </div>
 
       <div className="flex flex-col w-full gap-[30px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
-        {/*  */}
-        <InfiniteScroll
-          dataLength={NumberPage}
-          next={fetchData}
-          hasMore={data && data.data.length != 0} // Replace with a condition based on your data source
-          loader={
-            <div
-              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] mt-[24px] w-full`}>
-              {Array.from({ length: 3 }).map((_e, idx: number) => {
-                return <SkeletonCard key={idx} />;
-              })}
-            </div>
-          }
-          endMessage={<p></p>}>
+        <div className="grid grid-cols-3 gap-5 items-start w-full">
           <div
-            ref={scrollRef}
-            className="grid grid-cols-3 gap-5 items-start w-full">
-            {/* Première div - affichée uniquement au-dessus de 1024px */}
-            <div
-              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
-              {isLoading &&
-                Array.from({ length: 9 }).map((_e, idx: number) => {
+            className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
+            {jobsInfiniteQuery.isLoading
+              ? Array.from({ length: 9 }).map((_e, idx: number) => {
                   return <SkeletonCard key={idx} />;
-                })}
-              {data &&
-                data.data?.map((item: Job, idx: number) => {
-                  const selected = selectedItem == idx;
-                  return (
-                    <Card
-                      job={item}
-                      isSelected={selected}
-                      key={idx}
-                      onPress={() => handleSelectItem(item, idx)}
-                    />
-                  );
-                })}
-              {data && data.data.length == 0 && (
-                <span>NO data found for this search</span>
-              )}
-            </div>
+                })
+              : null}
+
+            {jobsInfiniteQuery.isSuccess
+              ? jobsInfiniteQuery?.data?.pages
+                  .flatMap((page) => page.data)
+                  .map((item: Job, idx: number) => {
+                    const selected = selectedItem == idx;
+                    return (
+                      <Card
+                        job={item}
+                        isSelected={selected}
+                        key={idx}
+                        onPress={() => handleSelectItem(item, idx)}
+                      />
+                    );
+                  })
+              : null}
+
+            {jobsInfiniteQuery.isFetchingNextPage
+              ? Array.from({ length: 3 }).map((_e, idx: number) => {
+                  return <SkeletonCard key={idx} />;
+                })
+              : null}
           </div>
-        </InfiniteScroll>
+
+          <span className="mt-5" ref={ref}></span>
+        </div>
+        {jobsInfiniteQuery.isError ? (
+          <div className="w-full mx-auto">
+            <ErrorRequest />
+          </div>
+        ) : null}
+
+        {jobsInfiniteQuery.isSuccess &&
+        jobsInfiniteQuery?.data?.pages.flatMap((page) => page.data).length ===
+          0 ? (
+          <div className="w-full mx-auto">
+            <NotFoundData />
+          </div>
+        ) : null}
       </div>
     </div>
   );
