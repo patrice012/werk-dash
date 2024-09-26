@@ -38,7 +38,7 @@ export default function DetailJob() {
       },
 
       {
-        queryKey: ["Detail"],
+        queryKey: ["Detail", params.id],
         refetchOnWindowFocus: false,
         queryFn: async () =>
           await apiGET({
@@ -115,9 +115,9 @@ export default function DetailJob() {
         <div
           className={`${"sticky top-[20px]"}  top-[20px] col-span-3 lg:col-span-3 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
         >
-          {DetailQuery.isFetching && <SkeletonCard />}
+          {DetailQuery.isLoading && <SkeletonCard />}
 
-          {!DetailQuery.isRefetching && (
+          {DetailQuery.isSuccess && (
             <div className="md:grid md:grid-cols-7 md:col-span-7">
               <div className="md:grid col-span-5 md:border-r md:pr-[15px] border-[#d4d4d4]">
                 <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start  sm:items-center mb-[24px]">
@@ -139,7 +139,7 @@ export default function DetailJob() {
                       {DetailQuery.data?.job[0]?.companyName}
                     </span>
                     <div className="flex md:flex-col flex-row gap-[6px]">
-                      <span className="text-[12px] font-[600]">Location:</span>
+                      <span className="text-[14px] font-[600]">Location:</span>
                       <span className="truncate text-wrap overflow-hidden font-[500] text-[12px] ">
                         {DetailQuery.data?.job[0]?.location}
                       </span>
@@ -195,7 +195,7 @@ export default function DetailJob() {
                     {DetailQuery.data?.job[0]?.companyName}
                   </span>
                   <div className="flex flex-col gap-[6px]">
-                    <span className="text-[12px] font-[600]">Location:</span>
+                    <span className="text-[14px] font-[600]">Location:</span>
                     <span className="truncate text-wrap overflow-hidden font-[500] text-[12px] ">
                       {DetailQuery.data?.job[0]?.location}
                     </span>

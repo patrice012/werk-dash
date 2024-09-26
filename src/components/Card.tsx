@@ -1,8 +1,6 @@
-
 import { Separator } from "./ui/separator";
 import Job from "@/models/job.model";
 import { Heart } from "iconsax-react";
-
 
 export const Card = ({
   job,
@@ -17,9 +15,8 @@ export const Card = ({
     <div
       onClick={() => onPress(1)}
       className={`${
-        isSelected ? "border-[rgb(64,138,211)]" : ""
-      } transition-all border-[2.5px] border-transparent cursor-pointer bg-[#fff] rounded-[16px] p-[1.7rem] gap-[15px] flex flex-col w-full hover:shadow-xl text-ellipsis overflow-hidden `}
-    >
+        isSelected ? "border-[rgb(64,138,211)]" : " border-transparent"
+      } transition-all border-[2.5px]  cursor-pointer bg-[#fff] rounded-[16px] p-[1.7rem] gap-[15px] flex flex-col w-full hover:shadow-xl text-ellipsis overflow-hidden `}>
       <div className="grid w-full grid-cols-[5fr_1fr] gap-x-2 justify-between items-center">
         {/* Image - largeur fixe */}
         {/*   <div className="bg-[#f8f8f8] p-[3px] rounded-[8px] h-[54px] w-[54px]">
@@ -51,7 +48,7 @@ export const Card = ({
         }}
       />
 
-      <Separator/>
+      <Separator />
 
       <div className="flex justify-between w-full items-center text-ellipsis overflow-hidden ">
         <span className="text-[#4a4a4a] text-[14px] ">{job.city}</span>

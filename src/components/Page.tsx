@@ -17,15 +17,17 @@ export default function Page() {
 
   const [currentPage] = useState(1);
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  const [IsLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [NumberPage, setPage] = useState(12);
 
   const { jobTilte, jobLocation, sidebarFilter } = useFilter();
 
+  console.log(jobTilte, jobLocation);
+
   //
-  const { data, refetch, isFetching } = useQuery({
-    queryKey: ["repoDjata"],
+  const { data, refetch, isLoading } = useQuery({
+    queryKey: ["repoDjata", jobTilte, jobLocation, sidebarFilter],
     refetchOnWindowFocus: false,
     queryFn: async () =>
       await apiPOST({
@@ -43,14 +45,14 @@ export default function Page() {
       console.log(error, "error fetchData");
     } finally {
       setIsLoading(false);
-      console.log(isLoading);
+      console.log(IsLoading);
     }
   };
 
   useEffect(() => {
     refetch();
     console.log("test");
-  }, [refetch, NumberPage, jobLocation, jobTilte, sidebarFilter]);
+  }, [refetch, NumberPage]);
 
   //
   const handleSelectItem = (item: Job, idx: number) => {
@@ -69,23 +71,23 @@ export default function Page() {
         <InfiniteScroll
           dataLength={NumberPage}
           next={fetchData}
-          hasMore={true} // Replace with a condition based on your data source
+          hasMore={data && data.data.length != 0} // Replace with a condition based on your data source
           loader={
             <div
-              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] mt-[24px] w-full`}
-            >
+              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] mt-[24px] w-full`}>
               {Array.from({ length: 3 }).map((_e, idx: number) => {
                 return <SkeletonCard key={idx} />;
               })}
             </div>
           }
-          endMessage={<p>No more data to load.</p>}
-        >
-          <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start w-full">
+          endMessage={<p></p>}>
+          <div
+            ref={scrollRef}
+            className="grid grid-cols-3 gap-5 items-start w-full">
             {/* Première div - affichée uniquement au-dessus de 1024px */}
             <div
               className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
-              {isFetching &&
+              {isLoading &&
                 Array.from({ length: 9 }).map((_e, idx: number) => {
                   return <SkeletonCard key={idx} />;
                 })}
@@ -101,6 +103,9 @@ export default function Page() {
                     />
                   );
                 })}
+              {data && data.data.length == 0 && (
+                <span>NO data found for this search</span>
+              )}
             </div>
           </div>
         </InfiniteScroll>
