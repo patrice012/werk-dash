@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowDown2, ArrowUp2, Trash } from "iconsax-react";
+import { useFilter } from "@/context/filterContext";
 
 export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   return (
     <div
       className={`sidebar ${
         isSidebarOpen ? "open" : "closed"
-      } scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}
-    >
+      } scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full`}>
       <SidebarContent />
     </div>
   );
@@ -19,12 +19,23 @@ export const SidebarContent = () => {
   const [job, setJob] = useState(true);
   const [isVisible, setIsVisble] = useState(true);
 
+  const { setSidebarFilter, sidebarFilter } = useFilter();
+
+  const handleDelete = (value: string) => {
+    setSidebarFilter((selected) => {
+      if (sidebarFilter.includes(value)) {
+        return selected.filter((s:string) => s != value);
+      } else {
+        return [...selected];
+      }
+    });
+  };
+
   return (
     <div className="">
       <div
         className="flex items-center w-full justify-between py-2 border-b mb-4"
-        onClick={() => setJob(!job)}
-      >
+        onClick={() => setJob(!job)}>
         <span className="text-[#000]">Filter by</span>
         <div className="flex items-center gap-3">
           {isVisible && (
@@ -46,8 +57,7 @@ export const SidebarContent = () => {
           <div className="">
             <div
               className="flex w-full justify-between items-center"
-              onClick={() => setExperience(!experience)}
-            >
+              onClick={() => setExperience(!experience)}>
               <span className="text-[#000] font-[600] text-[14px]">
                 Job type
               </span>
@@ -89,8 +99,7 @@ export const SidebarContent = () => {
             <div className="flex flex-col justify-center">
               <div
                 className="flex w-full justify-between items-center"
-                onClick={() => setExperience(!experience)}
-              >
+                onClick={() => setExperience(!experience)}>
                 <span className="text-[#000] font-[600] text-[14px]">
                   Experience level
                 </span>

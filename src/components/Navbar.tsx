@@ -18,7 +18,7 @@ export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
 
-  const { setJobTitle, setJobLocation } = useFilter();
+  const { setJobTitle, jobTilte, jobLocation, setJobLocation } = useFilter();
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -98,6 +98,7 @@ export default function Navbar() {
                   <Input
                     // value={searchTerm}
                     // onChange={handleChange}
+                    value={searchTerm}
                     type="search"
                     placeholder="Job title or keyword"
                     onChange={(e) => {
@@ -112,11 +113,13 @@ export default function Navbar() {
                     // value={searchTerm}
                     // onChange={handleChange}
                     prefix="Prefix"
+                    value={searchLocation}
                     type="search"
                     placeholder="Add country or city"
                     onChange={(e) => {
                       setSearchLocation(e.target.value);
                     }}
+                     className="placeholder:text-[#808080] text-[#808080] text-[1rem] "
                   />
                 </div>
               </div>
