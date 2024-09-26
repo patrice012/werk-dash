@@ -8,13 +8,11 @@ import {
 import profile from "/assets/profileImg.png";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useFilter } from "@/context/filterContext";
 
 export default function Navbar() {
-  const navigate = useNavigate();
   const location = useLocation();
   const isDetailPage = location.pathname.startsWith("/job/");
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,28 +33,28 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="bg-[#000] px-3 sm:px-5 pb-[30px] pt-3">
+      <div className="bg-[#000] px-3 sm:px-5 pb-[30px] pt-4">
         <div className="flex items-center justify-between w-full resize-none">
           <div className="flex justify-start gap-[12px] items-center">
-            <span
-              className="text-24-title font-[900] text-[#0f7afd] cursor-pointer"
-              onClick={() => navigate("/")}>
-              WerkLinker
-            </span>
+            <Link to={"/"}>
+              <span className="text-24-title font-[900] text-[#0f7afd]">
+                WerkLinker
+              </span>
+            </Link>
           </div>
-          <nav className="text-white">
-            <ul className="gap-[30px] hidden md:flex">
-              <li className="text-[15px] font-normal cursor-pointer ">
-                Find Jobs
+          <nav className="text-[#b0b0b0]">
+            <ul className="gap-[30px] hidden md:flex text-[16px] font-[450]">
+              <li className="hover:text-[#0f7afd] active:text-[#0f7afd] transition-all">
+                <Link to={"#"}>Find Jobs</Link>
               </li>
-              <li className="text-[15px] font-normal cursor-pointer ">
-                Find Talent
+              <li className="hover:text-[#0f7afd] active:text-[#0f7afd] transition-all">
+                <Link to={"#"}>Find Talent</Link>
               </li>
-              <li className="text-[15px] font-normal cursor-pointer">
-                Upload Job
+              <li className="hover:text-[#0f7afd] active:text-[#0f7afd] transition-all">
+                <Link to={"#"}>Upload Job</Link>
               </li>
-              <li className="text-[15px] font-normal cursor-pointer">
-                About Us
+              <li className="hover:text-[#0f7afd] active:text-[#0f7afd] transition-all">
+                <Link to={"#"}>About Us</Link>
               </li>
             </ul>
           </nav>
@@ -85,7 +83,7 @@ export default function Navbar() {
 
         <div className="flex flex-col gap-1 sm:gap-3 sm:mt-4">
           <div className="flex items-center">
-            <h1 className="text-white font-medium text-lg sm:text-3xl">
+            <h1 className="text-white font-[600] text-2xl sm:text-3xl">
               Find your dream job here
             </h1>
             <div className="h-14 sm:h-20">
@@ -93,8 +91,8 @@ export default function Navbar() {
             </div>
           </div>
           {!isDetailPage && (
-            <div className="flex flex-col sm:flex-row w-full bg-white gap-4 rounded-[15px] sm:rounded-[35px] sm:h-[70px] p-3">
-              <div className="flex flex-col sm:flex-row grow  gap-4 items-center sm:divide-x">
+            <div className="flex flex-col sm:flex-row w-full bg-white gap-4 rounded-[15px] sm:rounded-[35px] sm:h-[70px] px-3">
+              <div className="flex flex-col sm:flex-row grow  gap-4 items-center sm:divide-x py-3">
                 <div className="px-2 sm:px-3 grow flex items-center">
                   <SearchNormal1 size="24" color="#b9b9b9" />
                   <Input
@@ -105,6 +103,7 @@ export default function Navbar() {
                     onChange={(e) => {
                       setSearchTerm(e.target.value);
                     }}
+                    className="placeholder:text-[#808080] text-[#808080] text-[1rem] "
                   />
                 </div>
                 <div className="px-2 sm:px-3 grow flex items-center">
@@ -121,10 +120,10 @@ export default function Navbar() {
                   />
                 </div>
               </div>
-              <div className="h-full">
+              <div className="h-full py-2">
                 <Button
                   onClick={Search}
-                  className="w-full h-full sm:w-[120px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[35px]">
+                  className="text-[1.1rem]  w-full h-full sm:w-[120px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[35px] transition-all">
                   <span className="p-1">Search</span>
                 </Button>
               </div>

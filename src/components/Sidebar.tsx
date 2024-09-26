@@ -63,27 +63,35 @@ export const SidebarContent = () => {
               </span>
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
-              <div className="flex w-full justify-start gap-[12px] items-center">
+              <div className="flex w-full justify-start gap-[10px] items-center">
                 <Checkbox className="" />
-                <span className="text-[#6a6b6d] text-18-title">Contract</span>
+                <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
+                  Contract
+                </span>
               </div>
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
               <div className="flex w-full justify-start gap-[12px] items-center">
                 <Checkbox />
-                <span className="text-[#6a6b6d] text-18-title">Full-Time</span>
+                <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
+                  Full-Time
+                </span>
               </div>
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
               <div className="flex w-full justify-start gap-[12px] items-center">
                 <Checkbox />
-                <span className="text-[#6a6b6d] text-18-title">Part-Time</span>
+                <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
+                  Part-Time
+                </span>
               </div>
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
               <div className="flex w-full justify-start gap-[12px] items-center">
-                <Checkbox value="Internship" />
-                <span className="text-[#6a6b6d] text-18-title">Internship</span>
+                <Checkbox />
+                <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
+                  Internship
+                </span>
               </div>
             </div>
           </div>
@@ -100,7 +108,7 @@ export const SidebarContent = () => {
                 <div className="flex flex-col gap-[12px] pt-[12px]">
                   <div className="flex w-full justify-start gap-[12px] items-center">
                     <Checkbox />
-                    <span className="text-[#6a6b6d] text-18-title">
+                    <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
                       1 - 3 Years
                     </span>
                   </div>
@@ -108,7 +116,7 @@ export const SidebarContent = () => {
                 <div className="flex flex-col gap-[12px] pt-[12px]">
                   <div className="flex w-full justify-start gap-[12px] items-center">
                     <Checkbox />
-                    <span className="text-[#6a6b6d] text-18-title">
+                    <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
                       3 - 5 Years
                     </span>
                   </div>
@@ -116,7 +124,7 @@ export const SidebarContent = () => {
                 <div className="flex flex-col gap-[12px] pt-[12px]">
                   <div className="flex w-full justify-start gap-[12px] items-center">
                     <Checkbox />
-                    <span className="text-[#6a6b6d] text-18-title">
+                    <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
                       5 - 10 Years
                     </span>
                   </div>
@@ -124,7 +132,7 @@ export const SidebarContent = () => {
                 <div className="flex flex-col gap-[12px] pt-[12px]">
                   <div className="flex w-full justify-start gap-[12px] items-center">
                     <Checkbox />
-                    <span className="text-[#6a6b6d] text-18-title">
+                    <span className="text-[#4a4a4a] text-[.82rem] font-[500]">
                       More than 10 Years
                     </span>
                   </div>

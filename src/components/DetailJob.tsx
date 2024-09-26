@@ -74,13 +74,14 @@ export default function DetailJob() {
 
   return (
     <div className="bg-[#f0f5fa] p-[15px] md:p-[30px] ">
-      <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start  ">
+      <div ref={scrollRef} className="grid grid-cols-4 gap-5 items-start  ">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
           className={`grid grid-rows-1 gap-[20px]  scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full ${
             selectedJob != undefined && "hidden lg:grid"
-          }`}>
-          {AllQuery.isPending &&
+          }`}
+        >
+          {AllQuery.isLoading &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
             })}
@@ -97,7 +98,7 @@ export default function DetailJob() {
                 />
               )}
               {AllQuery.data.data
-                .filter((item: Job) => item.jobTitle !== selectedJob?.jobTitle) // Filtrer l'élément sélectionné
+                .filter((item: Job) => item.jobTitle !== selectedJob?.jobTitle)
                 .map((item: Job, idx: number) => (
                   <Card
                     job={item}
@@ -112,7 +113,8 @@ export default function DetailJob() {
 
         {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
-          className={`${"sticky top-[20px]"}  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}>
+          className={`${"sticky top-[20px]"}  top-[20px] col-span-3 lg:col-span-3 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
+        >
           {DetailQuery.isFetching && <SkeletonCard />}
 
           {!DetailQuery.isRefetching && (
@@ -172,7 +174,8 @@ export default function DetailJob() {
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
-                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
+                    >
                       Apply now
                     </a>
                   </div>
@@ -225,7 +228,8 @@ export default function DetailJob() {
                   <a
                     href={DetailQuery.data?.job[0]?.jobUrl}
                     target="_blank"
-                    className="bg-[#207fff] px-[15px] rounded-full  py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
+                    className="bg-[#207fff] px-[15px] rounded-full  py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
+                  >
                     Apply now
                   </a>
                 </div>
