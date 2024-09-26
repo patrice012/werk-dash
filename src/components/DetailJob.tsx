@@ -119,8 +119,8 @@ export default function DetailJob() {
             <div className="md:grid md:grid-cols-7 md:col-span-7">
               <div className="md:grid col-span-5 md:border-r md:pr-[15px] border-[#d4d4d4]">
                 <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start  sm:items-center mb-[24px]">
-                  <div className="overflow-hidden col-span-5">
-                    <h1 className="font-[800] text-[#303533] text-20-title truncate">
+                  <div className="sm:overflow-hidden col-span-5">
+                    <h1 className="font-[800] text-[#303533]  text-wrap text-20-title truncate">
                       {DetailQuery.data?.job[0]?.jobTitle}
                     </h1>
                   </div>
