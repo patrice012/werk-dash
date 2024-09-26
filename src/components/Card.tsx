@@ -13,7 +13,6 @@ export const Card = ({
   onPress: (item: unknown) => void;
   isSelected: boolean;
 }) => {
-  console.log(isSelected);
   return (
     <div
       onClick={() => onPress(1)}

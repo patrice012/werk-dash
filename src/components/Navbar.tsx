@@ -10,16 +10,25 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useFilter } from "@/context/filterContext";
 
 export default function Navbar() {
   const location = useLocation();
   const isDetailPage = location.pathname.startsWith("/job/");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchLocation, setSearchLocation] = useState("");
+
+  const { setJobTitle, setJobLocation } = useFilter();
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleOpen = () => {
     setSidebarOpen(!isSidebarOpen);
     console.log("first", isSidebarOpen);
+  };
+  const Search = () => {
+    setJobTitle(searchTerm);
+    setJobLocation(searchLocation);
   };
 
   return (
@@ -53,8 +62,7 @@ export default function Navbar() {
             <div
               className="border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
               id="openSidebar"
-              onClick={toggleOpen}
-            >
+              onClick={toggleOpen}>
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
@@ -92,6 +100,9 @@ export default function Navbar() {
                     // onChange={handleChange}
                     type="search"
                     placeholder="Job title or keyword"
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                    }}
                     className="placeholder:text-[#808080] text-[#808080] text-[1rem] "
                   />
                 </div>
@@ -103,12 +114,16 @@ export default function Navbar() {
                     prefix="Prefix"
                     type="search"
                     placeholder="Add country or city"
-                    className="placeholder:text-[#808080] text-[#808080] text-[1rem] "
+                    onChange={(e) => {
+                      setSearchLocation(e.target.value);
+                    }}
                   />
                 </div>
               </div>
               <div className="h-full py-2">
-                <Button className="text-[1.1rem]  w-full h-full sm:w-[120px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[35px] transition-all">
+                <Button
+                  onClick={Search}
+                  className="text-[1.1rem]  w-full h-full sm:w-[120px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[35px] transition-all">
                   <span className="p-1">Search</span>
                 </Button>
               </div>

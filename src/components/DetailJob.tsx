@@ -1,7 +1,7 @@
 import { apiGET } from "@/api/api";
 import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
 import Job from "@/models/job.model";
-import {  useQueries } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 import { Card } from "./Card";
 import { useRef, useState, useEffect } from "react";
 import { SkeletonCard } from "./Skeleton";
@@ -39,6 +39,7 @@ export default function DetailJob() {
 
       {
         queryKey: ["Detail"],
+        refetchOnWindowFocus: false,
         queryFn: async () =>
           await apiGET({
             uri: `/jobs/${params.id}`,
@@ -73,7 +74,7 @@ export default function DetailJob() {
 
   return (
     <div className="bg-[#f0f5fa] p-[15px] md:p-[30px] ">
-      <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start  ">
+      <div ref={scrollRef} className="grid grid-cols-4 gap-5 items-start  ">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
           className={`grid grid-rows-1 gap-[20px]  scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full ${
@@ -112,7 +113,7 @@ export default function DetailJob() {
 
         {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
-          className={`${"sticky top-[20px]"}  top-[20px] col-span-3 lg:col-span-2 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
+          className={`${"sticky top-[20px]"}  top-[20px] col-span-3 lg:col-span-3 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
         >
           {DetailQuery.isFetching && <SkeletonCard />}
 
@@ -154,6 +155,22 @@ export default function DetailJob() {
                       </div>
                     )}
 
+                    <div className="flex gap-[6px] items-center">
+                      <span className="text-[12px] font-[600]">Job type:</span>
+                      <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
+                        {DetailQuery.data?.job[0]?.employmentType}
+                      </div>
+                    </div>
+
+                    <div className="flex gap-[6px] items-center">
+                      <span className="text-[12px] font-[600]">
+                        last updated:
+                      </span>
+                      <span className="font-[600] text-[12px]">
+                        {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
+                      </span>
+                    </div>
+
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
@@ -191,6 +208,22 @@ export default function DetailJob() {
                       </span>
                     </div>
                   )}
+
+                  <div className="flex gap-[6px] items-center">
+                    <span className="text-[12px] font-[600]">Job type:</span>
+                    <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
+                      {DetailQuery.data?.job[0]?.employmentType}
+                    </div>
+                  </div>
+
+                  <div className="flex gap-[6px] items-center">
+                    <span className="text-[12px] font-[600]">
+                      last updated:
+                    </span>
+                    <span className="font-[600] text-[12px]">
+                      {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
+                    </span>
+                  </div>
 
                   <a
                     href={DetailQuery.data?.job[0]?.jobUrl}
