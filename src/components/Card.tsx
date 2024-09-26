@@ -1,6 +1,8 @@
+
 import { Separator } from "./ui/separator";
 import Job from "@/models/job.model";
 import { Heart } from "iconsax-react";
+
 
 export const Card = ({
   job,
