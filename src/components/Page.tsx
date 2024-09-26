@@ -36,6 +36,8 @@ export default function Page() {
       }),
   });
 
+  console.log(data)
+
   const fetchData = async () => {
     try {
       setPage((prevPage: number) => prevPage + 12);

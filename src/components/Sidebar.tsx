@@ -19,18 +19,7 @@ export const SidebarContent = () => {
   const [job, setJob] = useState(true);
   const [isVisible, setIsVisble] = useState(true);
 
-  const { setSidebarFilter, sidebarFilter } = useFilter();
-
-  const handleDelete = (value: string) => {
-    setSidebarFilter((selected) => {
-      if (sidebarFilter.includes(value)) {
-        return selected.filter((s:string) => s != value);
-      } else {
-        return [...selected];
-      }
-    });
-  };
-
+  
   return (
     <div className="">
       <div
@@ -53,7 +42,7 @@ export const SidebarContent = () => {
         </div>
       </div>
       {isVisible && (
-        <div className="flex justify-between lg:flex-col gap-5">
+        <div className="grid xl:grid-cols-1 grid-cols-2 xl:col-span-1 col-span-2 justify-between gap-5">
           <div className="">
             <div
               className="flex w-full justify-between items-center"
