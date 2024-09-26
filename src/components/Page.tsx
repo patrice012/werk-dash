@@ -12,8 +12,7 @@ import { SidebarContent } from "./Sidebar";
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedItem, setSeletedItem] = useState<number>();
-  // const [searchTerm, setSearchTerm] = useState("");
-  
+
   const [currentPage] = useState(1);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -35,25 +34,25 @@ export default function Page() {
       console.log(error);
     } catch (error) {
       setError("");
+      console.log(error, "error fetchData");
     } finally {
       setIsLoading(false);
-      console.log(isLoading)
+      console.log(isLoading);
     }
   };
 
   useEffect(() => {
     refetch();
-  }, [ refetch, NumberPage]);
+  }, [refetch, NumberPage]);
 
   //
   const handleSelectItem = (item: Job, idx: number) => {
     setSeletedItem(idx);
-    // Passer les données de l'élément sélectionné à la page de détails
     navigate(`/job/${item._id}`, { state: { selectedItem: item } });
   };
 
   return (
-    <div className="px-4 sm:px-5">
+    <div className="px-4 sm:px-5 w-full">
       <div className="xl:hidden mb-6">
         <SidebarContent />
       </div>
@@ -66,17 +65,20 @@ export default function Page() {
           hasMore={true} // Replace with a condition based on your data source
           loader={
             <div
-              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] mt-[24px]`}>
+              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] mt-[24px] w-full`}
+            >
               {Array.from({ length: 3 }).map((_e, idx: number) => {
                 return <SkeletonCard key={idx} />;
               })}
             </div>
           }
-          endMessage={<p>No more data to load.</p>}>
-          <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start">
+          endMessage={<p>No more data to load.</p>}
+        >
+          <div ref={scrollRef} className="grid grid-cols-3 gap-5 items-start w-full">
             {/* Première div - affichée uniquement au-dessus de 1024px */}
             <div
-              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
+              className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px]`}
+            >
               {isPending &&
                 Array.from({ length: 9 }).map((_e, idx: number) => {
                   return <SkeletonCard key={idx} />;

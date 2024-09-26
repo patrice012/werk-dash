@@ -18,16 +18,17 @@ export const Card = ({
     <div
       onClick={() => onPress(1)}
       className={`${
-        isSelected ? "border-[2.5px] border-[rgb(64,138,211)]" : ""
-      } cursor-pointer bg-[#fff] rounded-[16px] p-[35px] gap-[15px] flex flex-col w-full hover:shadow-xl text-ellipsis overflow-hidden `}>
-      <div className="grid w-full grid-cols-[auto_1fr_auto] justify-between items-center">
+        isSelected ? "border-[rgb(64,138,211)]" : ""
+      } transition-all border-[2.5px] border-transparent cursor-pointer bg-[#fff] rounded-[16px] p-[1.7rem] gap-[15px] flex flex-col w-full hover:shadow-xl text-ellipsis overflow-hidden `}
+    >
+      <div className="grid w-full grid-cols-[5fr_1fr] gap-x-2 justify-between items-center">
         {/* Image - largeur fixe */}
         {/*   <div className="bg-[#f8f8f8] p-[3px] rounded-[8px] h-[54px] w-[54px]">
           <img src={netflix} alt="" className="w-[48px] h-[48px]" />
         </div> */}
 
         <div className="flex flex-col gap-[2px] overflow-hidden">
-          <span className="font-[500] text-[#000] text-[18px] truncate capitalize">
+          <span className="font-[500] text-[#000] text-[1.15rem] truncate capitalize">
             {job.jobTitle}
           </span>
           <span className="text-[#4a4a4a] font-[500] text-[12px] truncate capitalize">
@@ -40,18 +41,18 @@ export const Card = ({
       </div>
 
       <div className="flex gap-[8px]">
-        <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[#7744aa] font-semibold text-[12px] rounded-[4px]">
+        <div className="bg-[#f1e3ff] px-[6px] py-[3px] text-[#7744aa] font-semibold text-[12px] rounded-[4px]">
           {job.employmentType}
         </div>
       </div>
-      <span
-        className="text-[#4a4a4a] text-[14px] two-line-limit"
+      <p
+        className="text-[#4a4a4a] text-[14px] two-line-limit font-normal"
         dangerouslySetInnerHTML={{
           __html: job?.jobDescriptionRawHtml || "",
         }}
       />
 
-      <Separator className="my-[6px]" />
+      <Separator/>
 
       <div className="flex justify-between w-full items-center text-ellipsis overflow-hidden ">
         <span className="text-[#4a4a4a] text-[14px] ">{job.city}</span>
@@ -59,8 +60,9 @@ export const Card = ({
             Apply Now
           </button> */}
         <div className="flex gap-[6px] items-center">
-        
-          <span className="text-[#888888] text-[14px]  capitalize">{job.country} </span>
+          <span className="text-[#888888] text-[14px]  capitalize">
+            {job.country}{" "}
+          </span>
         </div>
       </div>
     </div>
