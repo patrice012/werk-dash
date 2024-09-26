@@ -18,7 +18,7 @@ const apiGET = async ({ uri }: { uri: string }) => {
 // API POST Method
 const apiPOST = async ({ uri, data }: { uri: string; data: unknown }) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/${uri}`, { data });
+    const res = await axios.post(`${API_ENDPOINT}/${uri}`, { data });
     if (res.status == 200) return res.data;
   } catch (error) {
     if (isAxiosError(error)) {

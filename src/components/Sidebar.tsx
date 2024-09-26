@@ -72,7 +72,7 @@ export const SidebarContent = () => {
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
               <div className="flex w-full justify-start gap-[12px] items-center">
-                <Checkbox />
+                <Checkbox value="Internship" />
                 <span className="text-[#6a6b6d] text-18-title">Internship</span>
               </div>
             </div>

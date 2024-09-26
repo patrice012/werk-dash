@@ -1,7 +1,7 @@
 import { apiGET } from "@/api/api";
 import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
 import Job from "@/models/job.model";
-import {  useQueries } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 import { Card } from "./Card";
 import { useRef, useState, useEffect } from "react";
 import { SkeletonCard } from "./Skeleton";
@@ -39,6 +39,7 @@ export default function DetailJob() {
 
       {
         queryKey: ["Detail"],
+        refetchOnWindowFocus: false,
         queryFn: async () =>
           await apiGET({
             uri: `/jobs/${params.id}`,
@@ -152,6 +153,22 @@ export default function DetailJob() {
                       </div>
                     )}
 
+                    <div className="flex gap-[6px] items-center">
+                      <span className="text-[12px] font-[600]">Job type:</span>
+                      <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
+                        {DetailQuery.data?.job[0]?.employmentType}
+                      </div>
+                    </div>
+
+                    <div className="flex gap-[6px] items-center">
+                      <span className="text-[12px] font-[600]">
+                        last updated:
+                      </span>
+                      <span className="font-[600] text-[12px]">
+                        {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
+                      </span>
+                    </div>
+
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
@@ -188,6 +205,22 @@ export default function DetailJob() {
                       </span>
                     </div>
                   )}
+
+                  <div className="flex gap-[6px] items-center">
+                    <span className="text-[12px] font-[600]">Job type:</span>
+                    <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
+                      {DetailQuery.data?.job[0]?.employmentType}
+                    </div>
+                  </div>
+
+                  <div className="flex gap-[6px] items-center">
+                    <span className="text-[12px] font-[600]">
+                      last updated:
+                    </span>
+                    <span className="font-[600] text-[12px]">
+                      {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
+                    </span>
+                  </div>
 
                   <a
                     href={DetailQuery.data?.job[0]?.jobUrl}

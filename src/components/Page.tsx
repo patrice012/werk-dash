@@ -3,29 +3,34 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Job from "@/models/job.model";
-import { apiGET } from "@/api/api";
+import { apiGET, apiPOST } from "@/api/api";
 import { SkeletonCard } from "./Skeleton";
 import { Card } from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { SidebarContent } from "./Sidebar";
+import { useFilter } from "@/context/filterContext";
 
 export default function Page() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedItem, setSeletedItem] = useState<number>();
   // const [searchTerm, setSearchTerm] = useState("");
-  
+
   const [currentPage] = useState(1);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [NumberPage, setPage] = useState(12);
 
+  const { jobTilte, jobLocation, sidebarFilter } = useFilter();
+
   //
-  const { isPending, data, refetch } = useQuery({
+  const { data, refetch, isFetching } = useQuery({
     queryKey: ["repoDjata"],
+    refetchOnWindowFocus: false,
     queryFn: async () =>
-      await apiGET({
-        uri: `/jobs/?page=${currentPage}&limit=${NumberPage}`,
+      await apiPOST({
+        uri: `jobs/filter/?page=${currentPage}&limit=${NumberPage}`,
+        data: { searchValue: jobTilte, country: jobLocation },
       }),
   });
 
@@ -37,13 +42,14 @@ export default function Page() {
       setError("");
     } finally {
       setIsLoading(false);
-      console.log(isLoading)
+      console.log(isLoading);
     }
   };
 
   useEffect(() => {
     refetch();
-  }, [ refetch, NumberPage]);
+    console.log("test");
+  }, [refetch, NumberPage, jobLocation, jobTilte, sidebarFilter]);
 
   //
   const handleSelectItem = (item: Job, idx: number) => {
@@ -77,7 +83,7 @@ export default function Page() {
             {/* Première div - affichée uniquement au-dessus de 1024px */}
             <div
               className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
-              {isPending &&
+              {isFetching &&
                 Array.from({ length: 9 }).map((_e, idx: number) => {
                   return <SkeletonCard key={idx} />;
                 })}
