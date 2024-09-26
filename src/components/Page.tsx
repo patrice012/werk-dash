@@ -22,15 +22,20 @@ export default function Page() {
   const navigate = useNavigate();
   const NumberPage = 12;
 
-  const { jobTilte, jobLocation } = useFilter();
+  const { jobTilte, jobLocation, jobTypes } = useFilter();
 
+  console.log(jobTypes);
   // load cars
   const jobsInfiniteQuery = useInfiniteQuery({
-    queryKey: ["jobs-infinite-query", jobLocation, jobTilte],
+    queryKey: ["jobs-infinite-query", jobLocation, jobTilte, jobTypes],
     queryFn: async ({ pageParam = currentPage }) => {
       return await apiPOST({
         uri: `jobs/filter/?page=${pageParam}&limit=${NumberPage}`,
-        data: { searchValue: jobTilte, country: jobLocation },
+        data: {
+          searchValue: jobTilte,
+          country: jobLocation,
+          jobType: jobTypes,
+        },
       });
     },
     refetchOnWindowFocus: false,
