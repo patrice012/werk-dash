@@ -17,20 +17,10 @@ export default function DetailJob() {
 
   const params = useParams();
 
-  console.log(params.id);
-
-  /*  const { isPending, data, refetch } = useQuery({
-    queryKey: ["repoDjata"],
-    queryFn: async () =>
-      await apiGET({
-        uri: `/jobs/?page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
-      }),
-  }); */
-
   const [AllQuery, DetailQuery] = useQueries({
     queries: [
       {
-        queryKey: ["repoDjata"],
+        queryKey: ["jobs-single-query"],
         queryFn: async () =>
           await apiGET({
             uri: `/jobs/?page=${currentPage}&limit=${VITE_API_QUERY_LIMIT}`,
@@ -38,7 +28,7 @@ export default function DetailJob() {
       },
 
       {
-        queryKey: ["Detail"],
+        queryKey: ["jobs-detail-query"],
         refetchOnWindowFocus: false,
         queryFn: async () =>
           await apiGET({
