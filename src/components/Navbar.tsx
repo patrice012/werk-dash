@@ -43,7 +43,7 @@ export default function Navbar() {
             </Link>
           </div>
           <nav className="text-[#b0b0b0]">
-            <ul className="gap-[30px] hidden md:flex text-[16px] font-[450]">
+            <ul className="gap-[30px] hidden lm:flex text-[16px] font-[450]">
               <li className="hover:text-[#0f7afd] active:text-[#0f7afd] transition-all">
                 <Link to={"#"}>Find Jobs</Link>
               </li>
@@ -58,7 +58,7 @@ export default function Navbar() {
               </li>
             </ul>
           </nav>
-          <div className="flex md:hidden">
+          <div className="flex lm:hidden">
             <div
               className="border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
               id="openSidebar"
@@ -66,7 +66,7 @@ export default function Navbar() {
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
-          <div className="hidden gap-[24px] items-center md:flex">
+          <div className="hidden gap-[24px] items-center lm:flex">
             <div className="p-[6px] border border-[#1E1E1E] rounded-full bg-[#1E1E1E]">
               <Notification
                 size={22}
@@ -119,7 +119,7 @@ export default function Navbar() {
                     onChange={(e) => {
                       setSearchLocation(e.target.value);
                     }}
-                     className="placeholder:text-[#808080] text-[#808080] text-[1rem] "
+                    className="placeholder:text-[#808080] text-[#808080] text-[1rem] "
                   />
                 </div>
               </div>
@@ -143,27 +143,22 @@ export default function Navbar() {
             <div className=" flex flex-col gap-[24px] right-0  top-0 bg-neutral-900  h-full p-12 pb-2 rounded-s-2xl">
               <div>
                 <a href="" className="font-normal text-[#fff] text-20-title">
-                  About Us
+                  Find Jobs
                 </a>
               </div>
               <div>
                 <a href="" className="font-normal text-[#fff] text-20-title">
-                  Services
+                  Find Talent
                 </a>
               </div>
               <div>
                 <a href="" className="font-normal  text-[#fff] text-20-title">
-                  Use Cases
+                  Upload Job
                 </a>
               </div>
               <div>
                 <a href="" className="font-normal text-[#fff] text-20-title">
-                  Pricing
-                </a>
-              </div>
-              <div>
-                <a href="" className="font-normal text-[#fff] text-20-title">
-                  Blog
+                  About Us
                 </a>
               </div>
             </div>

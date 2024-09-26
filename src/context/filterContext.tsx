@@ -8,8 +8,32 @@ export const FilterProvider = ({ children }: { children: any }) => {
   const [jobLocation, setJobLocation] = useState("");
   const [sidebarFilter, setSidebarFilter] = useState({
     jobTypes: [],
-    experienceLevel: [],
+    experienceLevels: [],
   });
+
+  // Update the job types filter
+  const toggleJobType = (jobType: string) => {
+    setSidebarFilter((prevFilter) => {
+      const isSelected = prevFilter.jobTypes.includes(jobType);
+      const updatedJobTypes = isSelected
+        ? prevFilter.jobTypes.filter((type) => type !== jobType)
+        : [...prevFilter.jobTypes, jobType];
+      return { ...prevFilter, jobTypes: updatedJobTypes };
+    });
+  };
+
+  // Update the experience level filter
+  const toggleExperienceLevel = (experienceLevel: string) => {
+    setSidebarFilter((prevFilter) => {
+      const isSelected = prevFilter.experienceLevels.includes(experienceLevel);
+      const updatedExperienceLevels = isSelected
+        ? prevFilter.experienceLevels.filter(
+            (level) => level !== experienceLevel
+          )
+        : [...prevFilter.experienceLevels, experienceLevel];
+      return { ...prevFilter, experienceLevels: updatedExperienceLevels };
+    });
+  };
 
   return (
     <FilterContext.Provider
@@ -20,6 +44,8 @@ export const FilterProvider = ({ children }: { children: any }) => {
         setJobLocation,
         sidebarFilter,
         setSidebarFilter,
+        toggleExperienceLevel,
+        toggleJobType
       }}>
       {children}
     </FilterContext.Provider>
