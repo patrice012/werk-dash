@@ -44,7 +44,7 @@ export const Card = ({
       <p
         className="text-[#2e2e2e] text-[14px] two-line-limit font-normal"
         dangerouslySetInnerHTML={{
-          __html: job?.jobDescriptionRawHtml || "",
+          __html: job?.jobDescriptionRawHtml?.trim() || "",
         }}
       />
 
@@ -55,7 +55,7 @@ export const Card = ({
         {/* <button className="bg-[#D9EBFF] hover:bg-[#408AD3] hover:text-[#fff] transition duration-500 ease-in-out px-[12px] h-[44px] items-center rounded-[4px] max-w-max text-[#388bf0] text-[18px] font-[500]">
             Apply Now
           </button> */}
-        <div className="flex gap-[6px] items-center">
+        <div className="flex gap-[6px] items-center capitalize">
           <span className="text-[#888888] text-[14px]  capitalize">
             {job.country}{" "}
           </span>

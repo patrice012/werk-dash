@@ -8,7 +8,7 @@ import {
 import profile from "/assets/profileImg.png";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useFilter } from "@/context/filterContext";
 
@@ -17,7 +17,7 @@ export default function Navbar() {
   const isDetailPage = location.pathname.startsWith("/job/");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
-
+  const navigate = useNavigate();
   const { setJobTitle, setJobLocation } = useFilter();
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);

@@ -57,14 +57,11 @@ export default function DetailJob() {
   }, [location.state, params]);
 
   return (
-    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px]">
-      <div className="grid grid-cols-4 gap-[12px] items-start">
+    <div className="bg-[#f0f5fa] p-[15px]  md:p-[30px]">
+      <div className="xl:grid xl:grid-cols-4 flex flex-col-reverse gap-[12px] items-start">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid gap-[12px] ${
-            selectedJob != undefined && "hidden xl:grid"
-          }`}
-        >
+          className={`grid gap-[12px] h-[100vh] sticky top-[20px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full overflow-auto ${selectedJob != undefined && "grid"}`}>
           {AllQuery.isLoading &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -81,25 +78,42 @@ export default function DetailJob() {
                   onPress={() => handleSelectItem(selectedJob)}
                 />
               )}
-              {AllQuery.data.data
-                .filter((item: Job) => item.jobTitle !== selectedJob?.jobTitle)
-                .map((item: Job, idx: number) => (
-                  <Card
-                    job={item}
-                    isSelected={false}
-                    key={idx}
-                    onPress={() => handleSelectItem(item)}
-                  />
-                ))}
+              {window.innerWidth > 1280
+                ? AllQuery.data.data
+                    .filter(
+                      (item: Job) => item.jobTitle !== selectedJob?.jobTitle
+                    )
+                    .map((item: Job, idx: number) => (
+                      <Card
+                        job={item}
+                        isSelected={false}
+                        key={idx}
+                        onPress={() => handleSelectItem(item)}
+                      />
+                    ))
+                : AllQuery.data.data
+                    .filter(
+                      (item: Job) => item.jobTitle !== selectedJob?.jobTitle
+                    )
+                    .slice(0, 2)
+                    .map((item: Job, idx: number) => (
+                      <Card
+                        job={item}
+                        isSelected={false}
+                        key={idx}
+                        onPress={() => handleSelectItem(item)}
+                      />
+                    ))}
             </>
           )}
         </div>
-
+        <span className="text-[20px] font-bold py-[20px] flex xl:hidden">
+          Related Jobs
+        </span>
         {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
           ref={scrollRef}
-          className={`col-span-4 xl:col-span-3 xl:max-h-max bg-[#fff] rounded-[16px] sticky top-0 w-full max-w-full`}
-        >
+          className={`col-span-4 xl:col-span-3 xl:max-h-max bg-[#fff] rounded-[16px]  w-full max-w-full`}>
           {DetailQuery.isLoading && <SkeletonCard />}
 
           {DetailQuery.isSuccess && (
@@ -159,8 +173,7 @@ export default function DetailJob() {
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
-                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
-                    >
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
                       Apply now
                     </a>
                   </div>
@@ -168,7 +181,7 @@ export default function DetailJob() {
 
                 <div className="content-intro border-t border-[#e4e4e7] ">
                   <div
-                    className="px-[15px] sm:px-[32px] py-[15px] lg:px-[56px] lg:py-[32px]"
+                    className="px-[15px] sm:px-[32px] style overflow-y-auto py-[15px] lg:px-[56px] lg:py-[32px]"
                     dangerouslySetInnerHTML={{
                       __html:
                         DetailQuery.data?.job[0]?.jobDescriptionRawHtml || "",
@@ -224,8 +237,7 @@ export default function DetailJob() {
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
-                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
-                    >
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
                       Apply now
                     </a>
                   </div>
