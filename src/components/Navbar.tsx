@@ -46,12 +46,12 @@ export default function Navbar() {
             <ul className="gap-[30px] hidden lm:flex text-[16px] font-[450]">
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#findjobs"
+                  location.pathname == "/"
                     ? "border-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
-                <Link to={"#findjobs"}>Find Jobs</Link>
+                <Link to={"/"}>Find Jobs</Link>
               </li>
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${

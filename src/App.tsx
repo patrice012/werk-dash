@@ -31,19 +31,22 @@ function App() {
     };
   }, []);
 
-
   const location = useLocation();
 
   // Condition pour afficher ou cacher le sidebar
   const isDetailPage = location.pathname.startsWith("/job/");
 
   return (
-    <div className="">
+    <div className="relative">
       <Navbar />
       {!isDetailPage && <Recommended />}
-      <div className="app-container relative">
-        {!isDetailPage && <Sidebar  isSidebarOpen={isSidebarOpen} />}
-        <div className="chat-container relative">
+      <div className="flex">
+        {!isDetailPage && (
+          <div className="sticky top-[10px] max-h-max">
+            <Sidebar isSidebarOpen={isSidebarOpen} />
+          </div>
+        )}
+        <div className="chat-container">
           <Routes>
             <Route path="/" element={<Page />} />
             <Route path="/job/:id" element={<DetailJob />} />

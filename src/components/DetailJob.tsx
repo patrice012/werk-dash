@@ -62,13 +62,14 @@ export default function DetailJob() {
   }, [location.state, params]);
 
   return (
-    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px]  ">
-      <div className="grid grid-cols-4 gap-[12px] items-start  ">
+    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px]">
+      <div className="grid grid-cols-4 gap-[12px] items-start">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid gap-[12px] overflow-y-scroll  ${
+          className={`grid gap-[12px] ${
             selectedJob != undefined && "hidden xl:grid"
-          }`}>
+          }`}
+        >
           {AllQuery.isLoading &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -102,7 +103,8 @@ export default function DetailJob() {
         {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
           ref={scrollRef}
-          className={`col-span-4 xl:col-span-3 xl:max-h-max bg-[#fff] rounded-[16px]  w-full max-w-full`}>
+          className={`col-span-4 xl:col-span-3 xl:max-h-max bg-[#fff] rounded-[16px] sticky top-0 w-full max-w-full`}
+        >
           {DetailQuery.isLoading && <SkeletonCard />}
 
           {DetailQuery.isSuccess && (
@@ -163,7 +165,8 @@ export default function DetailJob() {
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
-                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
+                    >
                       Apply now
                     </a>
                   </div>
@@ -225,7 +228,8 @@ export default function DetailJob() {
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
-                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
+                    >
                       Apply now
                     </a>
                   </div>
