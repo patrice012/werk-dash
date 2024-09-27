@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <div className="px-4 sm:px-6 w-full h-full">
-      <div className="xl:hidden mb-6 sticky top-10">
+      <div className="xl:hidden mb-6 top-10">
         <SidebarContent />
       </div>
 
