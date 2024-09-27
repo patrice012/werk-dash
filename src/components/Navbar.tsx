@@ -1,11 +1,4 @@
-import {
-  CloseCircle,
-  HambergerMenu,
-  Map1,
-  Notification,
-  SearchNormal1,
-} from "iconsax-react";
-import profile from "/assets/profileImg.png";
+import { CloseCircle, HambergerMenu, Map1, SearchNormal1 } from "iconsax-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Link, useLocation } from "react-router-dom";
@@ -60,30 +53,21 @@ export default function Navbar() {
               </li>
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#findtalent"
+                  location.hash == "#discord"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
-                <Link to={"#findtalent"}>Find Talent</Link>
+                <Link to={"#discord"}>Discord</Link>
               </li>
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#uploadjob"
+                  location.hash == "#telegram"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
-                <Link to={"#uploadjob"}>Upload Job</Link>
-              </li>
-              <li
-                className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#aboutus"
-                    ? "border-[#0f7afd] text-[#0f7afd]"
-                    : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
-              >
-                <Link to={"#aboutus"}>About Us</Link>
+                <Link to={"#telegram"}>Telegram</Link>
               </li>
             </ul>
           </nav>
@@ -96,7 +80,10 @@ export default function Navbar() {
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
-          <div className="self-center mt-2 hidden gap-[24px] items-center lm:flex">
+          <button className="bg-[#0f7afd] mt-2 py-[10px] px-[32px] rounded-sm text-[18px] font-semibold text-white hidden lm:flex">
+            Button
+          </button>
+          {/* <div className="self-center mt-2 hidden gap-[24px] items-center lm:flex">
             <div className="p-[6px] border border-[#1E1E1E] rounded-full bg-[#1E1E1E] relative">
               <Notification
                 size={28}
@@ -111,7 +98,7 @@ export default function Navbar() {
               </span>
               <img src={profile} className="w-[40px]" alt="" />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col gap-1 sm:gap-3 mt-4 sm:mt-10">
