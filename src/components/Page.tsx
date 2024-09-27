@@ -62,7 +62,7 @@ export default function Page() {
   };
 
   return (
-    <div className="px-4 sm:px-5 w-full">
+    <div className="px-4 sm:px-6 w-full">
       <div className="xl:hidden mb-6">
         <SidebarContent />
       </div>
@@ -70,7 +70,8 @@ export default function Page() {
       <div className="flex flex-col w-full gap-[30px] pb-[30px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full">
         <div className="grid grid-cols-3 gap-5 items-start w-full">
           <div
-            className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}>
+            className={`grid ${"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-3"} gap-[20px] `}
+          >
             {jobsInfiniteQuery.isLoading
               ? Array.from({ length: 9 }).map((_e, idx: number) => {
                   return <SkeletonCard key={idx} />;
