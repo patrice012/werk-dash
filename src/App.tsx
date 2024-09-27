@@ -37,7 +37,7 @@ function App() {
   const isDetailPage = location.pathname.startsWith("/job/");
 
   return (
-    <div className="relative">
+    <div className="relative  ">
       <Navbar />
       {!isDetailPage && <Recommended />}
       <div className="flex">
