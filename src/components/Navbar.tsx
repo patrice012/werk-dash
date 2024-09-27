@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="bg-[#141414] pt-4 sm:pt-0 px-3 sm:px-6 pb-[30px] sm:pb-[40px] bg-none sm:bg-[url('/header-bg.png')] sm:bg-no-repeat sm:bg-[right_17%_top_0] sm:bg-contain">
+      <div className="bg-[#141414] pt-4 sm:pt-0 px-3 sm:px-6 pb-[30px] sm:pb-[40px] sm:bg-[url('/header-bg.png')] sm:bg-no-repeat sm:bg-[right_17%_top_0] sm:bg-contain">
         <div className="flex items-start justify-between w-full resize-none">
           <div className="flex justify-start gap-[12px] items-center pt-2">
             <Link to={"/"}>
