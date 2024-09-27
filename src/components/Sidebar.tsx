@@ -16,9 +16,9 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
 }
 
 export const SidebarContent = () => {
-  const { jobTypes, experienceLevels, toggleJobType, toggleExperienceLevel } =
+  const { jobTypes, experienceLevels, toggleJobType, toggleExperienceLevel, setJobTypes, setExperienceLevels } =
     useFilter();
-  const [experience, setExperience] = useState(true);
+/*   const [experience, setExperience] = useState(true); */
   // const [job, setJob] = useState(true);
   const [isVisible, setIsVisble] = useState(true);
 
@@ -29,7 +29,7 @@ export const SidebarContent = () => {
           <div>
             <div
               className="flex w-full justify-between items-center"
-              onClick={() => setExperience(!experience)}
+         
             >
               <span className="text-[#000] font-[600] text-[14px] sm:text-[18px]">
                 Job type
@@ -37,7 +37,7 @@ export const SidebarContent = () => {
 
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => {}}
+                  onClick={() => { setJobTypes([]), setExperienceLevels([]) }}
                   className="text-[#f98586] font-semibold sm:text-[18px] cursor-pointer"
                 >
                   Clear all
@@ -82,7 +82,7 @@ export const SidebarContent = () => {
             <div className="flex flex-col justify-center">
               <div
                 className="flex w-full justify-between items-center"
-                onClick={() => setExperience(!experience)}
+          
               >
                 <span className="text-[#000] font-[600] text-[14px] sm:text-[18px]">
                   Experience level
