@@ -104,7 +104,7 @@ export default function DetailJob() {
 
           {DetailQuery.isSuccess && (
             <div className="lm:grid lm:grid-cols-7 lm:col-span-7">
-              <div className="lm:grid col-span-5 lm:border-r-[1.3px] border-[#e4e4e7]">
+              <div className="lm:grid col-span-5 lm:border-r-[1.3px] lm:border-[#e4e4e7]">
                 <div className="flex md:flex-row flex-col w-full gap-4 md:justify-between  items-start px-[15px] sm:px-[32px] pt-[32px] lg:pl-[56px] lg:pt-[32px]  mb-[24px]">
                   <div className=" ">
                     <h1 className="font-[800] text-[#303533] capitalize text-wrap text-[24px]">
@@ -117,7 +117,7 @@ export default function DetailJob() {
                     </div>
                   </div>
                 </div>
-                <Separator className="mt-[15px]  bg-[#e4e4e7]" />
+                <Separator className="mt-[15px] lm:hidden  bg-[#e4e4e7]" />
                 <div className="flex w-full lm:hidden p-[15px] sm:p-[32px] ">
                   <div className="flex flex-col w-full gap-[24px]">
                     <span className="font-[600] text-[1.25rem] capitalize">
