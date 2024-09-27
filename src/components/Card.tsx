@@ -16,7 +16,7 @@ export const Card = ({
       onClick={() => onPress(1)}
       className={`${
         isSelected ? "border-[rgb(64,138,211)]" : " border-transparent"
-      } transition-all border-[2.5px]  cursor-pointer bg-[#fff] rounded-[16px] p-[1.7rem] gap-[15px] flex flex-col w-full hover:shadow-xl text-ellipsis overflow-hidden `}>
+      } transition-all border-[2.5px] h-max  cursor-pointer bg-[#fff] rounded-[16px] p-[1.7rem] gap-[15px] flex flex-col w-full hover:shadow-xl text-ellipsis overflow-hidden `}>
       <div className="grid w-full grid-cols-[5fr_1fr] gap-x-2 justify-between items-center">
         {/* Image - largeur fixe */}
         {/*   <div className="bg-[#f8f8f8] p-[3px] rounded-[8px] h-[54px] w-[54px]">
@@ -42,7 +42,7 @@ export const Card = ({
         </div>
       </div>
       <p
-        className="text-[#4a4a4a] text-[14px] two-line-limit font-normal"
+        className="text-[#2e2e2e] text-[14px] two-line-limit font-normal"
         dangerouslySetInnerHTML={{
           __html: job?.jobDescriptionRawHtml || "",
         }}

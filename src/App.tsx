@@ -42,8 +42,8 @@ function App() {
       <Navbar />
       {!isDetailPage && <Recommended />}
       <div className="app-container relative">
-        {!isDetailPage && <Sidebar isSidebarOpen={isSidebarOpen} />}
-        <div className="chat-container">
+        {!isDetailPage && <Sidebar  isSidebarOpen={isSidebarOpen} />}
+        <div className="chat-container relative">
           <Routes>
             <Route path="/" element={<Page />} />
             <Route path="/job/:id" element={<DetailJob />} />

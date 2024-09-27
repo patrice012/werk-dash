@@ -58,19 +58,17 @@ export default function DetailJob() {
         setSelectedJob(location?.state.selectedItem);
       }
       window.scrollTo({ top: 0 });
-      console.log("first maison");
     }
   }, [location.state, params]);
 
   return (
-    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px] ">
-      <div ref={scrollRef} className="grid grid-cols-4 gap-5 items-start  ">
+    <div className="bg-[#f0f5fa] p-[15px] md:p-[30px]  ">
+      <div className="grid grid-cols-4 gap-[12px] items-start  ">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid grid-rows-1 gap-[20px]  scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full ${
-            selectedJob != undefined && "hidden lg:grid"
-          }`}
-        >
+          className={`grid gap-[12px] overflow-y-scroll  ${
+            selectedJob != undefined && "hidden xl:grid"
+          }`}>
           {AllQuery.isLoading &&
             Array.from({ length: 9 }).map((_e, idx: number) => {
               return <SkeletonCard key={idx} />;
@@ -103,16 +101,16 @@ export default function DetailJob() {
 
         {/* Div détails - occupe toute la largeur sous 1024px */}
         <div
-          className={`${"sticky top-[20px]"}  top-[20px] col-span-3 lg:col-span-3 lg:max-h-max bg-[#fff] rounded-[16px] p-[15px] lg:px-[48px] lg:py-[32px] w-full max-w-full`}
-        >
+          ref={scrollRef}
+          className={`col-span-4 xl:col-span-3 xl:max-h-max bg-[#fff] rounded-[16px]  w-full max-w-full`}>
           {DetailQuery.isLoading && <SkeletonCard />}
 
           {DetailQuery.isSuccess && (
-            <div className="md:grid md:grid-cols-7 md:col-span-7">
-              <div className="md:grid col-span-5 md:border-r md:pr-[15px] border-[#d4d4d4]">
-                <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start  sm:items-center mb-[24px]">
+            <div className="lm:grid lm:grid-cols-7 lm:col-span-7">
+              <div className="lm:grid col-span-5 lm:border-r-[1.3px] border-[#bfbfbf]">
+                <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start px-[15px] sm:px-[32px] pt-[32px] lg:pl-[56px] lg:pt-[32px] sm:items-center mb-[24px]">
                   <div className="sm:overflow-hidden col-span-5">
-                    <h1 className="font-[800] text-[#303533]  text-wrap text-20-title truncate">
+                    <h1 className="font-[800] text-[#303533]  text-wrap text-[24px] truncate">
                       {DetailQuery.data?.job[0]?.jobTitle}
                     </h1>
                   </div>
@@ -123,40 +121,41 @@ export default function DetailJob() {
                     </div>
                   </div>
                 </div>
-                <div className="flex w-full md:hidden ">
-                  <div className="flex flex-col w-full gap-[6px]">
-                    <span className="font-[600]">
+                <Separator className="mt-[15px]  bg-[#bfbfbf]" />
+                <div className="flex w-full lm:hidden p-[15px] sm:p-[32px] ">
+                  <div className="flex flex-col w-full gap-[24px]">
+                    <span className="font-[600] text-[1.25rem]">
                       {DetailQuery.data?.job[0]?.companyName}
                     </span>
-                    <div className="flex md:flex-col flex-row gap-[6px]">
+                    <div className="flex flex-row gap-[6px]">
                       <span className="text-[14px] font-[600]">Location:</span>
-                      <span className="truncate text-wrap overflow-hidden font-[500] text-[12px] ">
+                      <span className=" text-wrap  font-[500] text-[14px] ">
                         {DetailQuery.data?.job[0]?.location}
                       </span>
                     </div>
                     {DetailQuery.data?.job[0]?.companyWebsite && (
                       <div className="flex flex-col gap-[6px]">
-                        <span className="text-[12px] font-[600]">
+                        <span className="text-[14px] font-[600]">
                           Site web:
                         </span>
-                        <span className="truncate text-ellipsis font-[500] text-[12px]">
+                        <span className="text-wrap font-[500] text-[14px]">
                           {DetailQuery.data?.job[0]?.companyWebsite}
                         </span>
                       </div>
                     )}
 
                     <div className="flex gap-[6px] items-center">
-                      <span className="text-[12px] font-[600]">Job type:</span>
-                      <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
+                      <span className="text-[14px] font-[600]">Job type:</span>
+                      <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[14px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
                         {DetailQuery.data?.job[0]?.employmentType}
                       </div>
                     </div>
 
                     <div className="flex gap-[6px] items-center">
-                      <span className="text-[12px] font-[600]">
+                      <span className="text-[14px] font-[600]">
                         last updated:
                       </span>
-                      <span className="font-[600] text-[12px]">
+                      <span className="font-[500] text-[14px]">
                         {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
                       </span>
                     </div>
@@ -164,64 +163,72 @@ export default function DetailJob() {
                     <a
                       href={DetailQuery.data?.job[0]?.jobUrl}
                       target="_blank"
-                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
-                    >
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
                       Apply now
                     </a>
                   </div>
                 </div>
-                <Separator className="my-[15px] bg-[#d4d4d4]" />
-                <div
-                  className="content-intro"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      DetailQuery.data?.job[0]?.jobDescriptionRawHtml || "",
-                  }}
-                />
+
+                <div className="content-intro border-t border-[#bfbfbf] ">
+                  <div
+                    className="px-[15px] sm:px-[32px] py-[15px] lg:px-[56px] lg:py-[32px]"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        DetailQuery.data?.job[0]?.jobDescriptionRawHtml || "",
+                    }}
+                  />
+                </div>
               </div>
-              <div className="hidden md:grid col-span-2 md:pl-[15px]">
-                <div className="flex flex-col gap-[24px]">
-                  <span className="font-[600]">
-                    {DetailQuery.data?.job[0]?.companyName}
-                  </span>
-                  <div className="flex flex-col gap-[6px]">
-                    <span className="text-[14px] font-[600]">Location:</span>
-                    <span className="truncate text-wrap overflow-hidden font-[500] text-[12px] ">
-                      {DetailQuery.data?.job[0]?.location}
+              <div className="hidden lm:grid col-span-2 ">
+                <div className=" w-full">
+                  <div className="flex flex-col gap-[24px] px-[15px] py-[15px] lg:px-[32px] lg:pt-[40px] ">
+                    <span className="font-[600] text-[1.25rem]">
+                      {DetailQuery.data?.job[0]?.companyName}
                     </span>
-                  </div>
-                  {DetailQuery.data?.job[0]?.companyWebsite && (
                     <div className="flex flex-col gap-[6px]">
-                      <span className="text-[12px] font-[600]">Site web:</span>
-                      <span className="truncate text-ellipsis font-[500] text-[12px]">
-                        {DetailQuery.data?.job[0]?.companyWebsite}
+                      <span className="text-[14px] font-[600]">Location</span>
+                      <span className=" text-wrap  font-[500] text-[14px] ">
+                        {DetailQuery.data?.job[0]?.location}
                       </span>
                     </div>
-                  )}
+                    {DetailQuery.data?.job[0]?.companyWebsite && (
+                      <div className="flex flex-col gap-[6px]">
+                        <span className="text-[14px] font-[600]">
+                          Site web:
+                        </span>
+                        <span className="truncate text-ellipsis font-[500] text-[14px]">
+                          {DetailQuery.data?.job[0]?.companyWebsite}
+                        </span>
+                      </div>
+                    )}
 
-                  <div className="flex gap-[6px] items-center">
-                    <span className="text-[12px] font-[600]">Job type:</span>
-                    <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
-                      {DetailQuery.data?.job[0]?.employmentType}
+                    <div className="flex flex-col gap-[6px] items-start">
+                      <span className="text-[14px] font-[600]">Job type</span>
+                      <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[14px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
+                        {DetailQuery.data?.job[0]?.employmentType}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-[6px] items-start">
+                      <span className="text-[14px] font-[600]">
+                        last updated
+                      </span>
+                      <span className="text-[14px] text-wrap font-[500]">
+                        {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="flex gap-[6px] items-center">
-                    <span className="text-[12px] font-[600]">
-                      last updated:
-                    </span>
-                    <span className="font-[600] text-[12px]">
-                      {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
-                    </span>
-                  </div>
+                  <Separator className="my-[15px]  bg-[#bfbfbf]" />
 
-                  <a
-                    href={DetailQuery.data?.job[0]?.jobUrl}
-                    target="_blank"
-                    className="bg-[#207fff] px-[15px] rounded-full  py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]"
-                  >
-                    Apply now
-                  </a>
+                  <div className="w-full py-[20px] px-[15px] lg:px-[32px] flex">
+                    <a
+                      href={DetailQuery.data?.job[0]?.jobUrl}
+                      target="_blank"
+                      className="bg-[#207fff] px-[15px] rounded-full  w-full py-[12px] transition ease-in-out duration-500 text-center hover:bg-[#2081ffd4] text-[#fff]">
+                      Apply now
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
