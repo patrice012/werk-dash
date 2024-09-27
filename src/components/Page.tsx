@@ -62,7 +62,7 @@ export default function Page() {
   };
 
   return (
-    <div className="px-4 sm:px-6 w-full h-full">
+    <div className="px-4 sm:px-6 w-full h-full z-20">
       <div className="xl:hidden mb-6 sticky top-10">
         <SidebarContent />
       </div>

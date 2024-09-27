@@ -42,7 +42,7 @@ function App() {
       {!isDetailPage && <Recommended />}
       <div className="flex">
         {!isDetailPage && (
-          <div className="sticky top-[10px] max-h-max">
+          <div className="sticky top-[10px] max-h-max z-5">
             <Sidebar isSidebarOpen={isSidebarOpen} />
           </div>
         )}
