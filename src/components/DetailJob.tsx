@@ -105,14 +105,13 @@ export default function DetailJob() {
           {DetailQuery.isSuccess && (
             <div className="lm:grid lm:grid-cols-7 lm:col-span-7">
               <div className="lm:grid col-span-5 lm:border-r-[1.3px] border-[#e4e4e7]">
-                <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start px-[15px] sm:px-[32px] pt-[32px] lg:pl-[56px] lg:pt-[32px] sm:items-center mb-[24px]">
-                  <div className="sm:overflow-hidden col-span-5">
-                    <h1 className="font-[800] text-[#303533]  text-wrap text-[24px] truncate">
+                <div className="flex md:flex-row flex-col w-full gap-4 md:justify-between  items-start px-[15px] sm:px-[32px] pt-[32px] lg:pl-[56px] lg:pt-[32px]  mb-[24px]">
+                  <div className=" ">
+                    <h1 className="font-[800] text-[#303533] capitalize text-wrap text-[24px]">
                       {DetailQuery.data?.job[0]?.jobTitle}
                     </h1>
                   </div>
-
-                  <div className="flex gap-[8px] w-[200px] col-span-1  ">
+                  <div className="flex gap-[8px] w-[100px] md:justify-end ">
                     <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[12px]  text-[#7744aa] font-semibold rounded-[4px]">
                       {DetailQuery.data?.job[0]?.employmentType}
                     </div>
@@ -121,7 +120,7 @@ export default function DetailJob() {
                 <Separator className="mt-[15px]  bg-[#e4e4e7]" />
                 <div className="flex w-full lm:hidden p-[15px] sm:p-[32px] ">
                   <div className="flex flex-col w-full gap-[24px]">
-                    <span className="font-[600] text-[1.25rem]">
+                    <span className="font-[600] text-[1.25rem] capitalize">
                       {DetailQuery.data?.job[0]?.companyName}
                     </span>
                     <div className="flex flex-row gap-[6px]">
@@ -179,8 +178,8 @@ export default function DetailJob() {
               </div>
               <div className="hidden lm:grid col-span-2 ">
                 <div className=" w-full">
-                  <div className="flex flex-col gap-[24px] px-[15px] py-[15px] lg:px-[32px] lg:pt-[40px] ">
-                    <span className="font-[600] text-[1.25rem]">
+                  <div className="flex flex-col gap-[24px] px-[15px] pt-[40px] pb-[20px] lg:px-[32px] lg:pt-[40px] ">
+                    <span className="font-[600] text-[1.25rem] capitalize">
                       {DetailQuery.data?.job[0]?.companyName}
                     </span>
                     <div className="flex flex-col gap-[6px]">
