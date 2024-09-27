@@ -39,7 +39,7 @@ export const Card = ({
       <p
         className="text-[#2e2e2e] text-[14px] two-line-limit font-normal"
         dangerouslySetInnerHTML={{
-          __html: job?.jobDescriptionRawHtml || "",
+          __html: job?.jobDescriptionRawHtml?.trim() || "",
         }}
       />
       <Separator />

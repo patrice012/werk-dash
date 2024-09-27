@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFilter } from "@/context/filterContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   return (
@@ -14,8 +15,8 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
 }
 
 export const SidebarContent = () => {
-  const { jobTypes, toggleJobType, setJobTypes, setExperienceLevels } =
-    useFilter();
+  const { jobTypes, toggleJobType, setJobTypes, setJobTitle } = useFilter();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -30,7 +31,6 @@ export const SidebarContent = () => {
               <button
                 onClick={() => {
                   setJobTypes([]);
-                  setExperienceLevels([]);
                 }}
                 className="text-[#f98586] font-semibold sm:text-[18px] cursor-pointer"
               >
@@ -60,6 +60,33 @@ export const SidebarContent = () => {
                 </span>
               </div>
             ))}
+          </div>
+        </div>
+        <div>
+          <div className="flex flex-col justify-center">
+            <div className="flex w-full justify-between items-center">
+              <span className="text-[#000] font-[600] text-[14px] sm:text-[18px]">
+                Most popular
+              </span>
+            </div>
+            <div className="flex flex-col gap-[12px] pt-[12px]">
+              {["DevOps", "Software", "Full-Stack", "Engineer"].map((level) => (
+                <div
+                  className="flex flex-col mb-2 w-full justify-start gap-[12px]"
+                  key={level}
+                >
+                  <div
+                    onClick={() => {
+                      navigate(`/?searchValue=${level}`);
+                      setJobTitle(level);
+                    }}
+                    className=" bg-[#d9d8d6] rounded-full text-[.82rem] sm:text-[18px] font-[500] transition ease-in-out duration-500 cursor-pointer max-w-max px-[15px] py-[10px] hover:bg-[#b6b5b4] "
+                  >
+                    <span>{level}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
