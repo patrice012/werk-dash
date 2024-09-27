@@ -46,7 +46,7 @@ export const SidebarContent = () => {
                 >
                   Clear all
                 </button>
-                <button
+                {/* <button
                   className="sm:hidden"
                   onClick={() => setIsVisble(!isVisible)}
                 >
@@ -55,7 +55,7 @@ export const SidebarContent = () => {
                   ) : (
                     <ArrowUp2 color="#000" />
                   )}
-                </button>
+                </button> */}
               </div>
             </div>
             <div className="flex flex-col gap-[12px] pt-[12px]">
