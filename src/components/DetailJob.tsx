@@ -14,9 +14,7 @@ export default function DetailJob() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage] = useState(1);
   const navigate = useNavigate();
-
   const params = useParams();
-
   const [AllQuery, DetailQuery] = useQueries({
     queries: [
       {
@@ -46,11 +44,8 @@ export default function DetailJob() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     navigate(`/job/${item._id} `, { state: { selectedItem: item } });
   };
-
   const location = useLocation();
-
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-
   useEffect(() => {
     if (params.id) {
       DetailQuery.refetch();
@@ -66,7 +61,7 @@ export default function DetailJob() {
       <div className="grid grid-cols-4 gap-[12px] items-start  ">
         {/* Première div - affichée uniquement au-dessus de 1024px */}
         <div
-          className={`grid gap-[12px] overflow-y-scroll  ${
+          className={`grid gap-[12px] scrollbar scrollbar-thumb-[#d4d4d4]  scrollbar-w-[7px] scrollbar-thumb-rounded-full ${
             selectedJob != undefined && "hidden xl:grid"
           }`}>
           {AllQuery.isLoading &&
@@ -107,7 +102,7 @@ export default function DetailJob() {
 
           {DetailQuery.isSuccess && (
             <div className="lm:grid lm:grid-cols-7 lm:col-span-7">
-              <div className="lm:grid col-span-5 lm:border-r-[1.3px] border-[#bfbfbf]">
+              <div className="lm:grid col-span-5 lm:border-r-[1.3px] border-[#e4e4e7]">
                 <div className="sm:grid flex flex-col w-full col-span-6 grid-cols-6 justify-between gap-[12px] items-start px-[15px] sm:px-[32px] pt-[32px] lg:pl-[56px] lg:pt-[32px] sm:items-center mb-[24px]">
                   <div className="sm:overflow-hidden col-span-5">
                     <h1 className="font-[800] text-[#303533]  text-wrap text-[24px] truncate">
@@ -121,7 +116,7 @@ export default function DetailJob() {
                     </div>
                   </div>
                 </div>
-                <Separator className="mt-[15px]  bg-[#bfbfbf]" />
+                <Separator className="mt-[15px]  bg-[#e4e4e7]" />
                 <div className="flex w-full lm:hidden p-[15px] sm:p-[32px] ">
                   <div className="flex flex-col w-full gap-[24px]">
                     <span className="font-[600] text-[1.25rem]">
@@ -129,7 +124,7 @@ export default function DetailJob() {
                     </span>
                     <div className="flex flex-row gap-[6px]">
                       <span className="text-[14px] font-[600]">Location:</span>
-                      <span className=" text-wrap  font-[500] text-[14px] ">
+                      <span className=" text-wrap  font-[400] text-[14px] ">
                         {DetailQuery.data?.job[0]?.location}
                       </span>
                     </div>
@@ -155,7 +150,7 @@ export default function DetailJob() {
                       <span className="text-[14px] font-[600]">
                         last updated:
                       </span>
-                      <span className="font-[500] text-[14px]">
+                      <span className="font-[400] text-[14px]">
                         {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
                       </span>
                     </div>
@@ -169,7 +164,7 @@ export default function DetailJob() {
                   </div>
                 </div>
 
-                <div className="content-intro border-t border-[#bfbfbf] ">
+                <div className="content-intro border-t border-[#e4e4e7] ">
                   <div
                     className="px-[15px] sm:px-[32px] py-[15px] lg:px-[56px] lg:py-[32px]"
                     dangerouslySetInnerHTML={{
@@ -186,8 +181,8 @@ export default function DetailJob() {
                       {DetailQuery.data?.job[0]?.companyName}
                     </span>
                     <div className="flex flex-col gap-[6px]">
-                      <span className="text-[14px] font-[600]">Location</span>
-                      <span className=" text-wrap  font-[500] text-[14px] ">
+                      <span className="text-[15px] font-bold">Location</span>
+                      <span className=" text-wrap  font-[400] text-[14px] ">
                         {DetailQuery.data?.job[0]?.location}
                       </span>
                     </div>
@@ -203,23 +198,25 @@ export default function DetailJob() {
                     )}
 
                     <div className="flex flex-col gap-[6px] items-start">
-                      <span className="text-[14px] font-[600]">Job type</span>
+                      <span className="text-[15px] font-bold capitalize">
+                        Job type
+                      </span>
                       <div className="bg-[#f1e3ff] px-[5px] py-[3px] text-[14px] max-w-max text-[#7744aa] font-semibold rounded-[4px]">
                         {DetailQuery.data?.job[0]?.employmentType}
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-[6px] items-start">
-                      <span className="text-[14px] font-[600]">
+                      <span className="text-[15px] font-bold capitalize">
                         last updated
                       </span>
-                      <span className="text-[14px] text-wrap font-[500]">
+                      <span className="text-[14px] text-wrap font-[400]">
                         {DetailQuery.data?.job[0]?.updatedAt.slice(0, 10)}
                       </span>
                     </div>
                   </div>
 
-                  <Separator className="my-[15px]  bg-[#bfbfbf]" />
+                  <Separator className="my-[15px]  bg-[#e4e4e7]" />
 
                   <div className="w-full py-[20px] px-[15px] lg:px-[32px] flex">
                     <a

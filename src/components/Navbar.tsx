@@ -163,10 +163,10 @@ export default function Navbar() {
       <div>
         {isSidebarOpen && (
           <div className="navmenu">
-            <div className="px-12 py-16 z-20 " onClick={toggleOpen}>
+            <div className="px-9 py-9 z-20 " onClick={toggleOpen}>
               <CloseCircle size="32" color="#fff" />
             </div>
-            <div className=" flex flex-col gap-[24px] right-0  top-0 bg-neutral-900  h-full p-12 pb-2 rounded-s-2xl">
+            <div className=" flex flex-col gap-[24px] right-0  top-0 bg-neutral-900  h-full p-9 pb-2 rounded-s-2xl">
               <div>
                 <a href="" className="font-normal text-[#fff] text-20-title">
                   Find Jobs
