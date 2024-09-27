@@ -26,7 +26,12 @@ export default function Navbar() {
     setSidebarOpen(!isSidebarOpen);
     console.log("first", isSidebarOpen);
   };
-  const Search = () => {
+  const handleSearch = (
+    e:
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e?.preventDefault();
     setJobTitle(searchTerm);
     setJobLocation(searchLocation);
   };
@@ -46,8 +51,8 @@ export default function Navbar() {
             <ul className="gap-[30px] hidden lm:flex text-[16px] font-[450]">
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.pathname == "/"
-                    ? "border-[#0f7afd]"
+                  location.pathname == "/" && !location.hash
+                    ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
@@ -56,7 +61,7 @@ export default function Navbar() {
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
                   location.hash == "#findtalent"
-                    ? "border-[#0f7afd]"
+                    ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
@@ -65,7 +70,7 @@ export default function Navbar() {
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
                   location.hash == "#uploadjob"
-                    ? "border-[#0f7afd]"
+                    ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
@@ -74,7 +79,7 @@ export default function Navbar() {
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
                   location.hash == "#aboutus"
-                    ? "border-[#0f7afd]"
+                    ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
@@ -119,44 +124,46 @@ export default function Navbar() {
             </div>
           </div>
           {!isDetailPage && (
-            <div className="flex flex-col sm:flex-row w-full bg-white gap-[20px] rounded-[15px] sm:rounded-[45px] sm:h-[90px] px-3">
-              <div className="flex flex-col sm:grid sm:grid-cols-2 w-full gap-[30px] sm:items-center sm:divide-x-[3px] py-3">
-                <div className="sm:px-3 grow flex items-center h-full">
-                  <SearchNormal1 size="36" color="#8C8C8C" />
-                  <Input
-                    value={searchTerm}
-                    type="search"
-                    placeholder="Job title or keyword"
-                    onChange={(e) => {
-                      setSearchTerm(e.target.value);
-                    }}
-                    className="placeholder:text-[#808080] text-[#808080] px-5 cursor-pointer text-[22px]"
-                  />
+            <form onSubmit={(e) => handleSearch(e)}>
+              <div className="flex flex-col sm:flex-row w-full bg-white rounded-[15px] sm:rounded-[35px] sm:h-[70px] md:rounded-[45px] md:h-[90px] px-3">
+                <div className="flex flex-col gap-[20px] sm:gap-0 sm:grid sm:grid-cols-2 w-full sm:items-center sm:divide-x-[3px] py-3">
+                  <div className="sm:px-3 grow flex items-center h-full">
+                    <SearchNormal1 size="36" color="#8C8C8C" />
+                    <Input
+                      value={searchTerm}
+                      type="search"
+                      placeholder="Job title or keyword"
+                      onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                      }}
+                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer sm:text-[18px] text-[22px]"
+                    />
+                  </div>
+                  <div className=" grow flex items-center h-full">
+                    <div className="sm:pl-8"></div>
+                    <Map1 size="36" color="#8C8C8C" />
+                    <Input
+                      prefix="Prefix"
+                      value={searchLocation}
+                      type="search"
+                      placeholder="Add country or city"
+                      onChange={(e) => {
+                        setSearchLocation(e.target.value);
+                      }}
+                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer sm:text-[18px] text-[22px]"
+                    />
+                  </div>
                 </div>
-                <div className="sm:px-3 grow flex items-center h-full">
-                  <div className="sm:pl-8"></div>
-                  <Map1 size="36" color="#8C8C8C" />
-                  <Input
-                    prefix="Prefix"
-                    value={searchLocation}
-                    type="search"
-                    placeholder="Add country or city"
-                    onChange={(e) => {
-                      setSearchLocation(e.target.value);
-                    }}
-                    className="placeholder:text-[#808080] text-[#808080] px-5 cursor-pointer text-[22px]"
-                  />
+                <div className="h-full py-2">
+                  <Button
+                    onClick={(e) => handleSearch(e)}
+                    className="text-[1.1rem] w-full h-full sm:w-[120px] md:w-[160px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[45px] transition-all"
+                  >
+                    <span className="p-1">Search</span>
+                  </Button>
                 </div>
               </div>
-              <div className="h-full py-2">
-                <Button
-                  onClick={Search}
-                  className="text-[1.1rem] w-full h-full sm:w-[160px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[45px] transition-all"
-                >
-                  <span className="p-1">Search</span>
-                </Button>
-              </div>
-            </div>
+            </form>
           )}
         </div>
       </div>
