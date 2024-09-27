@@ -136,7 +136,7 @@ export default function Navbar() {
                       onChange={(e) => {
                         setSearchTerm(e.target.value);
                       }}
-                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer sm:text-[18px] text-[22px]"
+                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer text-[18px] sm:text-[20px] md:text-[22px]"
                     />
                   </div>
                   <div className=" grow flex items-center h-full">
@@ -150,7 +150,7 @@ export default function Navbar() {
                       onChange={(e) => {
                         setSearchLocation(e.target.value);
                       }}
-                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer sm:text-[18px] text-[22px]"
+                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer text-[18px] sm:text-[20px] md:text-[22px]"
                     />
                   </div>
                 </div>
