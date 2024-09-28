@@ -17,5 +17,6 @@ export default interface Job {
   city?: string;
   state?: string;
   employmentType?: string;
+  updatedAt?: string;
   jobDescriptionRawHtml?: string;
 }

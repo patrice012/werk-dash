@@ -1,38 +1,37 @@
-import {
-  CloseCircle,
-  HambergerMenu,
-  Map1,
-  Notification,
-  SearchNormal1,
-} from "iconsax-react";
-import profile from "/assets/profileImg.png";
+import { CloseCircle, HambergerMenu, Map1, SearchNormal1 } from "iconsax-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useFilter } from "@/context/filterContext";
+import { searchTermProps } from "@/helpers/types";
 
-export default function Navbar() {
+export default function Navbar({
+  useSearchbar,
+  onSubmit,
+}: {
+  useSearchbar?: boolean;
+  onSubmit?: (value: searchTermProps) => void;
+}) {
   const location = useLocation();
-  const isDetailPage = location.pathname.startsWith("/job/");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
-  const { setJobTitle, setJobLocation } = useFilter();
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleOpen = () => {
     setSidebarOpen(!isSidebarOpen);
-    console.log("first", isSidebarOpen);
   };
-  const handleSearch = (
+
+  const handleSubmit = (
     e:
       | React.FormEvent<HTMLFormElement>
       | React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    e?.preventDefault();
-    setJobTitle(searchTerm);
-    setJobLocation(searchLocation);
+    e.preventDefault();
+    e.stopPropagation();
+    if (onSubmit) {
+      onSubmit({ jobTitle: searchTerm, jobLocation: searchLocation });
+    }
   };
 
   return (
@@ -59,30 +58,21 @@ export default function Navbar() {
               </li>
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#findtalent"
+                  location.hash == "#discord"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
-                <Link to={"#findtalent"}>Find Talent</Link>
+                <Link to={"#discord"}>Discord</Link>
               </li>
               <li
                 className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#uploadjob"
+                  location.hash == "#telegram"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
               >
-                <Link to={"#uploadjob"}>Upload Job</Link>
-              </li>
-              <li
-                className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "#aboutus"
-                    ? "border-[#0f7afd] text-[#0f7afd]"
-                    : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
-              >
-                <Link to={"#aboutus"}>About Us</Link>
+                <Link to={"#telegram"}>Telegram</Link>
               </li>
             </ul>
           </nav>
@@ -95,22 +85,9 @@ export default function Navbar() {
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
-          <div className="self-center mt-2 hidden gap-[24px] items-center lm:flex">
-            <div className="p-[6px] border border-[#1E1E1E] rounded-full bg-[#1E1E1E] relative">
-              <Notification
-                size={28}
-                color="white"
-                className="cursor-pointer"
-              />
-              <div className="absolute top-[6px] right-[8px] size-[10px] rounded-full bg-[#0f7afd]"></div>
-            </div>
-            <div className="flex gap-[12px] items-center text-white cursor-pointer">
-              <span className="text-[15px] sm:text-[18px] font-normal">
-                Kang Addin
-              </span>
-              <img src={profile} className="w-[40px]" alt="" />
-            </div>
-          </div>
+          <button className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex">
+            Custom Button
+          </button>
         </div>
 
         <div className="flex flex-col gap-1 sm:gap-3 mt-4 sm:mt-10">
@@ -122,8 +99,8 @@ export default function Navbar() {
               <img className="h-full " src="/unnamed.png" alt="" />
             </div>
           </div>
-          {!isDetailPage && (
-            <form onSubmit={(e) => handleSearch(e)}>
+          {useSearchbar && (
+            <form onSubmit={handleSubmit}>
               <div className="flex flex-col sm:flex-row w-full bg-white rounded-[15px] sm:rounded-[35px] sm:h-[70px] md:rounded-[45px] md:h-[90px] px-3">
                 <div className="flex flex-col gap-[20px] sm:gap-0 sm:grid sm:grid-cols-2 w-full sm:items-center sm:divide-x-[3px] py-3">
                   <div className="sm:px-3 grow flex items-center h-full">
@@ -155,7 +132,7 @@ export default function Navbar() {
                 </div>
                 <div className="h-full py-2">
                   <Button
-                    onClick={(e) => handleSearch(e)}
+                    onClick={handleSubmit}
                     className="text-[1.1rem] w-full h-full sm:w-[120px] md:w-[160px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[45px] transition-all"
                   >
                     <span className="p-1">Search</span>
@@ -180,17 +157,12 @@ export default function Navbar() {
               </div>
               <div>
                 <a href="" className="font-normal text-[#fff] text-20-title">
-                  Find Talent
+                  Discord
                 </a>
               </div>
               <div>
                 <a href="" className="font-normal  text-[#fff] text-20-title">
-                  Upload Job
-                </a>
-              </div>
-              <div>
-                <a href="" className="font-normal text-[#fff] text-20-title">
-                  About Us
+                  Telegram
                 </a>
               </div>
             </div>
