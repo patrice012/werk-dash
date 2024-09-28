@@ -43,7 +43,7 @@ export default function JobDetailsPage() {
 
   const handleSelectItem = (item: Job) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    navigate(`/job/${item._id} `, { state: { selectedItem: item } });
+    navigate(`/jobs/${item._id} `, { state: { selectedItem: item } });
   };
 
   const location = useLocation();
@@ -73,8 +73,8 @@ export default function JobDetailsPage() {
             {AllQuery.isLoading &&
               Array.from({ length: 9 }).map((_e, idx: number) => {
                 return (
-                  <div>
-                    <SkeletonCard key={idx} />
+                  <div key={idx}>
+                    <SkeletonCard />
                   </div>
                 );
               })}
