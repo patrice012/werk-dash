@@ -23,19 +23,28 @@ export default function HomePage() {
   const [currentPage] = useState(1);
   const [ref, inView] = useInView();
   const queryParams = new URLSearchParams(location.search);
-  const { jobTitle, jobLocation, jobTypes, setJobTitle, setJobLocation } =
-    useContext(FilterContext);
+  const {
+    jobTitle,
+    jobLocation,
+    jobTypes,
+    setJobTitle,
+    updatedAt,
+    setUpdatedAt,
+    setJobLocation,
+  } = useContext(FilterContext);
 
   //
   useEffect(() => {
     setJobTitle(queryParams.get("jobTitle") ?? "");
     setJobLocation(queryParams.get("jobLocation") ?? "");
+    setUpdatedAt(queryParams.get("updatedAt") ?? "");
   }, [location.search]);
 
   //
   const handleFilterUpdate = (values: searchTermProps) => {
     queryParams.set("jobTitle", values.jobTitle);
     queryParams.set("jobLocation", values.jobLocation);
+    queryParams.set("updatedAt", values.updatedAt ?? "");
     navigate({ search: queryParams.toString() });
   };
 
@@ -49,6 +58,7 @@ export default function HomePage() {
           searchValue: jobTitle,
           country: jobLocation,
           jobType: jobTypes,
+          updatedAt: updatedAt,
         },
       });
     },
@@ -78,7 +88,16 @@ export default function HomePage() {
         <span className="text-[#212222] font-medium text-40-title truncate ...">
           Recommended Jobs
         </span>
-        <button className="border text-[14px] sm:text-[18px] flex gap-[10px] border-[#6a6b6d] py-[8px] sm:py-3 px-[20px] font-[500] rounded-full transition ease-in-out duration-300 hover:bg-[#6a6b6d2b]  items-center  text-[#212222]">
+        <button
+          onClick={() => {
+            handleFilterUpdate({
+              jobTitle: "",
+              jobLocation: "",
+              updatedAt: "recents",
+            });
+          }}
+          className="border text-[14px] sm:text-[18px] flex gap-[10px] border-[#6a6b6d] py-[8px] sm:py-3 px-[20px] font-[500] rounded-full transition ease-in-out duration-300 hover:bg-[#6a6b6d2b]  items-center  text-[#212222]"
+        >
           <span className="truncate ...">Most recent</span>
           <Setting4 size={22} color="#212222" />
         </button>

@@ -6,4 +6,5 @@ export interface apiResponse {
 export interface searchTermProps {
   jobTitle: string;
   jobLocation: string;
+  updatedAt?: string;
 }

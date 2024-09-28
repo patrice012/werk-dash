@@ -4,6 +4,8 @@ import { createContext, useState, ReactNode } from "react";
 interface FilterContextType {
   jobTitle: string;
   setJobTitle: (title: string) => void;
+  updatedAt: string;
+  setUpdatedAt: (title: string) => void;
   jobLocation: string;
   setJobLocation: (location: string) => void;
   jobTypes: string[];
@@ -18,6 +20,8 @@ interface FilterContextType {
 const defaultFilterContext: FilterContextType = {
   jobTitle: "",
   setJobTitle: () => {},
+  updatedAt: "",
+  setUpdatedAt: () => {},
   jobLocation: "",
   setJobLocation: () => {},
   jobTypes: [],
@@ -34,6 +38,7 @@ export const FilterContext =
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
   const [jobTitle, setJobTitle] = useState("");
   const [jobLocation, setJobLocation] = useState("");
+  const [updatedAt, setUpdatedAt] = useState("");
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   const [experienceLevels, setExperienceLevels] = useState<string[]>([]);
 
@@ -62,6 +67,8 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
       value={{
         jobTitle,
         setJobTitle,
+        updatedAt,
+        setUpdatedAt,
         jobLocation,
         setJobLocation,
         jobTypes,
