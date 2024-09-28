@@ -1,58 +1,16 @@
-import { useState, useEffect } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import HomePage from "./pages/home.page";
+import JobDetailsPage from "./pages/job-details.page";
 import "./styles/index.min.css";
-import Page from "./components/Page";
-import DetailJob from "./components/DetailJob";
-import { Route, Routes, useLocation } from "react-router-dom";
-import Recommended from "./components/Recommended";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  // Effect to check screen size on mount
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1280) {
-        setIsSidebarOpen(true);
-      } else {
-        setIsSidebarOpen(false);
-      }
-    };
-
-    handleResize();
-
-    // Listen for window resize events
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const location = useLocation();
-
-  // Condition pour afficher ou cacher le sidebar
-  const isDetailPage = location.pathname.startsWith("/job/");
-
   return (
-    <div className="relative  ">
-      <Navbar />
-      {!isDetailPage && <Recommended />}
-      <div className="flex">
-        {!isDetailPage && (
-          <div className="sticky top-[10px] max-h-max z-5">
-            <Sidebar isSidebarOpen={isSidebarOpen} />
-          </div>
-        )}
-        <div className="chat-container">
-          <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="/job/:id" element={<DetailJob />} />
-          </Routes>
-        </div>
-      </div>
+    <div className="chat-container relative">
+      <Routes>
+        <Route path="/?" element={<HomePage />} />
+        <Route path="/jobs/:id" element={<JobDetailsPage />} />
+      </Routes>
     </div>
   );
 }

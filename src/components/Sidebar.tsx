@@ -1,32 +1,24 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { useFilter } from "@/context/filterContext";
-import { useNavigate } from "react-router-dom";
+import { FilterContext } from "@/context/filterContext";
+import { useContext } from "react";
 
-export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
+export default function Sidebar({
+  onTagItemPress,
+}: {
+  onTagItemPress: (value: string) => void;
+}) {
+  const { jobTypes, toggleJobType, setJobTypes } = useContext(FilterContext);
   return (
     <div
-      className={`sidebar ${
-        isSidebarOpen ? "open" : "closed"
-      } scrollbar scrollbar-thumb-[#d4d4d4] scrollbar-w-[7px] scrollbar-thumb-rounded-full`}
+      key="side-bar"
+      className="xl:sticky top-[10px] w-full xl:max-w-[300px] scrollbar scrollbar-thumb-[#d4d4d4] scrollbar-w-[7px] scrollbar-thumb-rounded-full"
     >
-      <SidebarContent />
-    </div>
-  );
-}
-
-export const SidebarContent = () => {
-  const { jobTypes, toggleJobType, setJobTypes, setJobTitle } = useFilter();
-  const navigate = useNavigate();
-
-  return (
-    <>
-      <div className="flex flex-col xs:grid xl:grid-cols-1 xs:grid-cols-2 xl:col-span-1 xxs:col-span-2 justify-between gap-5">
+      <div className="flex flex-col xs:grid xl:grid-cols-1 xs:grid-cols-2 xl:col-span-1 xs:col-span-2 justify-between gap-5">
         <div>
           <div className="flex w-full justify-between items-center">
             <span className="text-[#000] font-[600] text-[14px] sm:text-[18px]">
               Job type
             </span>
-
             <div className="flex items-center gap-3">
               <button
                 onClick={() => {
@@ -69,27 +61,19 @@ export const SidebarContent = () => {
                 Most popular
               </span>
             </div>
-            <div className="flex flex-col gap-[12px] pt-[12px]">
+            <div className="flex flex-col xl:flex-wrap gap-3 items-start pt-[12px]">
               {["DevOps", "Software", "Full-Stack", "Engineer"].map((level) => (
                 <div
-                  className="flex flex-col mb-2 w-full justify-start gap-[12px]"
-                  key={level}
+                  onClick={() => onTagItemPress(level)}
+                  className=" bg-[#d9d8d6] rounded-full text-[.82rem] sm:text-[18px] font-[500] transition ease-in-out duration-500 cursor-pointer max-w-max px-[15px] py-[10px] hover:bg-[#b6b5b4] "
                 >
-                  <div
-                    onClick={() => {
-                      navigate(`/?searchValue=${level}`);
-                      setJobTitle(level);
-                    }}
-                    className=" bg-[#d9d8d6] rounded-full text-[.82rem] sm:text-[18px] font-[500] transition ease-in-out duration-500 cursor-pointer max-w-max px-[15px] py-[10px] hover:bg-[#b6b5b4] "
-                  >
-                    <span>{level}</span>
-                  </div>
+                  <span>{level}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-};
+}

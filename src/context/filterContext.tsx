@@ -1,8 +1,8 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, ReactNode } from "react";
 
 // Define the shape of the filter context
 interface FilterContextType {
-  jobTilte: string;
+  jobTitle: string;
   setJobTitle: (title: string) => void;
   jobLocation: string;
   setJobLocation: (location: string) => void;
@@ -16,7 +16,7 @@ interface FilterContextType {
 
 // Provide a default value for the context (initial values)
 const defaultFilterContext: FilterContextType = {
-  jobTilte: "",
+  jobTitle: "",
   setJobTitle: () => {},
   jobLocation: "",
   setJobLocation: () => {},
@@ -28,10 +28,11 @@ const defaultFilterContext: FilterContextType = {
   toggleExperienceLevel: () => {},
 };
 
-const FilterContext = createContext<FilterContextType>(defaultFilterContext);
+export const FilterContext =
+  createContext<FilterContextType>(defaultFilterContext);
 
-export const FilterProvider = ({ children }: { children: any }) => {
-  const [jobTilte, setJobTitle] = useState("");
+export const FilterProvider = ({ children }: { children: ReactNode }) => {
+  const [jobTitle, setJobTitle] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   const [experienceLevels, setExperienceLevels] = useState<string[]>([]);
@@ -40,10 +41,9 @@ export const FilterProvider = ({ children }: { children: any }) => {
   const toggleJobType = (jobType: string) => {
     setJobTypes((prevJobTypes) => {
       const isSelected = prevJobTypes.includes(jobType);
-      const updatedJobTypes = isSelected
+      return isSelected
         ? prevJobTypes.filter((type) => type !== jobType)
         : [...prevJobTypes, jobType];
-      return updatedJobTypes;
     });
   };
 
@@ -51,17 +51,16 @@ export const FilterProvider = ({ children }: { children: any }) => {
   const toggleExperienceLevel = (experienceLevel: string) => {
     setExperienceLevels((prevExperienceLevels) => {
       const isSelected = prevExperienceLevels.includes(experienceLevel);
-      const updatedExperienceLevels = isSelected
+      return isSelected
         ? prevExperienceLevels.filter((level) => level !== experienceLevel)
         : [...prevExperienceLevels, experienceLevel];
-      return updatedExperienceLevels;
     });
   };
 
   return (
     <FilterContext.Provider
       value={{
-        jobTilte,
+        jobTitle,
         setJobTitle,
         jobLocation,
         setJobLocation,
@@ -71,10 +70,9 @@ export const FilterProvider = ({ children }: { children: any }) => {
         setExperienceLevels,
         toggleJobType,
         toggleExperienceLevel,
-      }}>
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );
 };
-
-export const useFilter = () => useContext(FilterContext);

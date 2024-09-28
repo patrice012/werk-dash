@@ -7,9 +7,9 @@ export const Card = ({
   onPress,
   isSelected,
 }: {
-  job: Job;
+  job?: Job;
   onPress: (item: unknown) => void;
-  isSelected: boolean;
+  isSelected?: boolean;
 }) => {
   return (
     <div
@@ -21,10 +21,10 @@ export const Card = ({
       <div className="grid w-full grid-cols-[5fr_1fr] gap-x-2 justify-between items-center">
         <div className="flex flex-col gap-[2px] overflow-hidden">
           <span className="font-[500] text-[#000] text-[1.15rem] truncate capitalize">
-            {job.jobTitle}
+            {job?.jobTitle}
           </span>
           <span className="text-[#4a4a4a] font-[500] text-[12px] truncate capitalize">
-            {job.companyName}
+            {job?.companyName}
           </span>
         </div>
         <div className="h-[54px] flex  justify-end">
@@ -33,7 +33,7 @@ export const Card = ({
       </div>
       <div className="flex gap-[8px]">
         <div className="bg-[#f1e3ff] px-[6px] py-[3px] text-[#7744aa] font-semibold text-[12px] rounded-[4px]">
-          {job.employmentType}
+          {job?.employmentType}
         </div>
       </div>
       <p
@@ -43,13 +43,13 @@ export const Card = ({
         }}
       />
       <Separator />
-      <div className="flex justify-between w-full items-center text-ellipsis overflow-hidden ">
-        <span className="text-[#4a4a4a] text-[14px] ">
+      <div className="flex gap-4 justify-between w-full items-center text-ellipsis overflow-hidden ">
+        <span className="text-[#4a4a4a] text-[14px] truncate ...">
           {job?.updatedAt?.slice(0, 10)}
         </span>
         <div className="flex gap-[6px] items-center">
-          <span className="text-[#888888] capitalize">
-            {job.city}, <span className="uppercase">{job.country}</span>
+          <span className="text-[#888888] capitalize truncate ...">
+            {job?.city}, <span className="uppercase">{job?.country}</span>
           </span>
         </div>
       </div>
