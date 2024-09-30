@@ -1,6 +1,6 @@
 import { Separator } from "./ui/separator";
 import Job from "@/models/job.model";
-import { Heart } from "iconsax-react";
+import { ArrowRight } from "iconsax-react";
 
 export const Card = ({
   job,
@@ -28,7 +28,7 @@ export const Card = ({
           </span>
         </div>
         <div className="h-[54px] flex  justify-end">
-          <Heart size="30" color="#888888" />
+          <ArrowRight size="30" color="#888888" />
         </div>
       </div>
       <div className="flex gap-[8px]">
