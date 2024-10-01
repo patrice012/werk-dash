@@ -8,6 +8,12 @@ body {
   font-family: "Space Grotesk";
 }
 
+.services {
+  background-color: #F3FAF7;
+  color: azure;
+  padding: 100px;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
