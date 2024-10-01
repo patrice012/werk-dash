@@ -71,6 +71,14 @@ export default function Navbar({
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
                 <Link to={"#telegram"}>Telegram</Link>
               </li>
+              <li
+                className={`hover:text-[#0f7afd] pt-[22px] ${
+                  location.hash == "/landing"
+                    ? "border-[#0f7afd] text-[#0f7afd]"
+                    : "border-transparent"
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
+                <Link to={"/landing"}>Page</Link>
+              </li>
             </ul>
           </nav>
           <div className="flex lm:hidden">
