@@ -1,4 +1,4 @@
-import { MoreHorizontal, Plus, Search } from "lucide-react";
+import { MoreHorizontal, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -22,10 +22,6 @@ import {
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input-dash";
 import { DashboardLayout } from "@/components/dashboard/Layout";
-import { RemoveTableItemDialog } from "@/components/dashboard/RemoveTableItem";
-
-import { NewComapaignDialog } from "@/components/dashboard/NewCompaign";
-import postReq from "@/helpers/postReq";
 export const description =
   "A products dashboard with a sidebar navigation and a main content area. The dashboard has a header with a search input and a user menu. The sidebar has a logo, navigation links, and a card with a call to action. The main content area shows an empty state with a call to action.";
 
@@ -42,26 +38,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { TableLoadingSkeleton } from "@/components/dashboard/TableSkeleton";
-import { EditComapaignDialog } from "../../components/dashboard/EditCompaign";
 import { Link } from "react-router-dom";
 import { NotFoundData } from "@/components/request/NotFoundData";
 import { ErrorRequest } from "@/components/request/ErrorRequest";
-import { CompaignType } from "./type";
 import { apiPOST } from "@/api/api";
 import { VITE_API_QUERY_LIMIT } from "@/helpers/constants";
 import { Checkbox } from "@/components/ui/checkbox";
 import { FilterContext } from "@/context/filterContext";
 import Job from "@/models/job.model";
 
-interface IDomain {
+/* interface IDomain {
   domain: string;
   status: string;
   scrapedAt: string;
-}
+} */
 
-type TCompaingType = Omit<CompaignType, "domains"> & {
+/* type TCompaingType = Omit<CompaignType, "domains"> & {
   domains: IDomain[];
-};
+}; */
 
 export function Dashboard() {
   const [user] = useCurrentUser();
