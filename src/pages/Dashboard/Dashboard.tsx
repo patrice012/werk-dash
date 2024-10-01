@@ -146,8 +146,8 @@ export function Dashboard() {
             }}
           />
         </div>
-        <div className="flex justify-between items-center  gap-[24px]">
-          <div className="flex gap-[24px]">
+        <div className="flex flex-col xl:flex-row xl:justify-between items-start md:items-center  gap-[24px]">
+          <div className="flex md:flex-row flex-col gap-[24px]">
             {[
               "Contract",
               "Full-Time",
@@ -191,7 +191,7 @@ export function Dashboard() {
                         <TableHead className="py-4">Job title</TableHead>
                         <TableHead className="py-4">job type</TableHead>
                         <TableHead className="py-4">Location</TableHead>
-                        <TableHead className="hidden md:table-cell py-4">
+                        <TableHead className="hidden xl:table-cell py-4">
                           last updated
                         </TableHead>
 
@@ -222,8 +222,8 @@ export function Dashboard() {
                                   <TableCell className="hidden md:table-cell py-4">
                                     {compaign?.employmentType}
                                   </TableCell>
-                                  <TableCell>{compaign?.location}</TableCell>
-                                  <TableCell className="hidden md:table-cell py-4">
+                                  <TableCell >{compaign?.location}</TableCell>
+                                  <TableCell className="hidden xl:table-cell py-4">
                                     {compaign?.updatedAt?.slice(0, 10)}
                                   </TableCell>
 

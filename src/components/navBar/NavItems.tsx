@@ -29,7 +29,7 @@ export function DesktopNavBar() {
         <LogoutUI />
       </div> */}
     </>
-  );
+  )
 }
 
 export function MobileNavBar() {
