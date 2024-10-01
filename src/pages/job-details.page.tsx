@@ -62,7 +62,7 @@ export default function JobDetailsPage() {
   return (
     <>
       <Navbar />
-      <div className="bg-[#f0f5fa] p-[15px]  md:p-[30px]">
+      <div className="bg-[#f0f5fa] p-[15px] text-[#000] md:p-[30px]">
         <div className="xl:grid xl:grid-cols-4 flex flex-col-reverse gap-[12px] items-start">
           {/* Première div - affichée uniquement au-dessus de 1024px */}
           <div

@@ -52,8 +52,7 @@ export default function Navbar({
                   location.pathname == "/" && !location.hash
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
-              >
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
                 <Link to={"/"}>Find Jobs</Link>
               </li>
               <li
@@ -61,8 +60,7 @@ export default function Navbar({
                   location.hash == "#discord"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
-              >
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
                 <Link to={"#discord"}>Discord</Link>
               </li>
               <li
@@ -70,8 +68,7 @@ export default function Navbar({
                   location.hash == "#telegram"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
-              >
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
                 <Link to={"#telegram"}>Telegram</Link>
               </li>
             </ul>
@@ -80,14 +77,17 @@ export default function Navbar({
             <div
               className="border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
               id="openSidebar"
-              onClick={toggleOpen}
-            >
+              onClick={toggleOpen}>
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
-          <button className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex">
-            Custom Button
-          </button>
+          <div className="flex gap-[12px] items-center">
+            <Link
+              to="/auth/login"
+              className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex">
+              Login
+            </Link>
+          </div>
         </div>
 
         <div className="flex flex-col gap-1 sm:gap-3 mt-4 sm:mt-10">
@@ -102,7 +102,7 @@ export default function Navbar({
           {useSearchbar && (
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col sm:flex-row w-full bg-white rounded-[15px] sm:rounded-[35px] sm:h-[70px] md:rounded-[45px] md:h-[90px] px-3">
-                <div className="flex flex-col gap-[20px] sm:gap-0 sm:grid sm:grid-cols-2 w-full sm:items-center sm:divide-x-[3px] py-3">
+                <div className="flex flex-col gap-[20px] sm:gap-0 sm:grid sm:grid-cols-2 w-full sm:items-center sm:divide-x-[3px] py-3 sm:divide-[#808080]">
                   <div className="sm:px-3 grow flex items-center h-full">
                     <SearchNormal1 size="36" color="#8C8C8C" />
                     <Input
@@ -112,7 +112,7 @@ export default function Navbar({
                       onChange={(e) => {
                         setSearchTerm(e.target.value);
                       }}
-                      className="placeholder:text-[#808080] text-[#808080] cursor-pointer text-[18px] sm:text-[20px] md:text-[22px]"
+                      className="placeholder:text-[#808080] text-[#808080]  cursor-pointer text-[18px] sm:text-[20px] md:text-[22px]"
                     />
                   </div>
                   <div className=" grow flex items-center h-full">
@@ -133,8 +133,7 @@ export default function Navbar({
                 <div className="h-full py-2">
                   <Button
                     onClick={handleSubmit}
-                    className="text-[1.1rem] w-full h-full sm:w-[120px] md:w-[160px] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[45px] transition-all"
-                  >
+                    className="text-[1.1rem] w-full h-full sm:w-[120px] md:w-[160px] text-[#fff] bg-[#2A85FF] hover:bg-[#2A85FF]/70 rounded-[45px] transition-all">
                     <span className="p-1">Search</span>
                   </Button>
                 </div>

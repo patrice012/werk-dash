@@ -46,7 +46,7 @@ export default function Sidebar({
                 key={idx}
               >
                 <Checkbox
-                  className="size-5 rounded-[5px]"
+                  className="size-5 rounded-[5px] border-[#000]"
                   checked={jobTypes.includes(type)}
                   onCheckedChange={() => toggleJobType(type)}
                 />
@@ -78,7 +78,7 @@ export default function Sidebar({
                         isSelected
                           ? "bg-[#0f7afdae] border-[#0f7afd] hover:bg-[#0f7afdab]"
                           : "bg-[#d9d8d6] border-[#bdbdbd] hover:bg-[#b6b5b4]"
-                      }  border-2 border-solid rounded-full text-[.82rem] sm:text-[18px] font-[500] transition ease-in-out duration-500 cursor-pointer max-w-max px-[15px] py-[10px]`}
+                      }  border-2 border-solid rounded-full text-[.82rem] sm:text-[18px] font-[500] transition ease-in-out duration-500 cursor-pointer text-[#000] max-w-max px-[15px] py-[10px]`}
                     >
                       <span>{level}</span>
                     </div>
