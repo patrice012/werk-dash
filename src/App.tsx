@@ -13,7 +13,6 @@ import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { DashBoardResetPassword } from "./pages/Dashboard/ResetPassword/ResetPassword";
 import { SettingsPage } from "./pages/Settings/Settings";
 import EditAccountPage from "./pages/Dashboard/EditAccount/EditAccount";
-import { ViewCompaign } from "./pages/Dashboard/ViewCompaign";
 import { ThemeProvider } from "./components/theme/themeProvider";
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
             <Route path="/edit-account" element={<EditAccountPage />} />
             <Route path="/settings" element={<SettingsPage />} />
 
-            <Route path="/compaign/:id" element={<ViewCompaign />} />
 
             {/* auth pages */}
             <Route path="/auth/login" element={<Login />} />
