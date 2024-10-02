@@ -60,6 +60,7 @@ export default {
       sm: "640px",
       md: "768px",
       lm: "840px",
+      ll: "1200px",
     },
   },
   plugins: [

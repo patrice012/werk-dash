@@ -4,8 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .bg-gradient-custom {
+    background: linear-gradient(to bottom, #fff 50%, #001e00 50%);
+  }
+}
+
 body {
   font-family: "Space Grotesk";
+}
+
+.hero {
+  background-color: black;
+  background-image: url("/assets/Cover.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @layer base {
