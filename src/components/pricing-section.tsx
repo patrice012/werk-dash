@@ -11,12 +11,12 @@ const PricingSection = () => {
   return (
     <div className="w-full">
       <div className="">
-        <div className="px-44 bg-white py-20">
+        <div className="px-8 lg:px-44 bg-white py-20">
           <div className="flex flex-col gap-5 justify-center items-center">
-            <h1 className="text-5xl text-[#001E00] font-semibold">
+            <h1 className="text-center text-5xl text-[#001E00] font-semibold">
               One simple pricing plan.
             </h1>
-            <p>
+            <p className="text-center">
               Boostlancer is currently open to Upwork sellers on subscription
               basis. You can cancel your subscription in any moment.
             </p>
@@ -33,8 +33,8 @@ const PricingSection = () => {
             </span>
           </div>
         </div>
-        <div className="bg-gradient-custom flex items-center justify-center shadow-md px-[180px]">
-          <div className="w-full grid grid-cols-2 bg-[#F7F7FB] px-[20px] py-[64px] rounded-[10px]">
+        <div className="bg-gradient-custom flex items-center justify-center shadow-md px-8 lg:px-[180px]">
+          <div className="w-full grid grid-cols-2 bg-[#F7F7FB] px-[20px] py-8 md:py-[64px] rounded-[10px]">
             <div className="flex flex-col items-center">
               <span className="text-[#14A800]">starter</span>
               <span className="text-[80px] font-bold">
@@ -47,7 +47,7 @@ const PricingSection = () => {
               </button>
             </div>
 
-            <div className="flex flex-col gap-5 ml-4">
+            <div className="flex flex-col gap-4 md:gap-5 ml-4">
               <div className="flex gap-4">
                 <img src={Arrow} alt="" /> Custom Cover Letters,
               </div>
@@ -67,9 +67,9 @@ const PricingSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-14 text-white px-20 py-20 bg-[#001E00]">
+        <div className="grid grid-cols-2 gap-14 text-white px-8 md:px-20 py-20 bg-[#001E00]">
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex lg:items-center gap-3 items-start">
               <img src={Check} alt="" />
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
@@ -82,7 +82,7 @@ const PricingSection = () => {
             </p>
           </div>
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex lg:items-center gap-3 items-start">
               <img src={Check} alt="" />
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
@@ -95,7 +95,7 @@ const PricingSection = () => {
             </p>
           </div>
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex lg:items-center gap-3 items-start">
               <img src={Check} alt="" />
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
@@ -108,7 +108,7 @@ const PricingSection = () => {
             </p>
           </div>
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex lg:items-center gap-3 items-start">
               <img src={Check} alt="" />
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
@@ -123,11 +123,11 @@ const PricingSection = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 justify-center items-center py-20 bg-white">
-        <h1 className="text-5xl text-[#001E00] font-semibold">
+      <div className="flex flex-col gap-5 justify-center items-center px-8 lg:px-44 py-20 bg-white">
+        <h1 className="text-center text-5xl text-[#001E00] font-semibold">
           Build Fast, Launch Faster
         </h1>
-        <p>
+        <p className="text-center">
           Candles us galleons snape knut trace. Snare side-along hedwig kittens
           silver cabinet wool.
         </p>
@@ -137,17 +137,17 @@ const PricingSection = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-[#001E00] text-white px-[100px] pt-20 pb-8">
-        <div className="flex justify-between">
-          <div className="basis-1/2">
-            <h1 className="text-[24px] font-bold">BOOSTLANCER</h1>
-            <p>
+      <div className="bg-[#001E00] text-white px-8 lg:px-[100px] pt-10 lg:pt-20 pb-8">
+        <div className="flex flex-col gap-5 lg:gap-0 items-center justify-between">
+          <div className="lg:basis-1/2">
+            <h1 className="text-[24px] font-bold text-center">BOOSTLANCER</h1>
+            <p className="text-center">
               Candles us galleons snape knut trace. Snare side-along hedwig
               kittens silver cabinet wool. Candles us galleons snape knut trace.
               Snare side.
             </p>
           </div>
-          <div className="basis-1/2 border p-2 flex items-center rounded-[100px] justify-between max-w-max h-[76px]">
+          <div className="lg:basis-1/2 border p-2 flex items-center rounded-[100px] justify-between max-w-max h-[76px]">
             <div className="ml-6 flex gap-3 items-center">
               <Sms />
               <input
@@ -164,7 +164,7 @@ const PricingSection = () => {
 
         <div className="w-full h-[1px] my-10 bg-[#14A800]"></div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 md:gap-0 items-center justify-between">
           <h4>LitCollective © 2022</h4>
           <div className="flex items-center gap-3">
             <img src={Behance} alt="" />
