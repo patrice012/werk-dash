@@ -15,7 +15,7 @@ export default function Freelancer() {
             Spells above ghost trevor mr nick cupboard portkey bott’s blubber.
             Many patronus bedroom revision ludo.
           </span>
-          <button className="border border-[#001E00] bg-[#14A800] rounded-full text-[#fff] px-[24px] py-[16px] transition ease-in-out duration-500 hover:bg-[#14a800a3]">
+          <button className="border border-[#001E00] bg-[#0f7afd] rounded-full text-[#fff] px-[24px] py-[16px] transition ease-in-out duration-500 hover:bg-[#0f7afda3]">
             Learn more
           </button>
         </div>
