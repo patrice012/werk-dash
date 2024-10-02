@@ -1,7 +1,7 @@
 
 function HeroSection() {
   return (
-    <div className="relative flex flex-col px-[24px] md:px-[50px] lg:px-[150px] pt-[50px] md:pt-[120px] pb-[50px] gap-[56px] bg-black">
+    <div className="relative flex flex-col px-[24px] md:px-[50px] lg:px-[150px] pt-[50px] md:pt-[120px] pb-[50px] gap-[56px]">
       <img src="/assets/cakephp.png"className="absolute top-1 "/>
       <img src="/assets/swift.png"className="absolute top-5 right-[232px]"/>
       <img src="/assets/django.png"className="absolute top-[332px] left-[80px] "/>
@@ -27,7 +27,7 @@ function HeroSection() {
       </div>
       <div className="flex flex-col gap-[30px] md:gap-[50px] lg:gap-[120px]  justify-center items-center">
         <div className="flex gap-[16px] items-center justify-start">
-          <button className="bg-[#3EE1A6] font-[700] text-[#000000] px-[56px] py-[16px] rounded-full transition ease-in-out hover:bg-[#49a080]  duration-300 ">
+          <button className="bg-[#3EE1A6] text-24-title font-[700] text-[#000000] px-[56px] py-[16px] rounded-full transition ease-in-out hover:bg-[#49a080]  duration-300 ">
             GET FREE CONSULTATION
           </button>
         </div>

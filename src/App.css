@@ -8,10 +8,11 @@ body {
   font-family: "Space Grotesk";
 }
 
-.services {
-  background-color: #F3FAF7;
-  color: azure;
-  padding: 100px;
+.hero {
+  background-color: black;
+  background-image: url("/assets/Cover.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @layer base {

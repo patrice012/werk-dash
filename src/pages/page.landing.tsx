@@ -8,7 +8,9 @@ export default function PageLanding() {
   return (
     <div>
       <Navbar />
-      <HeroSection />
+      <div className="hero">
+        <HeroSection />
+      </div>
       <Services />
       <Freelancer />
       <Choice />
