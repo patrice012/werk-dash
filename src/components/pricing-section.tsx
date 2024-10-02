@@ -25,10 +25,10 @@ const PricingSection = () => {
             <span className="">Monthly</span>
             <label className="inline-flex relative items-center cursor-pointer">
               <input type="checkbox" className="sr-only peer" />
-              <div className="w-11 h-6 bg-gray rounded-full peer peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:bg-gray-700 peer-checked:bg-[#14A800]"></div>
+              <div className="w-11 h-6 bg-gray rounded-full peer peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:bg-gray-700 peer-checked:bg-[#0f7afd]"></div>
             </label>
             <span className="">Yearly</span>
-            <span className="px-4 py-2 bg-[#14A800] text-white rounded-full text-sm">
+            <span className="px-4 py-2 bg-[#0f7afd] text-white rounded-full text-sm">
               Save 25%
             </span>
           </div>
@@ -36,13 +36,13 @@ const PricingSection = () => {
         <div className="bg-gradient-custom flex items-center justify-center shadow-md px-[180px]">
           <div className="w-full grid grid-cols-2 bg-[#F7F7FB] px-[20px] py-[64px] rounded-[10px]">
             <div className="flex flex-col items-center">
-              <span className="text-[#14A800]">starter</span>
+              <span className="text-[#0f7afd]">starter</span>
               <span className="text-[80px] font-bold">
                 <span className="text-[30px] font-bold">$</span>19
                 <span className="text-[30px] font-bold">/mo</span>
               </span>
               <span>Per user</span>
-              <button className="bg-[#14A800] text-white rounded-[100px] max-w-max px-8 py-4 mt-4 border">
+              <button className="bg-[#0f7afd] text-white rounded-[100px] max-w-max px-8 py-4 mt-4 border">
                 Start 14 day free trial
               </button>
             </div>
@@ -131,7 +131,7 @@ const PricingSection = () => {
           Candles us galleons snape knut trace. Snare side-along hedwig kittens
           silver cabinet wool.
         </p>
-        <button className="bg-[#14A800] text-white rounded-[100px] max-w-max px-8 py-4 border">
+        <button className="bg-[#0f7afd] text-white rounded-[100px] max-w-max px-8 py-4 border">
           Get early access
         </button>
       </div>
@@ -156,13 +156,13 @@ const PricingSection = () => {
                 placeholder="Email address"
               />
             </div>
-            <button className="bg-[#14A800] text-white rounded-[100px] max-w-max px-8 h-full">
+            <button className="bg-[#0f7afd] text-white rounded-[100px] max-w-max px-8 h-full">
               Get started
             </button>
           </div>
         </div>
 
-        <div className="w-full h-[1px] my-10 bg-[#14A800]"></div>
+        <div className="w-full h-[1px] my-10 bg-[#0f7afd]"></div>
 
         <div className="flex items-center justify-between">
           <h4>LitCollective © 2022</h4>
