@@ -71,8 +71,23 @@ export default function Navbar({
                 } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
                 <Link to={"#telegram"}>Telegram</Link>
               </li>
+              <li
+                className={`hover:text-[#0f7afd] pt-[22px] ${
+                  location.hash == "/landing"
+                    ? "border-[#0f7afd] text-[#0f7afd]"
+                    : "border-transparent"
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
+                <Link to={"/landing"}>Page</Link>
+              </li>
             </ul>
           </nav>
+          <div className="flex gap-[12px] items-center">
+            <Link
+              to="/auth/login"
+              className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex">
+              Login
+            </Link>
+          </div>
           <div className="flex lm:hidden">
             <div
               className="border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
@@ -80,13 +95,6 @@ export default function Navbar({
               onClick={toggleOpen}>
               <HambergerMenu size="32" color="#fff" />
             </div>
-          </div>
-          <div className="flex gap-[12px] items-center">
-            <Link
-              to="/auth/login"
-              className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex">
-              Login
-            </Link>
           </div>
         </div>
 

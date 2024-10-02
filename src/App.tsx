@@ -14,6 +14,7 @@ import { DashBoardResetPassword } from "./pages/Dashboard/ResetPassword/ResetPas
 import { SettingsPage } from "./pages/Settings/Settings";
 import EditAccountPage from "./pages/Dashboard/EditAccount/EditAccount";
 import { ThemeProvider } from "./components/theme/themeProvider";
+import PageLanding from "./pages/page.landing";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/?" element={<HomePage />} />
           <Route path="/jobs/:id" element={<JobDetailsPage />} />
+          <Route path="/landing" element={<PageLanding />} />
         </Routes>
       </div>
       <ThemeProvider>
