@@ -12,7 +12,7 @@ const PricingSection = () => {
     <div className="w-full">
       <div className="bg-white pt-[100px] pb-[94px]">
         <div className="flex flex-col gap-20 items-center justify-center">
-          <div className="px-[180px]">
+          {/* <div className="px-[180px]">
             <div className="flex flex-col gap-5 justify-center items-center">
               <h1 className="text-5xl text-[#001E00] font-semibold">
                 One simple pricing plan.
@@ -34,40 +34,39 @@ const PricingSection = () => {
               </span>
             </div>
           </div>
-
-          <div className="px-[180px] flex flex-col gap-[91px] pb-[82px] bg-[#001E00] relative">
-            <div className="bg-[#F7F7FB] w-full flex items-center justify-around py-[64px] px-20 shadow-md rounded-[20px] relative">
-              <div className="flex flex-col self-end items-center gap-10">
-                <div className="flex flex-col items-center">
-                  <span>starter</span>
-                  <span className="text-[80px] font-bold">
-                    <span className="text-[30px] font-bold">$</span>19
-                    <span className="text-[30px] font-bold">/mo</span>
-                  </span>
-                  <span>Per user</span>
-                </div>
-                <button className="bg-[#14A800] text-white rounded-[100px] max-w-max px-8 py-4">
-                  Start 14 day free trial
-                </button>
+          <div className="bg-[#F7F7FB] w-full flex items-center justify-around py-[64px] px-20 shadow-md rounded-[20px]">
+            <div className="flex flex-col self-end items-center gap-10">
+              <div className="flex flex-col items-center">
+                <span>starter</span>
+                <span className="text-[80px] font-bold">
+                  <span className="text-[30px] font-bold">$</span>19
+                  <span className="text-[30px] font-bold">/mo</span>
+                </span>
+                <span>Per user</span>
               </div>
-              <div className="flex flex-col gap-5">
-                <div className="flex gap-4">
-                  <img src={Arrow} /> Custom Cover Letters,
-                </div>
-                <div className="flex gap-4">
-                  <img src={Arrow} /> Priority support
-                </div>
-                <div className="flex gap-4">
-                  <img src={Arrow} /> unlimited notifications.
-                </div>
-                <div className="flex gap-4">
-                  <img src={Arrow} /> 14 day free trial
-                </div>
-                <div className="flex gap-4">
-                  <img src={Arrow} /> Lifetime updates
-                </div>
+              <button className="bg-[#14A800] text-white rounded-[100px] max-w-max px-8 py-4">
+                Start 14 day free trial
+              </button>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="flex gap-4">
+                <img src={Arrow} /> Custom Cover Letters,
+              </div>
+              <div className="flex gap-4">
+                <img src={Arrow} /> Priority support
+              </div>
+              <div className="flex gap-4">
+                <img src={Arrow} /> unlimited notifications.
+              </div>
+              <div className="flex gap-4">
+                <img src={Arrow} /> 14 day free trial
+              </div>
+              <div className="flex gap-4">
+                <img src={Arrow} /> Lifetime updates
               </div>
             </div>
+          </div>
+          <div className="px-[180px] flex flex-col pb-[82px] bg-[#001E00]">
             <div className="grid grid-cols-2 gap-14 text-white">
               <div>
                 <div className="flex items-center gap-3">
@@ -120,6 +119,109 @@ const PricingSection = () => {
                   goblet vanishing. Candles us galleons snape knut trace. Snare
                   side-along hedwig kittens silver cabinet wool.
                 </p>
+              </div>
+            </div>
+          </div> */}
+
+          <div className="w-full relative border">
+            {/* Section blanche */}
+            <div className="bg-red-400 h-[400px] flex justify-center items-center">
+              <h1 className="text-black">Section Blanche</h1>
+            </div>
+
+            {/* Section chevauchante */}
+            <div className="absolute left-0 right-0 top-[300px] z-10 flex justify-center">
+              <div className="bg-gray-400 h-[200px] w-[300px] rounded-[20px] shadow-lg flex justify-center items-center">
+                <div className="bg-[#F7F7FB] w-full flex items-center justify-around py-[64px] px-20 shadow-md rounded-[20px]">
+                  <div className="flex flex-col self-end items-center gap-10">
+                    <div className="flex flex-col items-center">
+                      <span>starter</span>
+                      <span className="text-[80px] font-bold">
+                        <span className="text-[30px] font-bold">$</span>19
+                        <span className="text-[30px] font-bold">/mo</span>
+                      </span>
+                      <span>Per user</span>
+                    </div>
+                    <button className="bg-[#14A800] text-white rounded-[100px] max-w-max px-8 py-4">
+                      Start 14 day free trial
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-5">
+                    <div className="flex gap-4">
+                      <img src={Arrow} /> Custom Cover Letters,
+                    </div>
+                    <div className="flex gap-4">
+                      <img src={Arrow} /> Priority support
+                    </div>
+                    <div className="flex gap-4">
+                      <img src={Arrow} /> unlimited notifications.
+                    </div>
+                    <div className="flex gap-4">
+                      <img src={Arrow} /> 14 day free trial
+                    </div>
+                    <div className="flex gap-4">
+                      <img src={Arrow} /> Lifetime updates
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Section noire */}
+            <div className="bg-black h-[400px] flex justify-center items-center">
+              <div className="grid grid-cols-2 gap-14 text-white">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <img src={Check} alt="" />
+                    <h1 className="text-[24px] font-semibold">
+                      Can I use Boostlancer for my clients?
+                    </h1>
+                  </div>
+                  <p>
+                    Ipsum is side frisbees orbs bred shell. ‘zis green tears
+                    turns goblet vanishing. Candles us galleons snape knut
+                    trace. Snare side-along hedwig kittens silver cabinet wool.
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-3">
+                    <img src={Check} alt="" />
+                    <h1 className="text-[24px] font-semibold">
+                      Can I use Boostlancer for my clients?
+                    </h1>
+                  </div>
+                  <p>
+                    Ipsum is side frisbees orbs bred shell. ‘zis green tears
+                    turns goblet vanishing. Candles us galleons snape knut
+                    trace. Snare side-along hedwig kittens silver cabinet wool.
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-3">
+                    <img src={Check} alt="" />
+                    <h1 className="text-[24px] font-semibold">
+                      Can I use Boostlancer for my clients?
+                    </h1>
+                  </div>
+                  <p>
+                    Ipsum is side frisbees orbs bred shell. ‘zis green tears
+                    turns goblet vanishing. Candles us galleons snape knut
+                    trace. Snare side-along hedwig kittens silver cabinet wool.
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-3">
+                    <img src={Check} alt="" />
+                    <h1 className="text-[24px] font-semibold">
+                      Can I use Boostlancer for my clients?
+                    </h1>
+                  </div>
+                  <p>
+                    Ipsum is side frisbees orbs bred shell. ‘zis green tears
+                    turns goblet vanishing. Candles us galleons snape knut
+                    trace. Snare side-along hedwig kittens silver cabinet wool.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
