@@ -33,8 +33,8 @@ const PricingSection = () => {
             </span>
           </div>
         </div>
-        <div className="bg-gradient-custom flex items-center justify-center shadow-md px-8 lg:px-[180px]">
-          <div className="w-full grid grid-cols-2 bg-[#F7F7FB] px-[20px] py-8 md:py-[64px] rounded-[10px]">
+        <div className="bg-gradient-custom flex items-center justify-center shadow-md px-6 lg:px-[180px]">
+          <div className="w-full grid grid-cols-1 gap-8 md:gap-0 md:grid-cols-2 bg-[#F7F7FB] px-[20px] py-8 md:py-[64px] rounded-[10px]">
             <div className="flex flex-col items-center">
               <span className="text-[#0f7afd]">starter</span>
               <span className="text-[80px] font-bold">
@@ -67,58 +67,58 @@ const PricingSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-14 text-white px-8 md:px-20 py-20 bg-[#001E00]">
-          <div>
-            <div className="flex lg:items-center gap-3 items-start">
-              <img src={Check} alt="" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 text-white px-8 md:px-20 py-20 bg-[#001E00]">
+          <div className="flex items-start gap-3">
+            <img src={Check} alt="" />
+            <div>
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
               </h1>
+              <p>
+                Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
+                goblet vanishing. Candles us galleons snape knut trace. Snare
+                side-along hedwig kittens silver cabinet wool.
+              </p>
             </div>
-            <p>
-              Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
-              goblet vanishing. Candles us galleons snape knut trace. Snare
-              side-along hedwig kittens silver cabinet wool.
-            </p>
           </div>
-          <div>
-            <div className="flex lg:items-center gap-3 items-start">
-              <img src={Check} alt="" />
+          <div className="flex items-start gap-3">
+            <img src={Check} alt="" />
+            <div>
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
               </h1>
+              <p>
+                Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
+                goblet vanishing. Candles us galleons snape knut trace. Snare
+                side-along hedwig kittens silver cabinet wool.
+              </p>
             </div>
-            <p>
-              Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
-              goblet vanishing. Candles us galleons snape knut trace. Snare
-              side-along hedwig kittens silver cabinet wool.
-            </p>
           </div>
-          <div>
-            <div className="flex lg:items-center gap-3 items-start">
-              <img src={Check} alt="" />
+          <div className="flex items-start gap-3">
+            <img src={Check} alt="" />
+            <div>
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
               </h1>
+              <p>
+                Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
+                goblet vanishing. Candles us galleons snape knut trace. Snare
+                side-along hedwig kittens silver cabinet wool.
+              </p>
             </div>
-            <p>
-              Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
-              goblet vanishing. Candles us galleons snape knut trace. Snare
-              side-along hedwig kittens silver cabinet wool.
-            </p>
           </div>
-          <div>
-            <div className="flex lg:items-center gap-3 items-start">
-              <img src={Check} alt="" />
+          <div className="flex items-start gap-3">
+            <img src={Check} alt="" />
+            <div>
               <h1 className="text-[24px] font-semibold">
                 Can I use Boostlancer for my clients?
               </h1>
+              <p>
+                Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
+                goblet vanishing. Candles us galleons snape knut trace. Snare
+                side-along hedwig kittens silver cabinet wool.
+              </p>
             </div>
-            <p>
-              Ipsum is side frisbees orbs bred shell. ‘zis green tears turns
-              goblet vanishing. Candles us galleons snape knut trace. Snare
-              side-along hedwig kittens silver cabinet wool.
-            </p>
           </div>
         </div>
       </div>
@@ -137,26 +137,26 @@ const PricingSection = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-[#001E00] text-white px-8 lg:px-[100px] pt-10 lg:pt-20 pb-8">
-        <div className="flex flex-col gap-5 lg:gap-0 items-center justify-between">
-          <div className="lg:basis-1/2">
-            <h1 className="text-[24px] font-bold text-center">BOOSTLANCER</h1>
-            <p className="text-center">
+      <div className="bg-[#001E00] text-white px-6 lg:px-[100px] pt-10 lg:pt-20 pb-8">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between">
+          <div className="md:basis-1/2 flex flex-col items-center md:items-start gap-3">
+            <h1 className="text-[24px] font-bold">BOOSTLANCER</h1>
+            <p className="text-center md:text-start text-[20px] font-extralight">
               Candles us galleons snape knut trace. Snare side-along hedwig
               kittens silver cabinet wool. Candles us galleons snape knut trace.
               Snare side.
             </p>
           </div>
-          <div className="lg:basis-1/2 border p-2 flex items-center rounded-[100px] justify-between max-w-max h-[76px]">
-            <div className="ml-6 flex gap-3 items-center">
+          <div className="md:basis-1/2 border p-2 flex items-center rounded-[100px] justify-between w-full md:max-w-max h-[76px]">
+            <div className="ml-1 md:ml-6 flex gap-3 items-center">
               <Sms />
               <input
-                className="bg-transparent h-full outline-0 focus:outline-0 border-0 focus:border-0"
+                className="border-0 w-[130px] bg-transparent h-full outline-0 focus:outline-0 focus:border-0"
                 type="text"
                 placeholder="Email address"
               />
             </div>
-            <button className="bg-[#0f7afd] text-white rounded-[100px] max-w-max px-8 h-full">
+            <button className="bg-[#0f7afd] w-[120px] text-white rounded-[100px] md:max-w-max px-3 md:px-8 h-full">
               Get started
             </button>
           </div>
@@ -164,9 +164,9 @@ const PricingSection = () => {
 
         <div className="w-full h-[1px] my-10 bg-[#0f7afd]"></div>
 
-        <div className="flex flex-col gap-3 md:gap-0 items-center justify-between">
+        <div className="flex lg:flex-row flex-col gap-3 items-center justify-between">
           <h4>LitCollective © 2022</h4>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap justify-center md:flex-nowrap items-center gap-3">
             <img src={Behance} alt="" />
             <img src={Dribbble} alt="" />
             <img src={Xcom} alt="" />
