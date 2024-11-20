@@ -1,6 +1,6 @@
 export default function Services() {
   return (
-    <div className="flex lg:flex-row flex-col justify-start items-center gap-[40px] xl:gap-[80px] px-[24px] sm:px-[50px] bg-[#F3FAF7] xl:px-[100px] py-[100px]">
+    <div className="flex lg:flex-row flex-col justify-start items-center gap-[40px] xl:gap-[80px] px-[24px] sm:px-[50px] bg-[#F3FAF7] xl:px-[100px] md:py-[100px] py-[50px]">
       <div className="flex flex-col gap-[25px] w-full">
         <div className="bg-[#fff] p-[20px] gap-[20px] rounded-[20px] flex justify-start">
           <img src="/assets/Icon.svg" className="size-[50px]" alt="" />
