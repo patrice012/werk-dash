@@ -114,8 +114,6 @@ export function Dashboard() {
       }),
   });
 
-
-
   return (
     <DashboardLayout>
       <div className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 border-2 border-[#e7e7e7] dark:border-[#232323] border-solid shadow-md rounded-[10px]">
@@ -124,14 +122,6 @@ export function Dashboard() {
             <div className="w-full flex-1">
               <h1 className="text-lg font-bold md:text-2xl">Jobs</h1>
             </div>
-           {/*  <NewComapaignDialog>
-              <Button size="lg" className=" flex-row gap-2 items-center">
-                <Plus className="h-4 w-4" />
-                <span className=" text-[15px] font-semibold sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  New Compaign
-                </span>
-              </Button>
-            </NewComapaignDialog> */}
           </div>
         </div>
 
@@ -157,7 +147,8 @@ export function Dashboard() {
             ].map((type, idx) => (
               <div
                 className="flex mb-2 justify-start gap-[10px] items-center"
-                key={idx}>
+                key={idx}
+              >
                 <Checkbox
                   className="size-5 rounded-[5px] "
                   checked={jobTypes.includes(type)}
@@ -173,7 +164,8 @@ export function Dashboard() {
             onClick={() => {
               setJobTypes([]);
             }}
-            className="text-[#f98586] items-start font-semibold sm:text-[18px] cursor-pointer">
+            className="text-[#f98586] items-start font-semibold sm:text-[18px] cursor-pointer"
+          >
             Clear all
           </button>
         </div>
@@ -222,7 +214,7 @@ export function Dashboard() {
                                   <TableCell className="hidden md:table-cell py-4">
                                     {compaign?.employmentType}
                                   </TableCell>
-                                  <TableCell >{compaign?.location}</TableCell>
+                                  <TableCell>{compaign?.location}</TableCell>
                                   <TableCell className="hidden xl:table-cell py-4">
                                     {compaign?.updatedAt?.slice(0, 10)}
                                   </TableCell>
@@ -233,7 +225,8 @@ export function Dashboard() {
                                         <Button
                                           aria-haspopup="true"
                                           size="icon"
-                                          variant="ghost">
+                                          variant="ghost"
+                                        >
                                           <MoreHorizontal className="h-4 w-4" />
                                           <span className="sr-only">
                                             Toggle menu
@@ -247,25 +240,6 @@ export function Dashboard() {
                                               View
                                             </DropdownMenuLabel>
                                           </Link>
-
-                                          {/*  <EditComapaignDialog
-                                            compaign={{
-                                              ...compaign,
-                                              domains: compaign?.domains?.map(
-                                                (data: { domain: string }) =>
-                                                  data?.domain
-                                              ),
-                                            }}>
-                                            <DropdownMenuLabel className="cursor-pointer px-4 font-[500] hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
-                                              Edit
-                                            </DropdownMenuLabel>
-                                          </EditComapaignDialog> */}
-                                          {/* <RemoveTableItemDialog
-                                            id={compaign?._id || ""}>
-                                            <DropdownMenuLabel className="cursor-pointer px-4 font-[500] hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
-                                              Delete
-                                            </DropdownMenuLabel>
-                                          </RemoveTableItemDialog> */}
                                         </DropdownMenuGroup>
                                       </DropdownMenuContent>
                                     </DropdownMenu>
@@ -297,10 +271,9 @@ export function Dashboard() {
                         <Button
                           disabled={!getAllCompaignsQuery.data?.prevPage}
                           onClick={() => {
-                            setPage(
-                             page - 1
-                            );
-                          }}>
+                            setPage(page - 1);
+                          }}
+                        >
                           Previous
                         </Button>
                       </PaginationItem>
@@ -310,9 +283,7 @@ export function Dashboard() {
                         </PaginationItem>
                       ) : null}
                       <PaginationItem>
-                        <PaginationLink href="#">
-                          {page}
-                        </PaginationLink>
+                        <PaginationLink href="#">{page}</PaginationLink>
                       </PaginationItem>
 
                       {getAllCompaignsQuery.data?.nextPage ? (
@@ -325,10 +296,9 @@ export function Dashboard() {
                         <Button
                           disabled={!getAllCompaignsQuery.data?.nextPage}
                           onClick={() => {
-                            setPage(
-                              page + 1
-                             );
-                          }}>
+                            setPage(page + 1);
+                          }}
+                        >
                           Next
                         </Button>
                       </PaginationItem>

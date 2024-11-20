@@ -27,7 +27,8 @@ function HeroSection() {
                   location.pathname == "/" && !location.hash
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
+              >
                 <Link to={"/"}>Find Jobs</Link>
               </li>
               <li
@@ -35,7 +36,8 @@ function HeroSection() {
                   location.hash == "#discord"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
+              >
                 <Link to={"#discord"}>Discord</Link>
               </li>
               <li
@@ -43,15 +45,15 @@ function HeroSection() {
                   location.hash == "#telegram"
                     ? "border-[#0f7afd] text-[#0f7afd]"
                     : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
+                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
+              >
                 <Link to={"#telegram"}>Telegram</Link>
               </li>
               <li
-                className={`hover:text-[#0f7afd] pt-[22px] ${
-                  location.hash == "/landing"
-                    ? "border-[#0f7afd] text-[#0f7afd]"
-                    : "border-transparent"
-                } active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}>
+                className={`hover:text-[#0f7afd] pt-[22px] 
+                  border-[#0f7afd] text-[#0f7afd]
+                 active:text-[#0f7afd] transition-all border-t-4 sm:text-[18px]`}
+              >
                 <Link to={"/landing"}>Page</Link>
               </li>
             </ul>
@@ -59,7 +61,8 @@ function HeroSection() {
           <div className="flex gap-[12px] items-center">
             <Link
               to="/auth/login"
-              className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex">
+              className="bg-[#0f7afd] border-[#0f7afd] border-2 hover:bg-[#0f7afdc5] transition-all mt-[10px] py-[10px] px-[32px] rounded-full text-[18px] font-semibold text-white hidden lm:flex"
+            >
               Login
             </Link>
           </div>
@@ -67,7 +70,8 @@ function HeroSection() {
             <div
               className="border-[#fff] rounded-[4px] cursor-pointer flex xl:hidden"
               id="openSidebar"
-              onClick={toggleOpen}>
+              onClick={toggleOpen}
+            >
               <HambergerMenu size="32" color="#fff" />
             </div>
           </div>
@@ -152,7 +156,8 @@ function HeroSection() {
                 height="24"
                 viewBox="0 0 25 24"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
@@ -170,7 +175,8 @@ function HeroSection() {
                 height="24"
                 viewBox="0 0 25 24"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
@@ -188,7 +194,8 @@ function HeroSection() {
                 height="24"
                 viewBox="0 0 25 24"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
